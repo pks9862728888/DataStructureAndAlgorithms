@@ -21,65 +21,56 @@ public class SolveSudoku implements Printer {
     }
 
     private static boolean solveSudoku(int[][] m, int n) {
-        // Find next empty square
-        int r = -1;
-        int c = -1;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (m[i][j] == 0) { // Find row & col idx where board is empty
-                    r = i;
-                    c = j;
+        // Find empty slot
+        int r = 0;
+        int c = 0;
+        for (r = 0; r < n; r++) {
+            for (c = 0; c < n; c++) {
+                if (m[r][c] == 0) {
                     break;
                 }
             }
-            if (r != -1 && c != -1) { // Go out of loop if board is empty
+            if (c != n) {
                 break;
             }
         }
 
-        // Return if all boxes are solved
-        if (r == -1 && c == -1) {
+        // Return if sudoku is solved (empty slot is not found)
+        if (r == n && c == n) {
             return true;
         }
 
-        // Populate value by backtracking
-        for (int i = 1; i <= n; i++) {
-            if (isValidValueForSquare(m, r, c, n, i)) {
-                m[r][c] = i;
+        // Solve sudoku using backtracking
+        for (int val = 1; val <= n; val++) {
+            if (isValid(m, r, c, n, val)) {
+                m[r][c] = val;
 
                 if (solveSudoku(m, n)) {
                     return true;
-                } else { // Back tracking where if solving is not possible change n - 1 to 0 and put other values
-                    m[r][c] = 0;
+                } else {
+                    m[r][c] = 0; // Backtracking
                 }
             }
         }
-
-        // Return value
         return false;
     }
-
-    private static boolean isValidValueForSquare(int[][] m, int r, int c, int n, int val) {
-        // Check whether row can be filled with value or not
+    private static boolean isValid(int[][] m, int r, int c, int n, int val) {
+        // Check row & column
         for (int i = 0; i < n; i++) {
-            if (m[r][i] == val) {
+            if (m[i][c] == val) { // row check
+                return false;
+            }
+            if (m[r][i] == val) { // col check
                 return false;
             }
         }
 
-        // Check whether column can be filled with value or not
-        for (int i = 0; i < n; i++) {
-            if (m[i][c] == val) {
-                return false;
-            }
-        }
-
-        // Check whether box is valid or not
+        // Check sub-square
         int sqrt = (int) Math.sqrt(n);
-        int startingRow = r - r % sqrt;
-        int startingCol = c - c % sqrt;
-        for (int i = startingRow; i < startingRow + sqrt; i++) {
-            for (int j = startingCol; j < startingCol + sqrt; j++) {
+        int stR = r - r % sqrt;
+        int stC = c - c % sqrt;
+        for (int i = stR; i < stR + sqrt; i++) {
+            for (int j = stC; j < stC + sqrt; j++) {
                 if (m[i][j] == val) {
                     return false;
                 }
