@@ -1,4 +1,4 @@
-package com.practice.programs.arrays;
+package com.practice.programs.arrays.recursion;
 
 /**
  * Platform: CodingNinjas
