@@ -24,7 +24,7 @@ public class RatMaze implements Printer {
         if (canReach(m, n, 0, 0, 2, 2, path)) {
             Printer.printMatrix(path);
         } else {
-            System.out.println("Can't reach");
+            Printer.printMatrix(path);
         }
     }
 
