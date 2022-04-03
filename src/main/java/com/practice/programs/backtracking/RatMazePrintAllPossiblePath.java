@@ -27,20 +27,18 @@ public class RatMazePrintAllPossiblePath implements Printer {
      * L for left
      * U for up
      */
-    private static boolean findAllPaths(int[][] m, int sx, int sy, int n, ArrayList<String> paths, ArrayList<Integer[]> tp, String cp) {
+    private static void findAllPaths(int[][] m, int sx, int sy, int n, ArrayList<String> paths, ArrayList<Integer[]> tp, String cp) {
         if (sx == n - 1 && sy == n - 1 && m[sx][sy] == 1) {
             paths.add(cp);
-            return true;
+            return;
         }
-        boolean isFound = false;
         if (isValid(m, sx, sy, n, tp)) {
             tp.add(new Integer[] {sx, sy});
-            isFound = findAllPaths(m, sx + 1, sy, n, paths, copyAsNew(tp), cp + "D"); // DOWN
-            isFound = findAllPaths(m, sx, sy + 1, n, paths, copyAsNew(tp), cp + "R") || isFound; // RIGHT
-            isFound = findAllPaths(m, sx, sy - 1, n, paths, copyAsNew(tp), cp + "L") || isFound; // LEFT
-            isFound = findAllPaths(m, sx - 1, sy, n, paths, copyAsNew(tp), cp + "U") || isFound; // UP
+            findAllPaths(m, sx + 1, sy, n, paths, copyAsNew(tp), cp + "D"); // DOWN
+            findAllPaths(m, sx, sy + 1, n, paths, copyAsNew(tp), cp + "R"); // RIGHT
+            findAllPaths(m, sx, sy - 1, n, paths, copyAsNew(tp), cp + "L"); // LEFT
+            findAllPaths(m, sx - 1, sy, n, paths, copyAsNew(tp), cp + "U"); // UP
         }
-        return isFound;
     }
 
     private static ArrayList<Integer[]> copyAsNew(ArrayList<Integer[]> tp) {
