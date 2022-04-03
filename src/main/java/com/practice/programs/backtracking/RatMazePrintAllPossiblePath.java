@@ -3,58 +3,52 @@ package com.practice.programs.backtracking;
 import com.utils.Printer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RatMazePrintAllPossiblePath implements Printer {
 
+    private static final int TARGET_X = 2;
+    private static final int TARGET_Y = 2;
+
     public static void main(String[] args) {
-        int[][] m = {
-                {1, 1},
-                {1, 1}
-        };
-        int n = m.length;
-        System.out.println(findAllPossiblePaths(m, n));
+        ArrayList<ArrayList<Integer>> m = new ArrayList<>();
+        m.add(new ArrayList<>(Arrays.asList(1, 0, 0, 0, 0, 0)));
+        m.add(new ArrayList<>(Arrays.asList(1, 0, 0, 0, 0, 0)));
+        m.add(new ArrayList<>(Arrays.asList(1, 0, 1, 1, 1, 0)));
+        m.add(new ArrayList<>(Arrays.asList(1, 0, 0, 1, 1, 0)));
+        m.add(new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1, 0)));
+        m.add(new ArrayList<>(Arrays.asList(1, 0, 0, 0, 0, 0)));
+        System.out.println(findAllPaths(m));
     }
 
-    private static ArrayList<String> findAllPossiblePaths(int[][] m, int n) {
+    public static ArrayList<String> findAllPaths(ArrayList<ArrayList<Integer>> m) {
         ArrayList<String> paths = new ArrayList<>();
-        findAllPaths(m, 0, 0, n, paths, new ArrayList<>(), "");
+        findPaths(m, 0, 0, m.size(), paths, new ArrayList<>(), "");
         return paths;
     }
-
-    /**
-     * D for down
-     * R for right
-     * L for left
-     * U for up
-     */
-    private static void findAllPaths(int[][] m, int sx, int sy, int n, ArrayList<String> paths, ArrayList<Integer[]> tp, String cp) {
-        if (sx == n - 1 && sy == n - 1 && m[sx][sy] == 1) {
+    private static void findPaths(
+            ArrayList<ArrayList<Integer>> m, int sx, int sy, int n,
+            ArrayList<String> paths, ArrayList<Integer[]> tp, String cp) {
+        if (sx == TARGET_X && sy == TARGET_Y && m.get(sx).get(sy) == 1) {
             paths.add(cp);
             return;
         }
         if (isValid(m, sx, sy, n, tp)) {
-            tp.add(new Integer[] {sx, sy});
-            findAllPaths(m, sx + 1, sy, n, paths, copyAsNew(tp), cp + "D"); // DOWN
-            findAllPaths(m, sx, sy + 1, n, paths, copyAsNew(tp), cp + "R"); // RIGHT
-            findAllPaths(m, sx, sy - 1, n, paths, copyAsNew(tp), cp + "L"); // LEFT
-            findAllPaths(m, sx - 1, sy, n, paths, copyAsNew(tp), cp + "U"); // UP
+            Integer[] ob = {sx, sy};
+            tp.add(ob);
+            findPaths(m, sx + 1, sy, n, paths, tp, cp + "D");
+            findPaths(m, sx, sy + 1, n, paths, tp, cp + "R");
+            findPaths(m, sx, sy - 1, n, paths, tp, cp + "L");
+            findPaths(m, sx - 1, sy, n, paths, tp, cp + "U");
+            tp.remove(ob);
         }
     }
-
-    private static ArrayList<Integer[]> copyAsNew(ArrayList<Integer[]> tp) {
-        ArrayList<Integer[]> al = new ArrayList<>();
-        for (Integer[] n: tp) {
-            al.add(new Integer[] {n[0], n[1]});
-        }
-        return al;
-    }
-
-    private static boolean isValid(int[][] m, int sx, int sy, int n, ArrayList<Integer[]> tp) {
-        if (sx < 0 || sy < 0 || sx == n || sy == n || m[sx][sy] == 0) {
+    private static boolean isValid(ArrayList<ArrayList<Integer>> m, int sx, int sy, int n, ArrayList<Integer[]> tp) {
+        if (sx < 0 || sy < 0 || sx == n || sy == n || m.get(sx).get(sy) == 0) {
             return false;
         }
-        for (Integer[] node: tp) {
-            if (node[0] == sx && node[1] == sy) {
+        for (Integer[] nd: tp) {
+            if (nd[0] == sx && nd[1] == sy) {
                 return false;
             }
         }
