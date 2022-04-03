@@ -4,7 +4,7 @@ import com.utils.Printer;
 
 import java.util.ArrayList;
 
-public class RatMaze implements Printer {
+public class RatMazePrintPath implements Printer {
 
     public static void main(String[] args) {
 //        int[][] m = {{1, 0, 0, 0},
@@ -28,11 +28,11 @@ public class RatMaze implements Printer {
         }
     }
 
-    public static boolean canReach(int[][] m, int n, int sr, int sc, int yr, int yc, int[][] p) {
+    private static boolean canReach(int[][] m, int n, int sr, int sc, int yr, int yc, int[][] p) {
         return canReach(m, n, sr, sc, yr, yc, p, new ArrayList<>());
     }
 
-    public static boolean canReach(int[][] m, int n, int sr, int sc, int yr, int yc, int[][] path, ArrayList<Integer[]> tn) {
+    private static boolean canReach(int[][] m, int n, int sr, int sc, int yr, int yc, int[][] path, ArrayList<Integer[]> tn) {
         if (sr == yr && sc == yc) {  // Destination is reached
             path[sr][sc] = 1;
             return true;
