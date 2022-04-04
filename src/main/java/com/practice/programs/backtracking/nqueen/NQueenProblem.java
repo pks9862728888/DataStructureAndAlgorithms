@@ -1,4 +1,4 @@
-package com.practice.programs.backtracking;
+package com.practice.programs.backtracking.nqueen;
 
 import com.utils.Printer;
 

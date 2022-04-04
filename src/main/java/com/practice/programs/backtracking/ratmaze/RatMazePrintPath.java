@@ -1,4 +1,4 @@
-package com.practice.programs.backtracking;
+package com.practice.programs.backtracking.ratmaze;
 
 import com.utils.Printer;
 
