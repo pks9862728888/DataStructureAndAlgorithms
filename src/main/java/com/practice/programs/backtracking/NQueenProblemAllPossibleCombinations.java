@@ -2,7 +2,9 @@ package com.practice.programs.backtracking;
 
 import com.utils.Printer;
 
-public class NQueenProblem implements Printer {
+import java.util.ArrayList;
+
+public class NQueenProblemAllPossibleCombinations implements Printer {
 
     public static void main(String[] args) {
 //        placeNQueen(3);
@@ -11,8 +13,9 @@ public class NQueenProblem implements Printer {
 
     private static boolean placeNQueen(int n) {
         int[][] placement = new int[n][n];
-        if (placeNQueen(placement, 0, n)) {
-            Printer.printMatrix(placement);
+        ArrayList<ArrayList<Integer>> placements = new ArrayList<>();
+        if (placeNQueen(placements, placement, 0, n)) {
+            Printer.printMatrixes(placements, n);
             return true;
         } else {
             System.out.println("Placement not possible");
@@ -20,20 +23,40 @@ public class NQueenProblem implements Printer {
         }
     }
 
-    private static boolean placeNQueen(int[][] m, int colIdx, int n) {
+    private static boolean placeNQueen(ArrayList<ArrayList<Integer>> placements, int[][] m, int colIdx, int n) {
         if (colIdx >= n) {
+            ArrayList<Integer> al = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    al.add(m[i][j]);
+                }
+            }
+            placements.add(al);
             return true;
         }
+        boolean placed = false;
         for (int i = 0; i < n; i++) {  // row
-            if (isSafeToPlaceQueen(m, i, colIdx, n)) {
-                m[i][colIdx] = 1;
-                if (placeNQueen(m, colIdx + 1, n)) {
-                    return true;
+            int[][] nm = getCopy(m, n);
+            if (isSafeToPlaceQueen(nm, i, colIdx, n)) {
+                nm[i][colIdx] = 1;
+                if (placeNQueen(placements, nm, colIdx + 1, n)) {
+                    placed = true;
+                } else {
+                    nm[i][colIdx] = 0;
                 }
-                m[i][colIdx] = 0;
             }
         }
-        return false;
+        return placed;
+    }
+
+    private static int[][] getCopy(int[][] m, int n) {
+        int[][] nm = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                nm[i][j] = m[i][j];
+            }
+        }
+        return nm;
     }
 
     private static boolean isSafeToPlaceQueen(int[][] m, int rowIdx, int colIdx, int n) {
