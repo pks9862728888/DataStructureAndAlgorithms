@@ -3,7 +3,12 @@ package com.practice.programs.backtracking.nqueen;
 import com.utils.Printer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
+/**
+ * Optimized solution
+ * Source: Coding Ninja
+ */
 public class NQueenProblemAllPossibleCombinations implements Printer {
 
     public static void main(String[] args) {
@@ -12,9 +17,14 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
     }
 
     private static boolean placeNQueen(int n) {
-        int[][] placement = new int[n][n];
+        int[] rowP = new int[n];
+        int[] diag1 = new int[2 * n];
+        int[] diag2 = new int[2 * n];
+        Arrays.fill(rowP, -1);
+        Arrays.fill(diag1, -1);
+        Arrays.fill(diag2, -1);
         ArrayList<ArrayList<Integer>> placements = new ArrayList<>();
-        if (placeNQueen(placements, placement, 0, n)) {
+        if (placeNQueen(placements, rowP, diag1, diag2, 0, n)) {
             Printer.printMatrixes(placements, n);
             return true;
         } else {
@@ -23,12 +33,16 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
         }
     }
 
-    private static boolean placeNQueen(ArrayList<ArrayList<Integer>> placements, int[][] m, int colIdx, int n) {
+    private static boolean placeNQueen(ArrayList<ArrayList<Integer>> placements, int[] rp, int[] dp1, int[] dp2, int colIdx, int n) {
         if (colIdx >= n) {
             ArrayList<Integer> al = new ArrayList<>();
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) { // i = row, rp[i] contains colIdx
                 for (int j = 0; j < n; j++) {
-                    al.add(m[i][j]);
+                    if (j == rp[i]) {
+                        al.add(1);
+                    } else {
+                        al.add(0);
+                    }
                 }
             }
             placements.add(al);
@@ -36,52 +50,41 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
         }
         boolean placed = false;
         for (int i = 0; i < n; i++) {  // row
-            if (isSafeToPlaceQueen(m, i, colIdx, n)) {
-                int[][] nm = getCopy(m, n);
-                nm[i][colIdx] = 1;
-                if (placeNQueen(placements, nm, colIdx + 1, n)) {
+            if (isSafeToPlaceQueen(rp, dp1, dp2, i, colIdx, n)) {
+                int[] rpCopy = Arrays.copyOf(rp, rp.length);
+                int[] dp1Copy = Arrays.copyOf(dp1, dp1.length);
+                int[] dp2Copy = Arrays.copyOf(dp2, dp2.length);
+                rpCopy[i] = colIdx;
+                dp1Copy[i + colIdx] = colIdx;
+                dp2Copy[colIdx - i + n - 1] = colIdx;
+                if (placeNQueen(placements, rpCopy, dp1Copy, dp2Copy, colIdx + 1, n)) {
                     placed = true;
                 } else {
-                    nm[i][colIdx] = 0;
+                    rpCopy[i] = -1;
+                    dp1Copy[i + colIdx] = -1;
+                    dp2Copy[colIdx - i + n - 1] = -1;
                 }
             }
         }
         return placed;
     }
 
-    private static int[][] getCopy(int[][] m, int n) {
-        int[][] nm = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                nm[i][j] = m[i][j];
-            }
+    private static boolean isSafeToPlaceQueen(int[] rp, int[] dp1, int[] dp2, int rowIdx, int colIdx, int n) {
+        if (rp[rowIdx] != -1) { // check whether row contains queen
+            return false;
         }
-        return nm;
-    }
-
-    private static boolean isSafeToPlaceQueen(int[][] m, int rowIdx, int colIdx, int n) {
-        // check whether row / column is filled
-        for (int i = 0; i < n; i++) {
-            if (m[rowIdx][i] == 1) {  // check whether row has 1
-                return false;
-            }
-            if (m[i][colIdx] == 1) { // check whether column has 1
+        for (int i = 0; i < n; i++) {  // check whether column contains queen
+            if (rp[i] == colIdx) {
                 return false;
             }
         }
 
-        for (int i = rowIdx, j = colIdx; i >= 0 && j >= 0; i--, j--) { // upper left diagonal
-            if (m[i][j] == 1) {
-                return false;
-            }
+        // upper left diagonal
+        if (dp1[rowIdx + colIdx] != -1) {
+            return false;
         }
 
-        for (int i = rowIdx, j = colIdx; i < n && j >= 0; i++, j--) {  // bottom left diagonal
-            if (m[i][j] == 1) {
-                return false;
-            }
-        }
-
-        return true;
+        // lower left diagonal
+        return dp2[colIdx - rowIdx + n - 1] == -1;
     }
 }
