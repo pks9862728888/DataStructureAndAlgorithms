@@ -36,8 +36,8 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
         }
         boolean placed = false;
         for (int i = 0; i < n; i++) {  // row
-            int[][] nm = getCopy(m, n);
-            if (isSafeToPlaceQueen(nm, i, colIdx, n)) {
+            if (isSafeToPlaceQueen(m, i, colIdx, n)) {
+                int[][] nm = getCopy(m, n);
                 nm[i][colIdx] = 1;
                 if (placeNQueen(placements, nm, colIdx + 1, n)) {
                     placed = true;
