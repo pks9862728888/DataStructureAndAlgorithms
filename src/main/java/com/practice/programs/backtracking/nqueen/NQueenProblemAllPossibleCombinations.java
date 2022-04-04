@@ -16,7 +16,7 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
         placeNQueen(4);
     }
 
-    private static boolean placeNQueen(int n) {
+    private static void placeNQueen(int n) {
         int[] rowP = new int[n];
         int[] diag1 = new int[2 * n];
         int[] diag2 = new int[2 * n];
@@ -26,10 +26,8 @@ public class NQueenProblemAllPossibleCombinations implements Printer {
         ArrayList<ArrayList<Integer>> placements = new ArrayList<>();
         if (placeNQueen(placements, rowP, diag1, diag2, 0, n)) {
             Printer.printMatrixes(placements, n);
-            return true;
         } else {
             System.out.println("Placement not possible");
-            return false;
         }
     }
 
