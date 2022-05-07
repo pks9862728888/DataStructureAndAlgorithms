@@ -25,34 +25,34 @@ public class TripletSum {
         return numTriplets;
     }
 
-    private static int pairSum(int[] arr, int startIndex, int endIndex, int num) {
+    private static int pairSum(int[] arr, int l, int r, int num) {
         int numPair = 0;
-        while (startIndex < endIndex) {
-            if (arr[startIndex] + arr[endIndex] < num) {
-                startIndex++;
-            } else if (arr[startIndex] + arr[endIndex] > num) {
-                endIndex--;
+        while (l < r) {
+            if (arr[l] + arr[r] < num) {
+                l++;
+            } else if (arr[l] + arr[r] > num) {
+                r--;
             } else {
-                int elementAtStart = arr[startIndex];
-                int elementAtEnd = arr[endIndex];
+                int elementAtStart = arr[l];
+                int elementAtEnd = arr[r];
                 if (elementAtStart == elementAtEnd) {
-                    int totalElementsFromStartToEnd = (endIndex - startIndex) + 1;
+                    int totalElementsFromStartToEnd = (r - l) + 1;
                     numPair += (totalElementsFromStartToEnd * (totalElementsFromStartToEnd - 1) / 2);
                     return numPair;
                 }
-                int tempStartIndex = startIndex + 1;
-                int tempEndIndex = endIndex - 1;
+                int tempStartIndex = l + 1;
+                int tempEndIndex = r - 1;
                 while (tempStartIndex <= tempEndIndex && arr[tempStartIndex] == elementAtStart) {
                     tempStartIndex += 1;
                 }
                 while (tempEndIndex >= tempStartIndex && arr[tempEndIndex] == elementAtEnd) {
                     tempEndIndex -= 1;
                 }
-                int totalElementsFromStart = (tempStartIndex - startIndex);
-                int totalElementsFromEnd = (endIndex - tempEndIndex);
+                int totalElementsFromStart = (tempStartIndex - l);
+                int totalElementsFromEnd = (r - tempEndIndex);
                 numPair += (totalElementsFromStart * totalElementsFromEnd);
-                startIndex = tempStartIndex;
-                endIndex = tempEndIndex;
+                l = tempStartIndex;
+                r = tempEndIndex;
             }
         }
         return numPair;
