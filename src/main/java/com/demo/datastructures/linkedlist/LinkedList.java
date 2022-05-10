@@ -103,8 +103,65 @@ public class LinkedList<T> {
         return length;
     }
 
+    public boolean isPalindrome() {
+        // Finding the mid-point from which it should reverse
+        // slow will store the mid-point
+        Node<T> slow = head;
+        Node<T> fast = head;
+        int n = 0;
+        while(slow != null && fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+            n++;
+
+            if (fast != null) {
+                fast = fast.next;
+                n++;
+            }
+        }
+        // Max index upto which it should compare to find palindrome
+        n = n / 2 - 1;
+
+        if (slow != null) {
+            // Reversing from mid by making a copy
+            Node<T> newHead = getReversedCopyOfLinkedList(slow);
+
+            // Find palindrome or not
+            slow = head;
+            while (slow != null && newHead != null && n >= 0) {
+                if (!slow.data.equals(newHead.data)) {
+                    return false;
+                }
+                slow = slow.next;
+                newHead = newHead.next;
+            }
+        }
+
+        return true;
+    }
+
+    private Node<T> getReversedCopyOfLinkedList(Node<T> head) {
+        Node<T> newHead = copyOfNode(head);
+        head = head.next;
+        while (head != null) {
+            Node<T> temp = copyOfNode(head);
+            temp.next = newHead;
+            newHead = temp;
+            head = head.next;
+        }
+        return newHead;
+    }
+
+    private Node<T> copyOfNode(Node<T> prev) {
+        return new Node<>(prev.data);
+    }
+
     @Override
     public String toString() {
+        return toString(head);
+    }
+
+    private String toString(Node<T> head) {
         StringBuilder str = new StringBuilder("LinkedList[");
         Node<T> temp = head;
         while (temp != null) {
