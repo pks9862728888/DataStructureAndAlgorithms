@@ -350,4 +350,59 @@ public class LinkedList<T extends Comparable<T>> {
         }
         return slow;
     }
+
+    public void kReverse(int k) {
+        head = kReverse(head, k);
+    }
+
+    private Node<T> kReverse(Node<T> head, int k) {
+        if (head == null || head.next == null || k == 0 || k == 1) {
+            return head;
+        }
+        int c = 0;
+        Node<T> curr = head;
+        Node<T> next = null;
+        Node<T> tempHead = head;
+        Node<T> prevTail = null;
+        while (curr != null) {
+            c++;
+            if (c == k || curr.next == null) {
+                next = curr.next;
+                curr.next = null;
+                Node<T> temp = tempHead;
+                Node<T>[] res = reverse(tempHead, next);
+                tempHead = res[0];
+                if (temp == head) {
+                    head = tempHead;
+                } else {
+                    prevTail.next = tempHead;
+                }
+                prevTail = res[1];
+                tempHead = next;
+                curr = tempHead;
+                c = 0;
+            } else {
+                curr = curr.next;
+            }
+        }
+
+        return head;
+    }
+
+    private Node<T>[] reverse(Node<T> head, Node<T> next) {
+        if (head == null) {
+            return null;
+        }
+        Node<T> tail = head;
+        Node<T> th = null;
+        while(head != null) {
+            Node<T> curr = head;
+            head = head.next;
+            curr.next = th;
+            th = curr;
+        }
+        tail.next = next;
+        return new Node[] {th, tail};
+    }
+
 }

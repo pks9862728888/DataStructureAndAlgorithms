@@ -61,11 +61,13 @@ public class LinkedListDemo {
 
         LinkedList<Integer> l1 = new LinkedList<>();
         l1.insertRecursively(0, 1);
-        l1.insertRecursively(1, 4);
+        l1.insertRecursively(1, 2);
         l1.insertRecursively(2, 3);
-        l1.insertRecursively(3, 6);
+        l1.insertRecursively(3, 4);
         l1.insertRecursively(4, 5);
-        l1.mergeSort();
+        l1.insertRecursively(5, 6);
+        l1.insertRecursively(6, 7);
+        l1.kReverse(3);
         l1.printRecursively();
     }
 }
