@@ -3,7 +3,7 @@ package com.demo.stack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StackUsingArrayList<T> {
+public class StackUsingArrayList<T> implements StackInterface<T> {
 
     private final List<T> stack;
 
@@ -11,14 +11,17 @@ public class StackUsingArrayList<T> {
         this.stack = new ArrayList<>();
     }
 
+    @Override
     public void push(T ele) {
         stack.add(ele);
     }
 
+    @Override
     public int size() {
         return stack.size();
     }
 
+    @Override
     public T peek() {
         if (stack.isEmpty()) {
             return null;
@@ -27,6 +30,7 @@ public class StackUsingArrayList<T> {
         }
     }
 
+    @Override
     public T pop() {
         if (stack.isEmpty()) {
             return null;
@@ -35,6 +39,7 @@ public class StackUsingArrayList<T> {
         }
     }
 
+    @Override
     public boolean isEmpty() {
         return stack.isEmpty();
     }

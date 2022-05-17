@@ -3,7 +3,8 @@ package com.demo.stack;
 public class StackDemo {
 
     public static void main(String[] args) {
-        StackUsingArrayList<Integer> stack = new StackUsingArrayList<>();
+//        StackUsingArrayList<Integer> stack = new StackUsingArrayList<>();
+        StackUsingArray<Integer> stack = new StackUsingArray<>();
         stack.push(10);
         System.out.println("SIZE: " + stack.size());
         stack.push(20);
