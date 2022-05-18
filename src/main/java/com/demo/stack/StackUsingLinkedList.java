@@ -30,12 +30,8 @@ public class StackUsingLinkedList<T> implements StackInterface<T> {
     @Override
     public void push(T ele) {
         Node<T> temp = new Node<>(ele);
-        if (isEmpty()) {
-            stack = temp;
-        } else {
-            temp.next = stack;
-            stack = temp;
-        }
+        temp.next = stack;
+        stack = temp;
         size++;
     }
 
