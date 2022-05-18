@@ -1,4 +1,4 @@
-package com.demo.stack;
+package com.demo.datastructures.stack;
 
 import java.util.ArrayList;
 import java.util.List;

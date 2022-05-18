@@ -1,4 +1,4 @@
-package com.demo.stack;
+package com.demo.datastructures.stack;
 
 public interface StackInterface<T> {
     void push(T ele);

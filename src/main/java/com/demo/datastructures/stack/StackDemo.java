@@ -1,4 +1,4 @@
-package com.demo.stack;
+package com.demo.datastructures.stack;
 
 public class StackDemo {
 
