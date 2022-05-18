@@ -6,7 +6,7 @@ public class StackUsingArray<T> implements StackInterface<T> {
 
     private Object[] stack;
     private final int capacity;
-    private int currIdx = -1;
+    private int topIdx = -1;
 
     public StackUsingArray() {
         this.capacity = 10;
@@ -20,10 +20,10 @@ public class StackUsingArray<T> implements StackInterface<T> {
 
     @Override
     public void push(T ele) {
-        if (currIdx + 1 == capacity) {
+        if (topIdx + 1 == capacity) {
             doubleCapacity();
         }
-        this.stack[++currIdx] = ele;
+        this.stack[++topIdx] = ele;
     }
 
     private void doubleCapacity() {
@@ -32,30 +32,30 @@ public class StackUsingArray<T> implements StackInterface<T> {
 
     @Override
     public int size() {
-        return currIdx + 1;
+        return topIdx + 1;
     }
 
     @Override
     public Object peek() {
-        if (currIdx == -1) {
+        if (topIdx == -1) {
             return null;
         } else {
-            return stack[currIdx];
+            return stack[topIdx];
         }
     }
 
     @Override
     public Object pop() {
-        if (currIdx == -1) {
+        if (topIdx == -1) {
             return null;
         } else {
-            currIdx--;
-            return stack[currIdx + 1];
+            topIdx--;
+            return stack[topIdx + 1];
         }
     }
 
     @Override
     public boolean isEmpty() {
-        return currIdx == -1;
+        return topIdx == -1;
     }
 }
