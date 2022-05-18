@@ -1,5 +1,8 @@
 package com.demo.datastructures.queue;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class QueueDemo {
 
     public static void main(String[] args) {
@@ -8,7 +11,7 @@ public class QueueDemo {
         q.add(30);
         System.out.println("SIZE: " + q.size());
         q.add(20);
-        System.out.println("FRONT: " + q.front());
+        System.out.println("POLL: " + q.poll());
         System.out.println("DEQUEUE: " + q.remove());
         System.out.println("SIZE: " + q.size());
         System.out.println("DEQUEUE: " + q.remove());
@@ -19,5 +22,12 @@ public class QueueDemo {
         q.add(30);
         q.reverse(q);
         System.out.println("Reversed queue: " + q);
+
+        // Java Impl
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        System.out.println(queue.poll());
     }
 }

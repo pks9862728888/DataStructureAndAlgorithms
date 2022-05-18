@@ -66,7 +66,7 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     }
 
     @Override
-    public T front() {
+    public T poll() {
         return isEmpty() ? null : queue[front];
     }
 
