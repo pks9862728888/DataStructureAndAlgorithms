@@ -10,7 +10,7 @@ public interface QueueInterface<T> {
 
     T remove();       // dequeue
 
-    T poll();
+    T front();
 
     String toString();
 

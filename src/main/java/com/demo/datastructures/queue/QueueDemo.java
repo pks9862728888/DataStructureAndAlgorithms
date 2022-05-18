@@ -11,7 +11,7 @@ public class QueueDemo {
         q.add(30);
         System.out.println("SIZE: " + q.size());
         q.add(20);
-        System.out.println("POLL: " + q.poll());
+        System.out.println("FRONT: " + q.front());
         System.out.println("DEQUEUE: " + q.remove());
         System.out.println("SIZE: " + q.size());
         System.out.println("DEQUEUE: " + q.remove());
@@ -29,5 +29,6 @@ public class QueueDemo {
         queue.add(20);
         queue.add(30);
         System.out.println(queue.poll());
+        System.out.println(queue.size());
     }
 }

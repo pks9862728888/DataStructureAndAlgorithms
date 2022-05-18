@@ -36,7 +36,7 @@ public class QueueUsingLinkedList<T> implements QueueInterface<T> {
     }
 
     @Override
-    public T poll() {
+    public T front() {
         if (isEmpty()) {
             return null;
         } else {
