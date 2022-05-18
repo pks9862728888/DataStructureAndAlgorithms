@@ -37,7 +37,7 @@ public class StackUsingArray<T> implements StackInterface<T> {
 
     @Override
     public Object peek() {
-        if (topIdx == -1) {
+        if (isEmpty()) {
             return null;
         } else {
             return stack[topIdx];
@@ -46,7 +46,7 @@ public class StackUsingArray<T> implements StackInterface<T> {
 
     @Override
     public Object pop() {
-        if (topIdx == -1) {
+        if (isEmpty()) {
             return null;
         } else {
             topIdx--;

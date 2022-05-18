@@ -4,7 +4,8 @@ public class StackDemo {
 
     public static void main(String[] args) {
 //        StackUsingArrayList<Integer> stack = new StackUsingArrayList<>();
-        StackUsingArray<Integer> stack = new StackUsingArray<>();
+//        StackUsingArray<Integer> stack = new StackUsingArray<>();
+        StackUsingLinkedList<Integer> stack = new StackUsingLinkedList<>();
         stack.push(10);
         System.out.println("SIZE: " + stack.size());
         stack.push(20);
