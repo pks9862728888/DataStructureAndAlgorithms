@@ -26,8 +26,8 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     }
 
     @Override
-    public void enqueue(T ele) {
-        if (rear + 1 == queue.length) {
+    public void add(T ele) {
+        if (size() == queue.length) {
             refactorQueueAndDoubleCapacity();
         }
         queue[++rear] = ele;
@@ -49,18 +49,18 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     }
 
     @Override
-    public T dequeue() {
+    public T remove() {
         if (isEmpty()) {
             return null;
         } else {
             T ele = queue[front];
-            if (front == rear) {
+            size--;
+            if (isEmpty()) {
                 front = -1;
                 rear = -1;
             } else {
                 front++;
             }
-            size--;
             return ele;
         }
     }
@@ -68,5 +68,17 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     @Override
     public T front() {
         return isEmpty() ? null : queue[front];
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        if (!isEmpty()) {
+            for (int i = front; i <= rear; i++) {
+                sb.append(queue[i]).append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString().replace(", ]", "]");
     }
 }

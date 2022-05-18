@@ -6,10 +6,20 @@ public interface QueueInterface<T> {
 
     boolean isEmpty();
 
-    void enqueue(T ele);
+    void add(T ele);  // enqueue
 
-    T dequeue();
+    T remove();       // dequeue
 
     T front();
+
+    String toString();
+
+    default void reverse(QueueInterface<T> queue) {
+        if (!queue.isEmpty()) {
+           T ele = queue.remove();
+           reverse(queue);
+           queue.add(ele);
+        }
+    }
 
 }
