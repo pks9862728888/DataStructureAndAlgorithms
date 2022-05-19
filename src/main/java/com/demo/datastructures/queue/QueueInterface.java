@@ -8,15 +8,15 @@ public interface QueueInterface<T> {
 
     void add(T ele);  // enqueue
 
-    T remove();       // dequeue
+    T poll();       // dequeue
 
-    T front();
+    T peek();
 
     String toString();
 
     default void reverse(QueueInterface<T> queue) {
         if (!queue.isEmpty()) {
-           T ele = queue.remove();
+           T ele = queue.poll();
            reverse(queue);
            queue.add(ele);
         }

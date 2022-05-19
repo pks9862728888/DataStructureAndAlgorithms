@@ -49,7 +49,7 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     }
 
     @Override
-    public T remove() {
+    public T poll() {
         if (isEmpty()) {
             return null;
         } else {
@@ -66,7 +66,7 @@ public class QueueUsingArray<T> implements QueueInterface<T> {
     }
 
     @Override
-    public T front() {
+    public T peek() {
         return isEmpty() ? null : queue[front];
     }
 

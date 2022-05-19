@@ -12,10 +12,10 @@ public class QueueDemo {
         q.add(30);
         System.out.println("SIZE: " + q.size());
         q.add(20);
-        System.out.println("FRONT: " + q.front());
-        System.out.println("DEQUEUE: " + q.remove());
+        System.out.println("FRONT: " + q.peek());
+        System.out.println("DEQUEUE: " + q.poll());
         System.out.println("SIZE: " + q.size());
-        System.out.println("DEQUEUE: " + q.remove());
+        System.out.println("DEQUEUE: " + q.poll());
         System.out.println("SIZE: " + q.size());
 
         q.add(10);
