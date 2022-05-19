@@ -6,8 +6,9 @@ import java.util.Queue;
 public class QueueDemo {
 
     public static void main(String[] args) {
-//        QueueUsingArray<Integer> q = new QueueUsingArray<>();
-        QueueUsingLinkedList<Integer> q = new QueueUsingLinkedList<>();
+//        QueueInterface<Integer> q = new QueueUsingArray<>();
+//        QueueInterface<Integer> q = new QueueUsingLinkedList<>();
+        QueueInterface<Integer> q = new CircularQueueUsingArray<>();
         q.add(30);
         System.out.println("SIZE: " + q.size());
         q.add(20);
