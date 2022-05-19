@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class LinkedList<T extends Comparable<T>> {
 
-    static class Node<T extends Comparable<T>> {
-        T data;
-        Node<T> next;
+    public static class Node<T extends Comparable<T>> {
+        public T data;
+        public Node<T> next;
 
         public Node(T data) {
             this.data = data;
@@ -395,14 +395,45 @@ public class LinkedList<T extends Comparable<T>> {
         }
         Node<T> tail = head;
         Node<T> th = null;
-        while(head != null) {
+        while (head != null) {
             Node<T> curr = head;
             head = head.next;
             curr.next = th;
             th = curr;
         }
         tail.next = next;
-        return new Node[] {th, tail};
+        return new Node[]{th, tail};
     }
 
+    public static Node<Integer> mergeKLists(Node<Integer>[] lists) {
+        if (lists == null) {
+            return null;
+        } else if (lists.length == 1) {
+            return lists[0];
+        }
+        Node<Integer> currHead = new Node<>(-1);
+        Node<Integer> tempNode = currHead;
+
+        while (true) {
+            int currVal = Integer.MAX_VALUE;
+            int minNodeIdx = -1;
+            for (int i = 0; i < lists.length; i++) {
+                Node<Integer> curr = lists[i];
+                if (curr != null && curr.data.compareTo(currVal) <= 0) {
+                    currVal = curr.data;
+                    minNodeIdx = i;
+                }
+            }
+            if (minNodeIdx == -1) {
+                break;
+            } else {
+                tempNode.next = lists[minNodeIdx];
+                tempNode = tempNode.next;
+                lists[minNodeIdx] = lists[minNodeIdx].next;
+                tempNode.next = null;
+            }
+        }
+
+        return currHead.next;
+    }
 }
