@@ -298,6 +298,7 @@ public class LinkedList<T extends Comparable<T>> {
         head = mergeSort(head);
     }
 
+
     private Node<T> mergeSort(Node<T> head) {
         if (head != null && head.next != null) {
             Node<T> mid = findMidOfLL(head);
@@ -314,30 +315,36 @@ public class LinkedList<T extends Comparable<T>> {
         return head;
     }
 
-    private Node<T> mergeOfMergeSort(Node<T> h1, Node<T> h2) {
-        Node<T> head = new Node<>(null);
-        Node<T> curr = head;
-        while (h1 != null || h2 != null) {
-            if (h1 == null) {
-                curr.next = h2;
+    private Node<T> mergeOfMergeSort(Node<T> hd1, Node<T> hd2) {
+        Node<T> th = null;
+        if (hd1.data.compareTo(hd2.data) <= 0) {
+            th = hd1;
+            hd1 = hd1.next;
+        } else {
+            th = hd2;
+            hd2 = hd2.next;
+        }
+        Node<T> curr = th;
+
+        while (hd1 != null || hd2 != null) {
+            if (hd1 == null) {
+                curr.next = hd2;
                 break;
-            } else if (h2 == null) {
-                curr.next = h1;
+            } else if (hd2 == null) {
+                curr.next = hd1;
                 break;
-            } else if (h1.data.compareTo(h2.data) <= 0) {
-                curr.next = h1;
+            } else if (hd1.data.compareTo(hd2.data) <= 0) {
+                curr.next = hd1;
+                hd1 = hd1.next;
                 curr = curr.next;
-                h1 = h1.next;
-                curr.next = null;
             } else {
-                curr.next = h2;
+                curr.next = hd2;
+                hd2 = hd2.next;
                 curr = curr.next;
-                h2 = h2.next;
-                curr.next = null;
             }
         }
 
-        return head.next;
+        return th;
     }
 
     private Node<T> findMidOfLL(Node<T> head) {
@@ -436,4 +443,5 @@ public class LinkedList<T extends Comparable<T>> {
 
         return currHead.next;
     }
+
 }

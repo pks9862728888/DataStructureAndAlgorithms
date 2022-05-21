@@ -3,13 +3,15 @@ package com.demo.datastructures.linkedlist;
 public class LinkedListDemo {
 
     public static void main(String[] args) {
-//        LinkedList<Integer> linkedList = new LinkedList<>();
-//        System.out.println("Insert--------------------");
-//        linkedList.insert(0, 1);
-//        linkedList.insert(1, 3);
-//        linkedList.insert(1, 2);
-//        linkedList.insert(3, 4);
-//        linkedList.insert(9, 12);
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        System.out.println("Insert--------------------");
+        linkedList.insert(0, 10);
+        linkedList.insert(1, 32);
+        linkedList.insert(2, 2);
+        linkedList.insert(3, 42);
+        linkedList.insert(4, 12);
+        linkedList.mergeSort();
+        linkedList.printRecursively();
 //        System.out.println(linkedList);
 //        System.out.println(linkedList.getLast());
 //
@@ -59,15 +61,15 @@ public class LinkedListDemo {
 //        l2.insert(4, 1);
 //        System.out.println(l2.isPalindrome());
 
-        LinkedList<Integer> l1 = new LinkedList<>();
-        l1.insertRecursively(0, 1);
-        l1.insertRecursively(1, 2);
-        l1.insertRecursively(2, 3);
-        l1.insertRecursively(3, 4);
-        l1.insertRecursively(4, 5);
-        l1.insertRecursively(5, 6);
-        l1.insertRecursively(6, 7);
-        l1.kReverse(3);
-        l1.printRecursively();
+//        LinkedList<Integer> l1 = new LinkedList<>();
+//        l1.insertRecursively(0, 1);
+//        l1.insertRecursively(1, 2);
+//        l1.insertRecursively(2, 3);
+//        l1.insertRecursively(3, 4);
+//        l1.insertRecursively(4, 5);
+//        l1.insertRecursively(5, 6);
+//        l1.insertRecursively(6, 7);
+//        l1.kReverse(3);
+//        l1.printRecursively();
     }
 }
