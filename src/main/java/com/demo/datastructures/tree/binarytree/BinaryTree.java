@@ -329,7 +329,12 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
     @Override
     public Node<T>  createTree(T[] inOrder, T[] preOrder) {
-        return createTree(inOrder, preOrder, 0, inOrder.length - 1, 0, preOrder.length - 1);
+        if (inOrder == null || preOrder == null || inOrder.length == 0 || preOrder.length == 0) {
+            root = null;
+        } else {
+            root = createTree(inOrder, preOrder, 0, inOrder.length - 1, 0, preOrder.length - 1);
+        }
+        return root;
     }
 
     private Node<T> createTree(T[] inOrder, T[] preOrder, int inorderStIdx, int inorderEndIdx, int preorderStIdx, int preorderEndIdx) {
@@ -342,15 +347,15 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
             // Find right and left subtree from in-order
             int leftSubtreeInOrderStIdx = inorderStIdx;
-            int leftSubtreeInOrderEndIdx = Math.max(inorderStIdx, rootIdxInInOrder - 1);
-            int rightSubtreeInOrderStIdx = Math.min(rootIdxInInOrder + 1, inorderEndIdx);
+            int leftSubtreeInOrderEndIdx = rootIdxInInOrder - 1;
+            int rightSubtreeInOrderStIdx = rootIdxInInOrder + 1;
             int rightSubtreeInOrderEndIdx = inorderEndIdx;
 
             // Find right and left subtree from pre-order
             int leftSubtreeEleLength = leftSubtreeInOrderEndIdx - inorderStIdx + 1;
-            int leftSubtreePreOrderStIdx = Math.min(preorderStIdx + 1, preorderEndIdx);
-            int leftSubtreePreOrderEndIdx = Math.min(leftSubtreePreOrderStIdx + leftSubtreeEleLength - 1, preorderEndIdx);
-            int rightSubtreePreOrderStIdx = Math.min(leftSubtreePreOrderEndIdx + 1, preorderEndIdx);
+            int leftSubtreePreOrderStIdx = preorderStIdx + 1;
+            int leftSubtreePreOrderEndIdx = leftSubtreePreOrderStIdx + leftSubtreeEleLength - 1;
+            int rightSubtreePreOrderStIdx = leftSubtreePreOrderEndIdx + 1;
             int rightSubtreePreOrderEndIdx = preorderEndIdx;
 
             // Call recursion & create left and right subtree

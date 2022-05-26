@@ -73,19 +73,27 @@ public class BinaryTreeDemo {
 
     private static void testTreeCreation() {
 //        // Set 1
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        BinaryTreeInterface.Node<Integer> root = bt.createTree(
+                new Integer[]{4, 2, 5, 1, 6, 3, 7},  // In-order
+                new Integer[]{1, 2, 4, 5, 3, 6, 7}   // Pre-order
+        );
+        bt.levelOrderTraversalCustomPrint(root);
+
+        // Set 2
 //        BinaryTree<Integer> bt = new BinaryTree<>();
 //        BinaryTreeInterface.Node<Integer> root = bt.createTree(
-//                new Integer[]{4, 2, 5, 1, 6, 3, 7},  // In-order
-//                new Integer[]{1, 2, 4, 5, 3, 6, 7}   // Pre-order
+//                new Integer[]{4, 2, 1, 3, 5},  // In-order
+//                new Integer[]{1, 2, 4, 3, 5}   // Pre-order
 //        );
 //        bt.levelOrderTraversalCustomPrint(root);
 
-        // Set 2
-        BinaryTree<Integer> bt = new BinaryTree<>();
-        BinaryTreeInterface.Node<Integer> root = bt.createTree(
-                new Integer[]{4, 2, 1, 3, 5},  // In-order
-                new Integer[]{1, 2, 4, 3, 5}   // Pre-order
-        );
-        bt.levelOrderTraversalCustomPrint(root);
+        // Set 3
+//        BinaryTree<Integer> bt = new BinaryTree<>();
+//        BinaryTreeInterface.Node<Integer> root = bt.createTree(
+//                new Integer[]{1},  // In-order
+//                new Integer[]{1}   // Pre-order
+//        );
+//        bt.levelOrderTraversalCustomPrint(root);
     }
 }
