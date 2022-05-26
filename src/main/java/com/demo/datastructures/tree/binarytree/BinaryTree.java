@@ -328,16 +328,16 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
     }
 
     @Override
-    public Node<T>  createTree(T[] inOrder, T[] preOrder) {
+    public Node<T> createTreeFromInorderAndPreOrder(T[] inOrder, T[] preOrder) {
         if (inOrder == null || preOrder == null || inOrder.length == 0 || preOrder.length == 0) {
             root = null;
         } else {
-            root = createTree(inOrder, preOrder, 0, inOrder.length - 1, 0, preOrder.length - 1);
+            root = createTreeFromInorderAndPreOrder(inOrder, preOrder, 0, inOrder.length - 1, 0, preOrder.length - 1);
         }
         return root;
     }
 
-    private Node<T> createTree(T[] inOrder, T[] preOrder, int inorderStIdx, int inorderEndIdx, int preorderStIdx, int preorderEndIdx) {
+    private Node<T> createTreeFromInorderAndPreOrder(T[] inOrder, T[] preOrder, int inorderStIdx, int inorderEndIdx, int preorderStIdx, int preorderEndIdx) {
         if (inorderStIdx < inorderEndIdx && preorderStIdx < preorderEndIdx) {
             // Find current root
             Node<T> root = new Node<>(preOrder[preorderStIdx]);
@@ -359,11 +359,55 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
             int rightSubtreePreOrderEndIdx = preorderEndIdx;
 
             // Call recursion & create left and right subtree
-            root.left = createTree(inOrder, preOrder, leftSubtreeInOrderStIdx, leftSubtreeInOrderEndIdx, leftSubtreePreOrderStIdx, leftSubtreePreOrderEndIdx);
-            root.right = createTree(inOrder, preOrder, rightSubtreeInOrderStIdx, rightSubtreeInOrderEndIdx, rightSubtreePreOrderStIdx, rightSubtreePreOrderEndIdx);
+            root.left = createTreeFromInorderAndPreOrder(inOrder, preOrder, leftSubtreeInOrderStIdx, leftSubtreeInOrderEndIdx, leftSubtreePreOrderStIdx, leftSubtreePreOrderEndIdx);
+            root.right = createTreeFromInorderAndPreOrder(inOrder, preOrder, rightSubtreeInOrderStIdx, rightSubtreeInOrderEndIdx, rightSubtreePreOrderStIdx, rightSubtreePreOrderEndIdx);
 
             return root;
         } else if (inorderStIdx == inorderEndIdx && preorderStIdx == preorderEndIdx) {
+            return new Node<>(inOrder[inorderStIdx]);
+        }
+        return null;
+    }
+
+    @Override
+    public Node<T> createTreeFromInorderAndPostOrder(T[] inOrder, T[] postOrder) {
+        if (inOrder == null || postOrder == null || inOrder.length == 0 || postOrder.length == 0) {
+            root = null;
+        } else {
+            root = createTreeFromInorderAndPostOrder(
+                    inOrder, postOrder, 0, inOrder.length - 1, 0, postOrder.length - 1);
+        }
+        return root;
+    }
+
+    private Node<T> createTreeFromInorderAndPostOrder(
+            T[] inOrder, T[] postOrder, int inorderStIdx, int inorderEndIdx, int postorderStIdx, int postorderEndIdx) {
+        if (inorderStIdx < inorderEndIdx && postorderStIdx < postorderEndIdx) {
+            // Find current root
+            Node<T> root = new Node<>(postOrder[postorderEndIdx]);
+
+            // Find root idx from inOrder
+            int rootIdxInInOrder = findRootInInOrder(inOrder, inorderStIdx, inorderEndIdx, root.data);
+
+            // Find right and left subtree from in-order
+            int leftSubtreeInOrderStIdx = inorderStIdx;
+            int leftSubtreeInOrderEndIdx = rootIdxInInOrder - 1;
+            int rightSubtreeInOrderStIdx = rootIdxInInOrder + 1;
+            int rightSubtreeInOrderEndIdx = inorderEndIdx;
+
+            // Find right and left subtree from pre-order
+            int leftSubtreeEleLength = leftSubtreeInOrderEndIdx - inorderStIdx + 1;
+            int leftSubtreePostOrderStIdx = postorderStIdx;
+            int leftSubtreePostOrderEndIdx = leftSubtreePostOrderStIdx + leftSubtreeEleLength - 1;
+            int rightSubtreePostOrderStIdx = leftSubtreePostOrderEndIdx + 1;
+            int rightSubtreePostOrderEndIdx = postorderEndIdx - 1;
+
+            // Call recursion & create left and right subtree
+            root.left = createTreeFromInorderAndPostOrder(inOrder, postOrder, leftSubtreeInOrderStIdx, leftSubtreeInOrderEndIdx, leftSubtreePostOrderStIdx, leftSubtreePostOrderEndIdx);
+            root.right = createTreeFromInorderAndPostOrder(inOrder, postOrder, rightSubtreeInOrderStIdx, rightSubtreeInOrderEndIdx, rightSubtreePostOrderStIdx, rightSubtreePostOrderEndIdx);
+
+            return root;
+        } else if (inorderStIdx == inorderEndIdx && postorderStIdx == postorderEndIdx) {
             return new Node<>(inOrder[inorderStIdx]);
         }
         return null;

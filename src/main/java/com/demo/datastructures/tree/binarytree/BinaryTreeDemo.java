@@ -68,13 +68,16 @@ public class BinaryTreeDemo {
 //        System.out.println("Diameter: " + bt.diameter());
 
         // Create tree using in-order and pre-order traversal
-        testTreeCreation();
+//        testTreeCreationFromInOrderAndPreOrder();
+
+        // Create tree using in-order and post-order traversal
+        testTreeCreationFromInOrderAndPostOrder();
     }
 
-    private static void testTreeCreation() {
+    private static void testTreeCreationFromInOrderAndPreOrder() {
 //        // Set 1
         BinaryTree<Integer> bt = new BinaryTree<>();
-        BinaryTreeInterface.Node<Integer> root = bt.createTree(
+        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPreOrder(
                 new Integer[]{4, 2, 5, 1, 6, 3, 7},  // In-order
                 new Integer[]{1, 2, 4, 5, 3, 6, 7}   // Pre-order
         );
@@ -82,7 +85,7 @@ public class BinaryTreeDemo {
 
         // Set 2
 //        BinaryTree<Integer> bt = new BinaryTree<>();
-//        BinaryTreeInterface.Node<Integer> root = bt.createTree(
+//        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPreOrder(
 //                new Integer[]{4, 2, 1, 3, 5},  // In-order
 //                new Integer[]{1, 2, 4, 3, 5}   // Pre-order
 //        );
@@ -90,7 +93,33 @@ public class BinaryTreeDemo {
 
         // Set 3
 //        BinaryTree<Integer> bt = new BinaryTree<>();
-//        BinaryTreeInterface.Node<Integer> root = bt.createTree(
+//        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPreOrder(
+//                new Integer[]{1},  // In-order
+//                new Integer[]{1}   // Pre-order
+//        );
+//        bt.levelOrderTraversalCustomPrint(root);
+    }
+
+    private static void testTreeCreationFromInOrderAndPostOrder() {
+//        // Set 1
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPostOrder(
+                new Integer[]{4, 2, 5, 1, 6, 3, 7},  // In-order
+                new Integer[]{4, 5, 2, 6, 7, 3, 1}   // Post-order
+        );
+        bt.levelOrderTraversalCustomPrint(root);
+
+        // Set 2
+//        BinaryTree<Integer> bt = new BinaryTree<>();
+//        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPostOrder(
+//                new Integer[]{4, 2, 1, 3, 5},  // In-order
+//                new Integer[]{4, 2, 5, 3, 1}   // Pre-order
+//        );
+//        bt.levelOrderTraversalCustomPrint(root);
+
+//        // Set 3
+//        BinaryTree<Integer> bt = new BinaryTree<>();
+//        BinaryTreeInterface.Node<Integer> root = bt.createTreeFromInorderAndPostOrder(
 //                new Integer[]{1},  // In-order
 //                new Integer[]{1}   // Pre-order
 //        );

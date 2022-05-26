@@ -40,6 +40,8 @@ public interface BinaryTreeInterface<T extends Comparable<T>> {
 
     int diameter();
 
-    Node<T> createTree(T[] inOrder, T[] preOrder);
+    Node<T> createTreeFromInorderAndPreOrder(T[] inOrder, T[] preOrder);
+
+    Node<T> createTreeFromInorderAndPostOrder(T[] inOrder, T[] postOrder);
 
 }
