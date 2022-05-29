@@ -46,9 +46,40 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
             System.out.println("Tree is empty!");
             return;
         }
+//        preOrderTraversalUnoptimized();
+        preOrderTraversalOptimized();
+    }
+
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(h) where h = height of binary tree
+     * Idea is to store only the right nodes in stack
+     */
+    private void preOrderTraversalOptimized() {
         Stack<Node<T>> stack = new Stack<>();
         stack.push(root);
-        System.out.print("Pre-order traversal: ");
+        System.out.print("Pre-order traversal iteratively: ");
+        while (!stack.isEmpty()) {
+            Node<T> curr = stack.pop();
+            while (curr != null) {
+                System.out.print(curr.data + " ");
+                if (curr.right != null) {
+                    stack.push(curr.right);
+                }
+                curr = curr.left;
+            }
+        }
+        System.out.println();
+    }
+
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(n)
+     */
+    private void preOrderTraversalUnoptimized() {
+        Stack<Node<T>> stack = new Stack<>();
+        stack.push(root);
+        System.out.print("Pre-order traversal iteratively: ");
         while (!stack.isEmpty()) {
             Node<T> curr = stack.pop();
             System.out.print(curr.data + " ");
@@ -71,11 +102,49 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
 
     private void preOrderTraversalRecursively(Node<T> node) {
         if (node == null) {
+            System.out.println("Tree is empty!");
             return;
         }
         System.out.print(node.data + " ");
         preOrderTraversalRecursively(node.left);
         preOrderTraversalRecursively(node.right);
+    }
+
+    private static class PostOrderNode<T> {
+        Node<T> node;
+        char dir;
+
+        public PostOrderNode(Node<T> node, char dir) {
+            this.node = node;
+            this.dir = dir;
+        }
+    }
+
+    @Override
+    public void postOrderTraversal() {
+        if (root == null) {
+            System.out.println("Tree is empty!");
+            return;
+        }
+        Stack<PostOrderNode<T>> stack = new Stack<>();
+        stack.push(new PostOrderNode<>(root, 'm'));
+        System.out.print("Post order traversal iteratively: ");
+        while (!stack.isEmpty()) {
+            PostOrderNode<T> curr = stack.pop();
+            if (curr.dir == 'm') {
+                curr.dir = 'r'; // Indicator that right has been traversed as we will push both right and left nodes
+                stack.push(curr);
+                if (curr.node.right != null) {
+                    stack.push(new PostOrderNode<T>(curr.node.right, 'm'));
+                }
+                if (curr.node.left != null) {
+                    stack.push(new PostOrderNode<T>(curr.node.left, 'm'));
+                }
+            } else if (curr.dir == 'r') {
+                System.out.print(curr.node.data + " ");
+            }
+        }
+        System.out.println();
     }
 
     @Override
@@ -86,6 +155,26 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
         }
         System.out.print("Post order traversal recursively: ");
         postOrderTraversalRecursively(root);
+        System.out.println();
+    }
+
+    @Override
+    public void inOrderTraversal() {
+        if (root == null) {
+            return;
+        }
+        Stack<Node<T>> stack = new Stack<>();
+        Node<T> curr = root;
+        System.out.print("In-order traversal iteratively: ");
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            curr = stack.pop();
+            System.out.print(curr.data + " ");
+            curr = curr.right;
+        }
         System.out.println();
     }
 
@@ -414,15 +503,13 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
     }
 
     private int findRootInInOrder(T[] inOrder, int inorderStIdx, int inorderEndIdx, T data) {
-        int idx = -1;
         while (inorderStIdx <= inorderEndIdx) {
             if (inOrder[inorderStIdx].equals(data)) {
-                idx = inorderStIdx;
-                break;
+                return inorderStIdx;
             }
             inorderStIdx++;
         }
-        return idx;
+        return -1;
     }
 
     public int sizeRecursively() {

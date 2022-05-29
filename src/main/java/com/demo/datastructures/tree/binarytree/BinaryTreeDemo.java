@@ -3,15 +3,17 @@ package com.demo.datastructures.tree.binarytree;
 public class BinaryTreeDemo {
 
     public static void main(String[] args) {
-//        BinaryTree<Integer> bt = new BinaryTree<>();
-//        bt.add(6);
-//        bt.add(4);
-//        bt.add(8);
-//        bt.add(3);
-//        bt.add(5);
-//        bt.add(7);
-//        bt.add(10);
-//        bt.preOrderTraversal();
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        bt.add(6);
+        bt.add(4);
+        bt.add(8);
+        bt.add(3);
+        bt.add(5);
+        bt.add(7);
+        bt.add(10);
+//        bt.inOrderTraversal();
+//        bt.postOrderTraversal();
+        bt.preOrderTraversal();
 //        bt.preOrderTraversalRecursively();
 //        bt.levelOrderTraversal();
 //        bt.levelOrderTraversalCustomPrint();
@@ -71,7 +73,7 @@ public class BinaryTreeDemo {
 //        testTreeCreationFromInOrderAndPreOrder();
 
         // Create tree using in-order and post-order traversal
-        testTreeCreationFromInOrderAndPostOrder();
+//        testTreeCreationFromInOrderAndPostOrder();
     }
 
     private static void testTreeCreationFromInOrderAndPreOrder() {

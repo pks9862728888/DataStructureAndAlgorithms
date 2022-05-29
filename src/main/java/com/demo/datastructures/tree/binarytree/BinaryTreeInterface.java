@@ -16,6 +16,10 @@ public interface BinaryTreeInterface<T extends Comparable<T>> {
 
     void preOrderTraversal();
 
+    void postOrderTraversal();
+
+    void inOrderTraversal();
+
     void levelOrderTraversal();
 
     void preOrderTraversalRecursively();
