@@ -512,6 +512,31 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
         return -1;
     }
 
+    @Override
+    public boolean isBST() {
+        return isBST(root, new Object[] {Integer.MIN_VALUE});
+    }
+
+    /**
+     * Idea is traverse in-order.
+     * For BST, in-order traversal will be in ascending order.
+     * TC = O(n)
+     * AS = O(1) if call stack is ignored, else O(h)
+     */
+    private boolean isBST(Node<T> root, Object[] arr) {
+        if (root == null) {
+            return true;
+        }
+        if (!isBST(root.left, arr)) {
+            return false;
+        }
+        if (arr[0].equals(Integer.MIN_VALUE) && root.data.compareTo((T) arr[0]) < 0) {
+            return false;
+        }
+        arr[0] = root.data;
+        return isBST(root.right, arr);
+    }
+
     public int sizeRecursively() {
         return sizeRecursively(root);
     }

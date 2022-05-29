@@ -48,4 +48,5 @@ public interface BinaryTreeInterface<T extends Comparable<T>> {
 
     Node<T> createTreeFromInorderAndPostOrder(T[] inOrder, T[] postOrder);
 
+    boolean isBST();
 }

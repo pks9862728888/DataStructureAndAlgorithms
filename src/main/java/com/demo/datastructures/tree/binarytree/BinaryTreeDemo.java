@@ -11,9 +11,10 @@ public class BinaryTreeDemo {
         bt.add(5);
         bt.add(7);
         bt.add(10);
+        System.out.println(bt.isBST());
 //        bt.inOrderTraversal();
 //        bt.postOrderTraversal();
-        bt.preOrderTraversal();
+//        bt.preOrderTraversal();
 //        bt.preOrderTraversalRecursively();
 //        bt.levelOrderTraversal();
 //        bt.levelOrderTraversalCustomPrint();
