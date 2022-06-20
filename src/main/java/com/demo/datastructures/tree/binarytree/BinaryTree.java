@@ -12,6 +12,9 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
         root = null;
     }
 
+    /**
+     * This is addition recursively in binary search tree
+     */
     @Override
     public void add(T ele) {
         Node<T> node = new Node<>(ele);

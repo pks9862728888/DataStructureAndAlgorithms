@@ -11,6 +11,7 @@ public class BinaryTreeDemo {
         bt.add(5);
         bt.add(7);
         bt.add(10);
+        bt.levelOrderTraversalCustomPrint();
         System.out.println(bt.isBST());
 //        bt.inOrderTraversal();
 //        bt.postOrderTraversal();
