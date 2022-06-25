@@ -3,11 +3,11 @@ package com.demo.datastructures.priorityQueue;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class MinHeapPQ<T> extends AbstractMinHeap<T> {
+public class MaxHeapPQ<T> extends AbstractMaxHeap<T> {
 
     ArrayList<Element<T>> heap;
 
-    public MinHeapPQ() {
+    public MaxHeapPQ() {
         this.heap = new ArrayList<>();
     }
 
@@ -17,15 +17,15 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
         int ci = size() - 1;
         int pi = (ci - 1) / 2;
 
-        while (pi >= 0 && ci >= 0 && getPriority(pi) > getPriority(ci)) {
-            swap(heap, pi, ci);
+        while (ci >= 0 && pi >= 0 && getPriority(pi) < getPriority(ci)) {
+            swap(heap, ci, pi);
             ci = pi;
             pi = (ci - 1) / 2;
         }
     }
 
     @Override
-    public T getMin() throws NoSuchElementException {
+    public T getMax() throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -33,8 +33,8 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
     }
 
     @Override
-    public T removeMin() throws NoSuchElementException {
-        T min = getMin();
+    public T removeMax() throws NoSuchElementException {
+        T max = getMax();
 
         // Replace top of heap with last element and then remove last element
         heap.set(0, heap.get(size() - 1));
@@ -49,7 +49,7 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
             // Find Idx to swap element
             int si;
             if (ci1 < size() && ci2 < size()) {
-                si = getPriority(ci1) < getPriority(ci2) ? ci1 : ci2;
+                si = getPriority(ci1) > getPriority(ci2) ? ci1 : ci2;
             } else if (ci1 < size() && ci2 >= size()) {
                 si = ci1;
             } else {
@@ -57,7 +57,7 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
             }
 
             // Swap if need to swap, else break;
-            if (getPriority(pi) > getPriority(si)) {
+            if (getPriority(pi) < getPriority(si)) {
                 swap(heap, pi, si);
                 pi = si;
             } else {
@@ -67,7 +67,7 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
             ci2 = pi * 2 + 2;
         }
 
-        return min;
+        return max;
     }
 
     @Override

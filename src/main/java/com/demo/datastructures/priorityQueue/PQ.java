@@ -1,7 +1,6 @@
 package com.demo.datastructures.priorityQueue;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 public interface PQ<T> {
 
@@ -12,10 +11,6 @@ public interface PQ<T> {
     boolean isEmpty();
 
     void print();
-
-    T removeMin() throws NoSuchElementException;
-
-    T getMin() throws NoSuchElementException;
 
     default void swap(ArrayList<Element<T>> heap, int parentIdx, int swapIdx) {
         Element<T> temp = heap.get(parentIdx);
