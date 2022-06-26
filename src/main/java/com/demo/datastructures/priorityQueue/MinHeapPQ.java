@@ -12,7 +12,7 @@ public class MinHeapPQ<T> extends AbstractMinHeap<T> {
     }
 
     @Override
-    public void insert(T data, int priority) {
+    public void add(T data, int priority) {
         heap.add(new Element<>(data, priority));
         int ci = size() - 1;
         int pi = (ci - 1) / 2;

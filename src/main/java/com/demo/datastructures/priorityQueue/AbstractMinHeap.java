@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public abstract class AbstractMinHeap<T> implements PQ<T> {
 
-    abstract T removeMin() throws NoSuchElementException;
-    abstract T getMin() throws NoSuchElementException;
+    public abstract T removeMin() throws NoSuchElementException;
+    public abstract T getMin() throws NoSuchElementException;
 
 }

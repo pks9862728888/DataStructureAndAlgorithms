@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface PQ<T> {
 
-    void insert(T data, int priority);
+    void add(T data, int priority);
 
     int size();
 
