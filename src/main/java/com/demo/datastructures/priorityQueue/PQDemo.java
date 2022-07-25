@@ -1,10 +1,37 @@
 package com.demo.datastructures.priorityQueue;
 
+import java.util.Collections;
+import java.util.PriorityQueue;
+
 public class PQDemo {
 
     public static void main(String[] args) {
-        minHeap();
+//        minHeap();
 //        maxHeap();
+        minHeapJava();
+        maxHeapJava();
+    }
+
+    private static void maxHeapJava() {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        pq.add(10);
+        pq.add(100);
+        pq.add(50);
+        System.out.println("MAX HEAP PQ JAVA:");
+        System.out.print(pq.poll() + " ");
+        System.out.print(pq.poll() + " ");
+        System.out.println(pq.poll());
+    }
+
+    private static void minHeapJava() {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(10);
+        pq.add(100);
+        pq.add(50);
+        System.out.println("MIN HEAP PQ JAVA:");
+        System.out.print(pq.poll() + " ");
+        System.out.print(pq.poll() + " ");
+        System.out.println(pq.poll());
     }
 
     private static void maxHeap() {
