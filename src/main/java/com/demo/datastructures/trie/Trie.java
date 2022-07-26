@@ -1,5 +1,7 @@
 package com.demo.datastructures.trie;
 
+import java.util.List;
+
 public class Trie {
 
     static class Node {
@@ -63,7 +65,7 @@ public class Trie {
 
         // Remove the node also if its terminal
         boolean isTerminal = true;
-        for (Node n: curr.children) {
+        for (Node n : curr.children) {
             if (n != null) {
                 isTerminal = false;
                 break;
@@ -76,7 +78,7 @@ public class Trie {
 
     public int countWords() {
         int wdCount = 0;
-        for (Node nd: root.children) {
+        for (Node nd : root.children) {
             if (nd != null) {
                 wdCount += countWords(nd);
             }
@@ -86,12 +88,39 @@ public class Trie {
 
     private int countWords(Node node) {
         int wdCount = node.isTerminating ? 1 : 0;
-        for (Node nd: node.children) {
+        for (Node nd : node.children) {
             if (nd != null) {
                 wdCount += countWords(nd);
             }
         }
         return wdCount;
+    }
+
+    public void addSuffixTrie(String word) {
+        word = word.toLowerCase();
+        for (int i = 0; i < word.length(); i++) {
+            addSuffixTrieHelper(word.substring(i));
+        }
+    }
+
+    private void addSuffixTrieHelper(String word) {
+        Node prev;
+        Node curr = root;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            prev = curr;
+            curr = curr.children[ch - 'a'];
+            if (curr == null) {
+                curr = new Node(ch);
+                prev.children[ch - 'a'] = curr;
+            }
+        }
+        curr.isTerminating = true;
+    }
+
+    public boolean patternMatches(List<String> al, String pattern) {
+        al.forEach(this::addSuffixTrie);
+        return search(pattern);
     }
 
 }
