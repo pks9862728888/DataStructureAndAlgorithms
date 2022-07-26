@@ -123,4 +123,40 @@ public class Trie {
         return search(pattern);
     }
 
+    public void printAllAutocompleteWords(List<String> input, String wd) {
+        input.forEach(this::add);
+        Node curr = root;
+
+        // Find prefix
+        for (int i = 0; i < wd.length(); i++) {
+            char ch = wd.charAt(i);
+            curr = curr.children[ch - 'a'];
+            if (curr == null) {
+                return;
+            }
+        }
+
+        // Print all terminating nodes
+        if (curr.isTerminating) {
+            System.out.println(wd);
+        }
+        for (Node ch: curr.children) {
+            if (ch != null) {
+                printAllAutoCompleteWords(ch, wd);
+            }
+        }
+    }
+
+    private void printAllAutoCompleteWords(Node curr, String prefix) {
+        prefix += curr.data;
+        if (curr.isTerminating) {
+            System.out.println(prefix);
+        }
+        for (Node ch: curr.children) {
+            if (ch != null) {
+                printAllAutoCompleteWords(ch, prefix);
+            }
+        }
+    }
+
 }
