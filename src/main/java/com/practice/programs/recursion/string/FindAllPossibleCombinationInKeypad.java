@@ -1,4 +1,4 @@
-package com.practice.programs.string.recursion;
+package com.practice.programs.recursion.string;
 
 import java.util.ArrayList;
 import java.util.Arrays;
