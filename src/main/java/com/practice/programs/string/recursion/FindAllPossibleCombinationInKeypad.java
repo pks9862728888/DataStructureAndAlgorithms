@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class FindAllPossibleCombinationInKeypad {
 
-    private static HashMap<Integer, String> keys = new HashMap<>();
+    private static final HashMap<Integer, String> keys = new HashMap<>();
 
     static {
         keys.put(0, "");
