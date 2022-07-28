@@ -25,6 +25,7 @@ public class FindAllPossibleCombinationInKeypad {
         System.out.println(Arrays.toString(findPossibleCombinations(0)));
         System.out.println(Arrays.toString(findPossibleCombinations(23)));
         System.out.println(Arrays.toString(findPossibleCombinations(234)));
+        printKeypad(234, "");
     }
 
     private static String[] findPossibleCombinations(int no) {
@@ -50,5 +51,17 @@ public class FindAllPossibleCombinationInKeypad {
         // Revaluate no
         no /= 10;
         return (no == 0) ? nal : findPossibleCombinations(no, nal);
+    }
+
+    private static void printKeypad(int no, String str) {
+        if (no == 0) {
+            System.out.print(str + ", ");
+            return;
+        }
+        String chars = keys.get(no % 10);
+        no = no / 10;
+        for (int i = 0; i < chars.length(); i++) {
+            printKeypad(no, chars.charAt(i) + str);
+        }
     }
 }
