@@ -5,9 +5,12 @@ import java.util.Arrays;
 public class MinStepsTo1 {
 
     public static void main(String[] args) {
+        // n <= 10 ^ 4, then we can safely use recursive solution
+        // TC: O(n), AS: O(n)
         System.out.println(countMinStepsToOneRecursiveDp(10));
 
         // If n <= 10 ^ 6, then we need to use iterative solution else we will get stack overflow error
+        // TC: O(n), AS: O(n)
         System.out.println(countMinStepsToOneIterativeDp(10));
     }
 
