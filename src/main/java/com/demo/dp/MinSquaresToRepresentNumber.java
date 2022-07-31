@@ -38,7 +38,7 @@ public class MinSquaresToRepresentNumber {
         for (int i = 1; i * i <= n; i++) {
             int res = n - (i * i);
             if (dp[res] == -1) {
-                dp[res] = getMinCount(res, dp);
+                getMinCount(res, dp);
             }
             min = Math.min(min, dp[res]);
         }
