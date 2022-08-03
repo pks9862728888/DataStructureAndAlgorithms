@@ -46,8 +46,8 @@ public class MinCostPath {
     }
 
     private static void fill(Integer[][] dp) {
-        for (int i = 0; i < dp.length; i++) {
-            Arrays.fill(dp[i], DP_EMPTY_VALUE);
+        for (Integer[] integers : dp) {
+            Arrays.fill(integers, DP_EMPTY_VALUE);
         }
     }
 }
