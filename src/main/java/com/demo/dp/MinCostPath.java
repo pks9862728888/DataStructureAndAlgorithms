@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class MinCostPath {
 
+    /**
+     * BOTTOM UP APPROACH IS USED
+     */
     private static final Integer DP_EMPTY_VALUE = null;
 
     public static void main(String[] args) {
