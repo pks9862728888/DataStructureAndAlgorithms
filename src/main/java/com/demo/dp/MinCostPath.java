@@ -14,6 +14,23 @@ public class MinCostPath {
         };
 
         System.out.println(minCostPath(arr));
+        System.out.println(minCostPathIteratively(arr));
+    }
+
+    public static int minCostPathIteratively(int[][] arr) {
+        int m = arr.length - 1;
+        int n = arr[0].length - 1;
+        Integer[][] dp = new Integer[arr.length][arr[0].length];
+        fill(dp);
+
+        // Min cost path iteratively
+        for (int i = m; i >= 0; i--) {
+            for (int j = n; j >= 0; j--) {
+                cost(arr, i, j, m, n, dp);
+            }
+        }
+
+        return dp[0][0];
     }
 
     public static int minCostPath(int[][] arr) {
