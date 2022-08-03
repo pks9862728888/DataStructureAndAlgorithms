@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class MinCostPath {
 
+    private static final Integer DP_EMPTY_VALUE = null;
+
     public static void main(String[] args) {
         int[][] arr = new int[][]{
                 {1, 5, 11},
@@ -17,17 +19,17 @@ public class MinCostPath {
     public static int minCostPath(int[][] arr) {
         int m = arr.length - 1;
         int n = arr[0].length - 1;
-        int[][] dp = new int[arr.length][arr[0].length];
-        fill(dp, -1);
+        Integer[][] dp = new Integer[arr.length][arr[0].length];
+        fill(dp);
         return cost(arr, 0, 0, m, n, dp);
     }
 
-    private static int cost(int[][] arr, int r, int c, int m, int n, int[][] dp) {
+    private static int cost(int[][] arr, int r, int c, int m, int n, Integer[][] dp) {
         if (r == m && c == n) {
             return arr[m][n];
         } else if (r > m || c > m) {
             return Integer.MAX_VALUE;
-        } else if (dp[r][c] != -1) {
+        } else if (dp[r][c] != DP_EMPTY_VALUE) {
             return dp[r][c];
         }
 
@@ -43,9 +45,9 @@ public class MinCostPath {
         return minCost;
     }
 
-    private static void fill(int[][] dp, int value) {
+    private static void fill(Integer[][] dp) {
         for (int i = 0; i < dp.length; i++) {
-            Arrays.fill(dp[i], value);
+            Arrays.fill(dp[i], DP_EMPTY_VALUE);
         }
     }
 }
