@@ -15,13 +15,12 @@ public class LongestCommonSubsequence {
 
     public static int lcsIterative(String s, String t) {
         HashMap<String, Integer> memo = new HashMap<>();
-        int max = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             for (int j = t.length() - 1; j >= 0; j--) {
-                max = Math.max(max, lcs(s, t, i, j, memo));
+                lcs(s, t, i, j, memo);
             }
         }
-        return max;
+        return memo.get(getKey(0, 0));
     }
 
 	public static int lcsRecursive(String s, String t) {
