@@ -36,9 +36,7 @@ public class MagicGrid {
 
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
-                int r1 = get(i + 1, j, memo);
-                int r2 = get(i, j + 1, memo);
-                memo[i][j] = Math.abs(r1) <= Math.abs(r2) ? r1 : r2;
+                memo[i][j] = Math.min(get(i + 1, j, memo), get(i, j + 1, memo));
                 memo[i][j] = memo[i][j] == Integer.MAX_VALUE ? 1 : (memo[i][j] - grid[i][j]);
                 if (memo[i][j] < 0) {
                     memo[i][j] = 1;
