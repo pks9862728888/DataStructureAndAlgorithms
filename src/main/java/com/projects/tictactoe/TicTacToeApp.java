@@ -2,7 +2,6 @@ package com.projects.tictactoe;
 
 import java.util.Optional;
 
-import static com.projects.tictactoe.PrintUtils.printSeparator;
 import static com.projects.tictactoe.PrintUtils.printSpecialLine;
 
 class TicTacToeApp {
