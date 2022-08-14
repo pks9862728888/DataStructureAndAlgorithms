@@ -3,6 +3,9 @@
 .idea
 target
 
+# Intellij
+DataStructureAndAlgorithms.iml
+
 # Log file
 *.log
 

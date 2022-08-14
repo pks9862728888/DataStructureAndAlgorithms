@@ -1,4 +1,4 @@
-package com.demo.programs;
+package com.practice.programs.arrays;
 
 import java.util.*;
 
