@@ -1,8 +1,7 @@
 package com.projects.indiamapgenerator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class MapGeneratorHelper {
 
@@ -14,28 +13,20 @@ public class MapGeneratorHelper {
     }
 
     public void drawMap() {
-        for (List<MapNode> rowData : mapData) {
-            List<Integer> mapNodes = getMapColumnPoints(rowData);
-            if (mapNodes.size() > 0) {
-                for (int col = 0; col <= COL_MAX; col++) {
-                    if (mapNodes.contains(col)) {
-                        System.out.print("1");
-                    } else {
-                        System.out.print(" ");
-                    }
-                }
-            }
-            System.out.println();
-        }
+        mapData.stream()
+                .map(this::getMapColumnPoints)
+                .forEach(mapNodes -> {
+                    IntStream.range(0, COL_MAX + 1)
+                            .mapToObj(col -> mapNodes.contains(col) ? "1" : " ")
+                            .forEach(System.out::print);
+                    System.out.println();
+                });
     }
 
-    public List<Integer> getMapColumnPoints(List<MapNode> rowData) {
-        List<Integer> points = new ArrayList<>();
-        for (MapNode mapNode : rowData) {
-            for (int i = mapNode.startY; i <= mapNode.endY; i++) {
-                points.add(i);
-            }
-        }
+    public Set<Integer> getMapColumnPoints(List<MapNode> rowData) {
+        Set<Integer> points = new HashSet<>();
+        rowData.forEach(mapNode -> IntStream.range(mapNode.startY, mapNode.endY + 1)
+                .forEach(points::add));
         return points;
     }
 
