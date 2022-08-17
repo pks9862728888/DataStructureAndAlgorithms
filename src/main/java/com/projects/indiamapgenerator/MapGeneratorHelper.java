@@ -14,20 +14,20 @@ public class MapGeneratorHelper {
 
     public void drawMap() {
         mapData.stream()
-                .map(this::getMapColumnPoints)
-                .forEach(mapNodes -> {
+                .map(this::getMapColumnIndexes)
+                .forEach(colIdxSet -> {
                     IntStream.range(0, COL_MAX + 1)
-                            .mapToObj(col -> mapNodes.contains(col) ? "1" : " ")
+                            .mapToObj(colIdx -> colIdxSet.contains(colIdx) ? "1" : " ")
                             .forEach(System.out::print);
                     System.out.println();
                 });
     }
 
-    public Set<Integer> getMapColumnPoints(List<MapNode> rowData) {
-        Set<Integer> points = new HashSet<>();
+    public Set<Integer> getMapColumnIndexes(List<MapNode> rowData) {
+        Set<Integer> columnIndexes = new HashSet<>();
         rowData.forEach(mapNode -> IntStream.range(mapNode.startY, mapNode.endY + 1)
-                .forEach(points::add));
-        return points;
+                .forEach(columnIndexes::add));
+        return columnIndexes;
     }
 
     private static List<List<MapNode>> generateIndiaMapNodeData() {
