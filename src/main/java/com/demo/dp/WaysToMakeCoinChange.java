@@ -14,6 +14,8 @@ public class WaysToMakeCoinChange {
     public static void main(String[] args) {
         // Number of ways are - 4 total i.e. (1,1,1,1), (1,1, 2), (1, 3) and (2, 2).
         System.out.println(countWaysToMakeChange(new int[]{1, 2, 3}, 4));
+        // Five Possible ways are: {2,2,2,2,2}, {2,2,3,3}, {2,2,6}, {2,3,5} and {5,5}.
+        System.out.println(countWaysToMakeChange(new int[]{2, 5, 3, 6}, 10));
     }
 
     public static int countWaysToMakeChange(int coins[], int value) {
