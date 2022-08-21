@@ -18,6 +18,7 @@ class NextGreaterElement {
         Stack<Integer> st = new Stack<>();  // Stores indexes
         long[] res = new long[arr.length];
 
+        // Iterate through each ele and populate greater element
         for (int i = 0; i < arr.length; i++) {
             while (!st.isEmpty() && arr[st.peek()] < arr[i]) {
                 res[st.pop()] = arr[i];
@@ -25,7 +26,7 @@ class NextGreaterElement {
             st.push(i);
         }
 
-        // Populate result for while no next greater element was found
+        // Populate result till no next greater element was found
         while (!st.isEmpty()) {
             res[st.pop()] = -1;
         }
