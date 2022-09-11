@@ -41,7 +41,7 @@ class UndirectedGraph {
         }
     }
 
-    public void printBreadthFirstTraversal(int startVertex) {
+    public void printBreadthFirstTraversalConnectedGraph(int startVertex) {
         System.out.println("Breadth First Traversal from start node: " + startVertex);
         HashSet<Integer> visited = new HashSet<>();
 
@@ -65,5 +65,36 @@ class UndirectedGraph {
             }
         }
         System.out.println();
+    }
+
+    public void printBreadthFirstTraversalDisconnectedGraph() {
+        System.out.println("Breadth First Traversal of disconnected graph...");
+        HashSet<Integer> visited = new HashSet<>();
+        for (int i = 0; i < graph.size(); i++) {
+            printBreadFirstTraversal(i, visited);
+        }
+        System.out.println();
+    }
+
+    private void printBreadFirstTraversal(int startVertex, HashSet<Integer> visited) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(startVertex);
+
+        while (!queue.isEmpty()) {
+            int vertex = queue.remove();
+            // Print current vertex
+            if (visited.add(vertex)) {
+                System.out.print(vertex + " ");
+            }
+
+            // Print adjacent vertex
+            for (int adjacentVertex: graph.get(vertex)) {
+                if (visited.add(adjacentVertex)) {
+                    // Not already printed
+                    queue.add(adjacentVertex);
+                    System.out.print(adjacentVertex + " ");
+                }
+            }
+        }
     }
 }
