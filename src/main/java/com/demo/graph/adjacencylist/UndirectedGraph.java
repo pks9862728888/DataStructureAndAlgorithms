@@ -47,14 +47,16 @@ class UndirectedGraph {
 
         Queue<Integer> queue = new LinkedList<>();
         queue.add(startVertex);
-        System.out.print(startVertex + " ");
-        visited.add(startVertex);
 
         while (!queue.isEmpty()) {
             int vertex = queue.remove();
-            ArrayList<Integer> adjacentVertices = graph.get(vertex);
+            // Print current vertex
+            if (visited.add(vertex)) {
+                System.out.print(vertex + " ");
+            }
 
-            for (int adjacentVertex: adjacentVertices) {
+            // Print adjacent vertex
+            for (int adjacentVertex: graph.get(vertex)) {
                 if (visited.add(adjacentVertex)) {
                     // Not already printed
                     queue.add(adjacentVertex);
