@@ -85,14 +85,14 @@ class UndirectedGraph {
             // Print current vertex
             if (visited.add(vertex)) {
                 System.out.print(vertex + " ");
-            }
 
-            // Print adjacent vertex
-            for (int adjacentVertex: graph.get(vertex)) {
-                if (visited.add(adjacentVertex)) {
-                    // Not already printed
-                    queue.add(adjacentVertex);
-                    System.out.print(adjacentVertex + " ");
+                // Print adjacent vertex
+                for (int adjacentVertex: graph.get(vertex)) {
+                    if (visited.add(adjacentVertex)) {
+                        // Not already printed
+                        queue.add(adjacentVertex);
+                        System.out.print(adjacentVertex + " ");
+                    }
                 }
             }
         }
