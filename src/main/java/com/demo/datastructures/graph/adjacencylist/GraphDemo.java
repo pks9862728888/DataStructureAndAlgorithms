@@ -1,4 +1,4 @@
-package com.demo.graph.adjacencylist;
+package com.demo.datastructures.graph.adjacencylist;
 
 public class GraphDemo {
 
