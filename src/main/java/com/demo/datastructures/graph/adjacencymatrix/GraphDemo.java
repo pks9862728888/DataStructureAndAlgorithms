@@ -12,6 +12,7 @@ class GraphDemo {
         graph.linkVertex(5, 4);
         graph.linkVertex(3, 6);
         graph.print();
+        graph.breadthFirstTraversal();
         graph.depthFirstTraversal();
     }
 }
