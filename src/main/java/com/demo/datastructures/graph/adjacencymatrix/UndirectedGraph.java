@@ -1,9 +1,7 @@
 package com.demo.datastructures.graph.adjacencymatrix;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.lang.reflect.Array;
+import java.util.*;
 
 class UndirectedGraph {
 
@@ -89,6 +87,30 @@ class UndirectedGraph {
         }
 
         return false;
+    }
+
+    public ArrayList<Integer> getPathDFS(int sourceVertex, int destVertex) {
+        boolean[] visited = new boolean[graph.length];
+        return getPathDFS(sourceVertex, destVertex, visited);
+    }
+
+    private ArrayList<Integer> getPathDFS(int sourceVertex, int destVertex, boolean[] visited) {
+        visited[sourceVertex] = true;
+        if (sourceVertex == destVertex) {
+            ArrayList<Integer> al = new ArrayList<>();
+            al.add(sourceVertex);
+            return al;
+        }
+        for (int adjV = 0; adjV < graph[sourceVertex].length; adjV++) {
+            if (graph[sourceVertex][adjV] == 1 && !visited[adjV]) {
+                ArrayList<Integer> path = getPathDFS(adjV, destVertex, visited);
+                if (!path.isEmpty()) {
+                    path.add(0, sourceVertex);
+                    return path;
+                }
+            }
+        }
+        return new ArrayList<>();
     }
 
     public void print() {
