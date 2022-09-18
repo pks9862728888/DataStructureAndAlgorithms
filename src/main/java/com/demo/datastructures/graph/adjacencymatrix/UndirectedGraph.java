@@ -113,6 +113,55 @@ class UndirectedGraph {
         return new ArrayList<>();
     }
 
+    /**
+     * Get Path using BFS gives the shortest path
+     */
+    public ArrayList<Integer> getPathBFS(int sourceVertex, int destVertex) {
+        boolean[] visited = new boolean[graph.length];
+        HashMap<Integer, Integer> parentMap = new HashMap<>();
+        parentMap.put(sourceVertex, null);
+        Queue<Integer> q = new LinkedList<>();
+        q.add(sourceVertex);
+        boolean found = false;
+
+        while (!q.isEmpty()) {
+            int vertex = q.remove();
+            visited[vertex] = true;
+            if (vertex == destVertex) {
+                found = true;
+                break;
+            }
+
+            for (int adjV = 0; adjV < graph[vertex].length; adjV++) {
+                if (graph[vertex][adjV] == 1 && !visited[adjV]) {
+                    parentMap.put(adjV, vertex);
+                    q.add(adjV);
+                    if (adjV == destVertex) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+
+            if (found) {
+                break;
+            }
+        }
+
+        if (found) {
+            ArrayList<Integer> path = new ArrayList<>();
+            path.add(0, destVertex);
+            int currV = destVertex;
+            while (parentMap.get(currV) != null) {
+                currV = parentMap.get(currV);
+                path.add(0, currV);
+            }
+            return path;
+        }
+
+        return new ArrayList<>();
+    }
+
     public void print() {
         for (int[] r : graph) {
             System.out.println(Arrays.toString(r));
