@@ -20,6 +20,9 @@ class UndirectedGraph {
         graph[v2][v1] = 1;
     }
 
+    /**
+     * TC: O(v2)
+     */
     public void breadthFirstTraversal() {
         System.out.println("Depth First Traversal: ");
         HashSet<Integer> hs = new HashSet<>();
@@ -42,6 +45,9 @@ class UndirectedGraph {
         System.out.println();
     }
 
+    /**
+     * TC: O(v2)
+     */
     public void depthFirstTraversal() {
         System.out.println("Depth First Traversal: ");
         HashSet<Integer> hs = new HashSet<>();
@@ -61,6 +67,28 @@ class UndirectedGraph {
                 }
             }
         }
+    }
+
+    public boolean hasPath(int sourceVertex, int destVertex) {
+        boolean[] visited = new boolean[graph.length];
+        Queue<Integer> q = new LinkedList<>();
+        q.add(sourceVertex);
+
+        while (!q.isEmpty()) {
+            int vertex = q.remove();
+            if (vertex == destVertex) {
+                return true;
+            }
+            visited[vertex] = true;
+
+            for (int adjV = 0; adjV < graph[vertex].length; adjV++) {
+                if (graph[vertex][adjV] == 1 && !visited[adjV]){
+                    q.add(adjV);
+                }
+            }
+        }
+
+        return false;
     }
 
     public void print() {

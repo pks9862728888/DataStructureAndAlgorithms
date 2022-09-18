@@ -14,5 +14,6 @@ class GraphDemo {
         graph.print();
         graph.breadthFirstTraversal();
         graph.depthFirstTraversal();
+        System.out.println("Has path: 0 -> 5: " + graph.hasPath(0, 5));
     }
 }
