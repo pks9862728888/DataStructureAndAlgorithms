@@ -162,6 +162,29 @@ class UndirectedGraph {
         return new ArrayList<>();
     }
 
+    public boolean isGraphConnected() {
+        boolean[] visited = new boolean[graph.length];
+        if (graph.length > 0) {
+            traverseDepthFirst(0, visited);
+        }
+        for (boolean b: visited) {
+            if (!b) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void traverseDepthFirst(int vertex, boolean[] visited) {
+        visited[vertex] = true;
+
+        for (int adjV = 0; adjV < graph[vertex].length; adjV++) {
+            if (graph[vertex][adjV] == 1 && !visited[adjV]) {
+                traverseDepthFirst(adjV, visited);
+            }
+        }
+    }
+
     public void print() {
         for (int[] r : graph) {
             System.out.println(Arrays.toString(r));
