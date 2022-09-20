@@ -65,22 +65,11 @@ class UndirectedWeightedAdjacencyListGraph {
 
         // Generate min-spanning tree
         ArrayList<ArrayList<Integer>> minSpanningTree = new ArrayList<>();
-        for (int i = 0; i < vertex; i++) {
+        for (int i = 1; i < vertex; i++) {
             ArrayList<Integer> edge = new ArrayList<>();
             edge.add(i);
             int p = parent[i];
             int w = weight[i];
-            // In case parent is -1
-            // (for initial node, find node who has 0 as parent and get its vertex and wt)
-            if (p == -1) {
-                for (int v = 0; v < vertex; v++) {
-                    if (parent[v] == i) {
-                        p = v;
-                        w = weight[v];
-                        break;
-                    }
-                }
-            }
             edge.add(p);
             edge.add(w);
             minSpanningTree.add(edge);
