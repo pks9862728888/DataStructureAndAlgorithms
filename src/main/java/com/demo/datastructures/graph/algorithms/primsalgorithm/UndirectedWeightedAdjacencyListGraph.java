@@ -55,7 +55,7 @@ class UndirectedWeightedAdjacencyListGraph {
             for (Edge edge : graph.get(minWeightEdge)) {
                 if (!visited[edge.vertex]) {
                     // Find min-weight edge and update edge
-                    if (edge.weight <= weight[edge.vertex]) {
+                    if (edge.weight < weight[edge.vertex]) {
                         weight[edge.vertex] = edge.weight;
                         parent[edge.vertex] = minWeightEdge;
                     }
