@@ -1,4 +1,4 @@
-package com.demo.datastructures.graph.edgelist;
+package com.demo.datastructures.graph.algorithms.kruskalsunionfindalgorithm;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;

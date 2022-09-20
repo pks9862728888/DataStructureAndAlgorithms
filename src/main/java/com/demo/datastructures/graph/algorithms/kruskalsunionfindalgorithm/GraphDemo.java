@@ -1,6 +1,4 @@
-package com.demo.datastructures.graph.edgelist;
-
-import java.util.Arrays;
+package com.demo.datastructures.graph.algorithms.kruskalsunionfindalgorithm;
 
 class GraphDemo {
 
