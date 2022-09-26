@@ -10,7 +10,7 @@ import java.util.Stack;
 public class StackInO1 {
 
     private int minEle;
-    private Stack<Integer> stack = new Stack<>();
+    private final Stack<Integer> stack = new Stack<>();
 
     public int getMinEle() {
         return stack.isEmpty() ? -1 : minEle;
