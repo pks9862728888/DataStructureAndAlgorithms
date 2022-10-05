@@ -7,6 +7,8 @@ import java.util.List;
  * Applicable for directed acyclic graph only
  * TOPO sort:
  * Linear ordering of vertices such that if there is an edge u -> v, then u appears before v
+ * <p>
+ * PS: There can be multiple topo sort for a graph
  */
 class TopologicalSortDemo {
 
