@@ -103,4 +103,32 @@ class UndirectedGraph {
             }
         }
     }
+
+    public boolean isCycle(int v, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[v];
+        HashSet<Integer> memo = new HashSet<>();
+        for (int i = 0; i < v; i++) {
+            Arrays.fill(visited, false);
+            // We need to carry forward parent node to prevent back call to parent node
+            if (cycleDFS(i, adj, visited, memo, -1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean cycleDFS(int curr, ArrayList<ArrayList<Integer>> adj, boolean[] visited,
+                             HashSet<Integer> memo, int parent) {
+        if (visited[curr]) {
+            return true;
+        }
+        visited[curr] = true;
+        for (int v: adj.get(curr)) {
+            if (!memo.contains(v) && parent != v && cycleDFS(v, adj, visited, memo, curr)) {
+                return true;
+            }
+            visited[v] = true;
+        }
+        return false;
+    }
 }
