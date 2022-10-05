@@ -94,7 +94,7 @@ class UndirectedGraph {
 
                 // Print adjacent vertex
                 for (int adjacentVertex: graph.get(vertex)) {
-                    if (visited.add(adjacentVertex)) {
+                    if (visited.contains(adjacentVertex)) {
                         // Not already printed
                         queue.add(adjacentVertex);
                         System.out.print(adjacentVertex + " ");
