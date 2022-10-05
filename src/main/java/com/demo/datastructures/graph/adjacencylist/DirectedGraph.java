@@ -1,9 +1,6 @@
 package com.demo.datastructures.graph.adjacencylist;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
@@ -104,5 +101,35 @@ class DirectedGraph {
                 }
             }
         }
+    }
+
+    public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[v];
+        HashSet<Integer> memo = new HashSet<>();
+        for (int i = 0; i < v; i++) {
+            Arrays.fill(visited, false);
+            if (detectCycleDfs(i, adj, visited, memo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean detectCycleDfs(int curr, ArrayList<ArrayList<Integer>> adj, boolean[] visited,
+                                   HashSet<Integer> memo) {
+        if (visited[curr]) {
+            return true;
+        }
+        visited[curr] = true;
+        for (int i: adj.get(curr)) {
+            if (!memo.contains(i) && detectCycleDfs(i, adj, visited, memo)) {
+                return true;
+            }
+            memo.add(i);
+            visited[i] = false;
+        }
+
+        memo.add(curr);
+        return false;
     }
 }
