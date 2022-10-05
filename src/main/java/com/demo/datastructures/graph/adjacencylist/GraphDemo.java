@@ -3,7 +3,19 @@ package com.demo.datastructures.graph.adjacencylist;
 public class GraphDemo {
 
     public static void main(String[] args) {
-        // Connected graph
+        // Directed Connected graph 1
+        DirectedGraph directedGraph = new DirectedGraph();
+        directedGraph.addVertex(5);
+        directedGraph.addAdjacentNode(0, 1);
+        directedGraph.addAdjacentNode(0, 2);
+        directedGraph.addAdjacentNode(0, 3);
+        directedGraph.addAdjacentNode(2, 4);
+
+        directedGraph.printGraph();
+        directedGraph.printBreadthFirstTraversalConnectedGraph(0);
+        directedGraph.printBreadthFirstTraversalConnectedGraph(3);
+
+        // Connected graph 2
         UndirectedGraph undirectedGraph = new UndirectedGraph();
         undirectedGraph.addVertex(5);
         undirectedGraph.addAdjacentNode(0, 1);
