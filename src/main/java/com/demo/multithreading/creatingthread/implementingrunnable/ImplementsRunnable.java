@@ -1,6 +1,6 @@
-package com.demo.multithreading.extendingthread;
+package com.demo.multithreading.creatingthread.implementingrunnable;
 
-public class ExtendsThread extends Thread {
+public class ImplementsRunnable implements Runnable {
 
     @Override
     public void run() {
@@ -11,6 +11,5 @@ public class ExtendsThread extends Thread {
         } catch (InterruptedException e) {}
         System.out.printf("Running Thread: %s sleep complete and current state is: %s%n",
                 thread.getName(), thread.getState());
-        super.run();
     }
 }

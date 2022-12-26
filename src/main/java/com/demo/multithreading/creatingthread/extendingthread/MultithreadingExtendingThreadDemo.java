@@ -1,4 +1,4 @@
-package com.demo.multithreading.extendingthread;
+package com.demo.multithreading.creatingthread.extendingthread;
 
 public class MultithreadingExtendingThreadDemo {
 
