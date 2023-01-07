@@ -11,16 +11,35 @@
     <properties>
         <java.version>11</java.version>
         <lombok.version>1.18.24</lombok.version>
+        <rxjava.version>2.2.21</rxjava.version>
+        <slf4j.version>1.4.3</slf4j.version>
     </properties>
 
     <dependencies>
+        <!-- For helping in creating getter/setter -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <!-- For reactive programming -->
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
+        <!-- For logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
