@@ -6,14 +6,17 @@ import io.reactivex.disposables.Disposable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-
 public class ObservableDemo {
 
-    private static final Logger log = LoggerFactory.getLogger(ObservableDemo.class);
+    protected static final Logger log = LoggerFactory.getLogger(ObservableDemo.class);
 
+    /**
+     * We can create observable from array and have subscriber to subscribe from observable
+     * @param args
+     */
     public static void main(String[] args) {
-        Observable.fromArray(new int[] {1, 2, 3, 4, 5})
+        Observable<Integer> integerObservable = Observable.fromArray(ObservableDemoUtils.getIntegerArray());
+        integerObservable
                 .subscribe(new Observer<>() {
                     @Override
                     public void onSubscribe(Disposable disposable) {
@@ -21,13 +24,13 @@ public class ObservableDemo {
                     }
 
                     @Override
-                    public void onNext(int[] ints) {
-                        log.info("onNext - " + Arrays.toString(ints));
+                    public void onNext(Integer integer) {
+                        log.info("onNext - {}", integer);
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
-                        log.info("onError");
+                        log.info("onError", throwable);
                     }
 
                     @Override
