@@ -1,4 +1,4 @@
-package com.demo.sorting;
+package com.demo.algorithms.sorting;
 
 import com.demo.datastructures.priorityQueue.AbstractMaxHeap;
 import com.demo.datastructures.priorityQueue.AbstractMinHeap;

@@ -1,4 +1,4 @@
-package com.demo.searching.recursively;
+package com.demo.algorithms.searching.recursively;
 
 public class BinarySearch {
 
