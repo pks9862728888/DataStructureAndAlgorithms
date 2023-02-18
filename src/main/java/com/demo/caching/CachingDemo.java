@@ -11,7 +11,7 @@ public class CachingDemo {
 
     private static final int keyStartInclusive = 1;
     private static final int keyEndExclusive = 3;
-    private static final int maxCacheSize = 15;
+    private static final int maxCacheSize = 3;
 
     public static void main(String[] args) {
         ExternalDataStore dataStore = new ExternalDataStore(keyStartInclusive, keyEndExclusive);
