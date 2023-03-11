@@ -7,7 +7,8 @@ import java.util.concurrent.*;
 public class ExecutorServiceDemoInvokeAnyWithMultiThreadCallable {
 
     public static void main(String[] args) {
-        try (ExecutorService executorService = Executors.newFixedThreadPool(4)) {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        try {
             List<Callable<Integer>> callableList = new ArrayList<>();
             callableList.add(() -> 1);
             callableList.add(() -> 2);
@@ -17,6 +18,8 @@ public class ExecutorServiceDemoInvokeAnyWithMultiThreadCallable {
             System.out.println(result);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             throw new RuntimeException(e);
+        } finally {
+            executorService.shutdown();
         }
     }
 }

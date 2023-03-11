@@ -14,9 +14,9 @@ public class SynchronizationWithLocks {
     public static void incrementCounter() {
         synchronized (lock) {
             int current = counter;
-            System.out.printf("Before incrementing: %s Thread: %s%n", counter, Thread.currentThread().threadId());
+            System.out.printf("Before incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
             counter = current + 1;
-            System.out.printf("After incrementing: %s Thread: %s%n", counter, Thread.currentThread().threadId());
+            System.out.printf("After incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
         }
     }
 

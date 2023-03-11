@@ -5,7 +5,7 @@ public class DemoJoin extends Thread {
     @Override
     public void run() {
         for(int i = 0; i < 10; i++) {
-            System.out.println("Thread: " + Thread.currentThread().threadId() + " id " + i);
+            System.out.println("Thread: " + Thread.currentThread().getId() + " id " + i);
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {}

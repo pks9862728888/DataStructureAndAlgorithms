@@ -4,13 +4,13 @@ public class SimpleThreadDemo extends Thread {
 
     @Override
     public void run() {
-        System.out.println("In run method: " + Thread.currentThread().threadId());
+        System.out.println("In run method: " + Thread.currentThread().getId());
     }
 
     public static void main(String[] args) {
-        Thread thread = new Thread(() -> System.out.println("Runnable: " + Thread.currentThread().threadId()));
+        Thread thread = new Thread(() -> System.out.println("Runnable: " + Thread.currentThread().getId()));
         thread.start();
-        System.out.println("Main: " + Thread.currentThread().threadId());
+        System.out.println("Main: " + Thread.currentThread().getId());
 
         // Demo that calling run method does not create a new thread
         SimpleThreadDemo demo = new SimpleThreadDemo();

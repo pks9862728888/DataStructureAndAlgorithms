@@ -19,15 +19,15 @@ public class ReentrantLockTryLockWithWaitTime {
         if (lock.tryLock(5, TimeUnit.MILLISECONDS)) {
             try {
                 int current = counter;
-                System.out.printf("Before incrementing: %s Thread: %s%n", counter, Thread.currentThread().threadId());
+                System.out.printf("Before incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
                 counter = current + 1;
-                System.out.printf("After incrementing: %s Thread: %s%n", counter, Thread.currentThread().threadId());
+                System.out.printf("After incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
             } finally {
                 lock.unlock();
             }
         } else {
             System.out.printf("Thread: %s did not acquire lock so its skipping this task%n",
-                    Thread.currentThread().threadId());
+                    Thread.currentThread().getId());
         }
     }
 

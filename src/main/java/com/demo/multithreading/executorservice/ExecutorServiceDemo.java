@@ -3,6 +3,7 @@ package com.demo.multithreading.executorservice;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 public class ExecutorServiceDemo {
 
@@ -15,15 +16,18 @@ public class ExecutorServiceDemo {
     }
 
     private static void demoWithClosingExecutorService() {
-        try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        try {
             executorService.submit(() -> System.out.printf("Thread: %s Random value: %s%n",
-                    Thread.currentThread().threadId(), Math.random()));
+                    Thread.currentThread().getId(), Math.random()));
+        } finally {
+            executorService.shutdown();
         }
     }
 
     private static void demoWithoutClosingExecutorService() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(() -> System.out.printf("Thread: %s Random value: %s%n",
-                Thread.currentThread().threadId(), Math.random()));
+                Thread.currentThread().getId(), Math.random()));
     }
 }
