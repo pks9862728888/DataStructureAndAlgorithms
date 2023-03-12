@@ -1,4 +1,4 @@
-package com.demo.datastructures.priorityQueue;
+package com.demo.datastructures.priorityqueue;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,9 @@
 package com.demo.algorithms.sorting;
 
-import com.demo.datastructures.priorityQueue.AbstractMaxHeap;
-import com.demo.datastructures.priorityQueue.AbstractMinHeap;
-import com.demo.datastructures.priorityQueue.MaxHeapPQ;
-import com.demo.datastructures.priorityQueue.MinHeapPQ;
+import com.demo.datastructures.priorityqueue.AbstractMaxHeap;
+import com.demo.datastructures.priorityqueue.AbstractMinHeap;
+import com.demo.datastructures.priorityqueue.MaxHeapPQ;
+import com.demo.datastructures.priorityqueue.MinHeapPQ;
 
 import java.util.Arrays;
 import java.util.Objects;
