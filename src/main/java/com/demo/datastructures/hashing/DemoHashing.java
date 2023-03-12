@@ -1,4 +1,4 @@
-package com.demo.hashing;
+package com.demo.datastructures.hashing;
 
 public class DemoHashing {
 
