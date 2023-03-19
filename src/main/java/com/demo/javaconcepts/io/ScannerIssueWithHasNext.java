@@ -1,4 +1,4 @@
-package com.demo.javaconcepts;
+package com.demo.javaconcepts.io;
 
 import java.util.ArrayList;
 import java.util.Scanner;
