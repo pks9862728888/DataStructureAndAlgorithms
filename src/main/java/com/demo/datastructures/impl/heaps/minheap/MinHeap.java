@@ -17,21 +17,23 @@ class MinHeap<T> {
     }
 
     public void add(int priority, T value) {
-        HeapNode<T> heapNode = new HeapNode<>(value, priority);
-        if (size == capacity) {
+        if (size() == capacity) {
             doubleCapacity();
         }
 
         // Add to last of heap
+        HeapNode<T> heapNode = new HeapNode<>(value, priority);
         heap[size++] = heapNode;
 
-        // Move the node to correct position based on priority
-        int currIdx = size - 1;
-        int parentIdx = parentIdx(currIdx);
-        while (parentIdx >= 0 && heap[parentIdx].getPriority() > heap[currIdx].getPriority()) {
-            swapNodes(currIdx, parentIdx);
-            currIdx = parentIdx;
-            parentIdx = parentIdx(currIdx);
+        // Heapify: Move the node to correct position based on priority
+        if (size() > 1) {
+            int currIdx = size() - 1;
+            int parentIdx = parentIdx(currIdx);
+            while (currIdx > 0 && heap[parentIdx].getPriority() > heap[currIdx].getPriority()) {
+                swapNodes(currIdx, parentIdx);
+                currIdx = parentIdx;
+                parentIdx = parentIdx(currIdx);
+            }
         }
     }
 
@@ -57,6 +59,10 @@ class MinHeap<T> {
         int maxCapacity = 2 * capacity;
         heap = Arrays.copyOf(heap, maxCapacity);
         capacity = maxCapacity;
+    }
+
+    public int size() {
+        return this.size;
     }
 
     @Override

@@ -20,16 +20,16 @@ public class MaxHeap<T> {
         if (size() == capacity) {
             doubleCapacity();
         }
-        HeapNode<T> heapNode = new HeapNode<>(ele, priority);
 
-        // Add element to last of the PQ
+        // Add element to last of the heap
+        HeapNode<T> heapNode = new HeapNode<>(ele, priority);
         heap[size++] = heapNode;
 
         // Do heapify operation
         if (size() > 1) {
             int currIdx = size() - 1;
             int parentIdx = getParentIdx(currIdx);
-            while (currIdx != 0 && heapNode.getPriority() > heap[parentIdx].getPriority()) {
+            while (currIdx > 0 && heap[currIdx].getPriority() > heap[parentIdx].getPriority()) {
                 swapHeapNodes(currIdx, parentIdx);
                 currIdx = parentIdx;
                 parentIdx = getParentIdx(currIdx);
