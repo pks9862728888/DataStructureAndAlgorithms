@@ -1,4 +1,4 @@
-package com.demo.datastructures.impl.heaps;
+package com.demo.datastructures.impl.heaps.minheap;
 
 class MinHeapDemo {
 

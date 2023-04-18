@@ -1,9 +1,6 @@
-package com.demo.datastructures.impl.heaps;
+package com.demo.datastructures.impl.heaps.minheap;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.demo.datastructures.impl.heaps.HeapNode;
 
 import java.util.Arrays;
 
@@ -19,20 +16,8 @@ class MinHeap<T> {
         this.heap = (HeapNode<T>[]) new HeapNode[capacity];
     }
 
-    public int leftChild(int currIdx) {
-        return 2 * currIdx + 1;
-    }
-
-    public int rightChild(int currIdx) {
-        return 2 * currIdx + 2;
-    }
-
-    public int parentIdx(int currIdx) {
-        return (int) Math.floor((currIdx - 1) * 1.0 / 2);
-    }
-
     public void add(int priority, T value) {
-        HeapNode<T> heapNode = new HeapNode<>(priority, value);
+        HeapNode<T> heapNode = new HeapNode<>(value, priority);
         if (size == capacity) {
             doubleCapacity();
         }
@@ -56,6 +41,18 @@ class MinHeap<T> {
         heap[parentIdx] = temp;
     }
 
+    public int parentIdx(int currIdx) {
+        return Math.floorDiv(currIdx - 1, 2);
+    }
+
+    public int leftChildIdx(int currIdx) {
+        return 2 * currIdx + 1;
+    }
+
+    public int rightChildIdx(int currIdx) {
+        return 2 * currIdx + 2;
+    }
+
     private void doubleCapacity() {
         int maxCapacity = 2 * capacity;
         heap = Arrays.copyOf(heap, maxCapacity);
@@ -65,14 +62,5 @@ class MinHeap<T> {
     @Override
     public String toString() {
         return Arrays.toString(heap);
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @ToString
-    public static class HeapNode<T> {
-        private int priority;
-        private T value;
     }
 }
