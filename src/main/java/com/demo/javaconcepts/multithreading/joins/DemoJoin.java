@@ -1,14 +1,20 @@
 package com.demo.javaconcepts.multithreading.joins;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class DemoJoin extends Thread {
 
     @Override
     public void run() {
-        for(int i = 0; i < 10; i++) {
-            System.out.println("Thread: " + Thread.currentThread().getId() + " id " + i);
+        for (int i = 0; i < 10; i++) {
+            log.info("Thread: {} id: {}", Thread.currentThread().getId(), i);
             try {
                 Thread.sleep(500);
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
         }
     }
 
