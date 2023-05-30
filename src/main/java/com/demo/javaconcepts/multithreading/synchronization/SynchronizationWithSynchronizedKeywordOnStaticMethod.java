@@ -3,24 +3,19 @@ package com.demo.javaconcepts.multithreading.synchronization;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SynchronizationWithLocks {
+public class SynchronizationWithSynchronizedKeywordOnStaticMethod {
 
     private static int counter = 0;
-    private static final Object lock = new Object();
 
     /**
      * Guaranteed that objects will be able to access this method in synchronized manner
      * But it is not guaranteed that threads which were created first will have access to this object first
-     * We can also synchronize on this for non-static methods but that will only gain lock on that object,
-     * Threads created from other object might still be able to access it concurrently.
      */
-    public static void increment() {
-        synchronized (lock) {
-            int current = counter;
-            log.info("Before: {} Thread: {}", counter, Thread.currentThread().getId());
-            counter = current + 1;
-            log.info("After: {} Thread: {}", counter, Thread.currentThread().getId());
-        }
+    public static synchronized void increment() {
+        int current = counter;
+        log.info("Before: {} Thread: {}", counter, Thread.currentThread().getId());
+        counter = current + 1;
+        log.info("After: {} Thread: {}", counter, Thread.currentThread().getId());
     }
 
     public static void main(String[] args) {

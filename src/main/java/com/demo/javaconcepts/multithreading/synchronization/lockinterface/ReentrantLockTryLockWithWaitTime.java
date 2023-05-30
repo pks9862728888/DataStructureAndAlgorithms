@@ -1,13 +1,16 @@
 package com.demo.javaconcepts.multithreading.synchronization.lockinterface;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+@Slf4j
 public class ReentrantLockTryLockWithWaitTime {
 
-    private static int counter = 0;
+    private static int count = 0;
     private static final Lock lock = new ReentrantLock();
 
     /**
@@ -16,18 +19,17 @@ public class ReentrantLockTryLockWithWaitTime {
      * It will keep on retrying till max milliseconds to acquire lock, if it can't then it will return false
      */
     public static void incrementCounter() throws InterruptedException {
-        if (lock.tryLock(5, TimeUnit.MILLISECONDS)) {
+        if (lock.tryLock(7, TimeUnit.MILLISECONDS)) {
             try {
-                int current = counter;
-                System.out.printf("Before incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
-                counter = current + 1;
-                System.out.printf("After incrementing: %s Thread: %s%n", counter, Thread.currentThread().getId());
+                int current = count;
+                log.info("Before: {}", count);
+                count = current + 1;
+                log.info("After: {}", count);
             } finally {
                 lock.unlock();
             }
         } else {
-            System.out.printf("Thread: %s did not acquire lock so its skipping this task%n",
-                    Thread.currentThread().getId());
+            log.info("Thread: {} did not acquire lock so its skipping this task", Thread.currentThread().getId());
         }
     }
 
@@ -37,6 +39,8 @@ public class ReentrantLockTryLockWithWaitTime {
                 try {
                     incrementCounter();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             });
             thread.start();
