@@ -1,4 +1,4 @@
-package com.demo.designpatterns.creational;
+package com.demo.designpatterns.creational.factory;
 
 public class CarFactory {
 

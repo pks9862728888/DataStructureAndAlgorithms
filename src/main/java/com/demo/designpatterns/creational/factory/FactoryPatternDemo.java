@@ -1,4 +1,4 @@
-package com.demo.designpatterns.creational;
+package com.demo.designpatterns.creational.factory;
 
 public class FactoryPatternDemo {
 
@@ -14,6 +14,11 @@ public class FactoryPatternDemo {
      * - Polymorphic object creation
      * - Decoupling client code from concrete implementations
      * - Testing and mocking
+     * Difference with Abstract Factory pattern:
+     * - The Factory pattern is used to create objects of a single type or a hierarchy of related types,
+     *   while the Abstract Factory pattern is used to create families of related objects.
+     * - The Factory pattern encapsulates the creation logic in a single component,
+     * while the Abstract Factory pattern provides multiple factory implementations for different families of objects.
      */
     public static void main(String[] args) {
         Car ferrari = CarFactory.getCar(CarFactory.FERRARI);
