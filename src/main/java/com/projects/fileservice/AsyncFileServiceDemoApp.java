@@ -13,26 +13,31 @@ public class AsyncFileServiceDemoApp {
 
     public static void main(String[] args) {
         FileService fileService = new FileService();
-        fileService.readContent(inputFile)
-                .subscribe(content -> writeContentAndDeleteInputFile(fileService, content),
-                        ex -> log.error("Exception while reading content: {}", ex.toString()),
-                        () -> log.info("Read content job complete!"));
+        try {
+            String fileContent = fileService.read(inputFile).block();
+            if (writeContent(fileService, fileContent)) {
+                deleteInputFile(fileService);
+            }
+        } catch (Throwable e) {
+            log.error("Exception occurred while reading: {}", e.toString());
+        }
     }
 
-    private static void writeContentAndDeleteInputFile(FileService fileService, String content) {
-        fileService.writeContent(outputFile, content)
-                .subscribe(onNext -> log.info("Nothing will get returned!"),
-                        ex -> log.error("Exception while writing content: {}", ex.toString()),
-                        () -> {
-                            log.info("Write content job complete");
-                            deleteInputFile(fileService);
-                        });
+    private static boolean writeContent(FileService fileService, String content) {
+        try {
+            fileService.write(outputFile, content).block();
+            return true;
+        } catch (Throwable e) {
+            log.error("Exception occurred while writing: {}", e.toString());
+        }
+        return false;
     }
 
     private static void deleteInputFile(FileService fileService) {
-        fileService.deleteFile(inputFile)
-                .subscribe(onNext -> log.info("File deletion status: {}", onNext),
-                        ex -> log.error("Exception while deleting input file: {}", inputFile),
-                        () -> log.info("Delete file job completed!"));
+        try {
+            fileService.delete(inputFile).block();
+        } catch (Throwable e) {
+            log.error("Exception occurred while deleting: {}", e.toString());
+        }
     }
 }

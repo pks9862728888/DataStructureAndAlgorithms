@@ -3,71 +3,54 @@ package com.projects.fileservice;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Slf4j
 public class FileService {
 
-    public Mono<String> readContent(Path filePath) {
+    public Mono<String> read(Path filePath) {
+        return Mono.fromSupplier(() -> readFile(filePath));
+    }
+
+    public Mono<Void> write(Path filePath, String fileContent) {
+        return Mono.fromRunnable(() -> writeToFile(filePath, fileContent));
+    }
+
+    public Mono<Void> delete(Path filePath) {
+        return Mono.fromRunnable(() -> deleteFile(filePath));
+    }
+
+
+    private String readFile(Path filePath) {
         try {
-            return Mono.fromSupplier(() -> {
-                try {
-                    return readFileContent(filePath);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        } catch (Throwable e) {
-            return Mono.error(e);
+            log.info("Read file contents: {}", filePath);
+            String content = Files.readString(filePath);
+            log.info("Read file content complete!");
+            return content;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public Mono<Void> writeContent(Path filePath, String fileContent) {
+    private static void writeToFile(Path filePath, String fileContent) {
         try {
-            return Mono.fromRunnable(() -> {
-                try {
-                    writeFileContent(filePath, fileContent);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        } catch (Throwable e) {
-            return Mono.error(e);
+            log.info("Write content to file: {}", filePath);
+            Files.writeString(filePath, fileContent);
+            log.info("Complete write content from file: {}", filePath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public Mono<Boolean> deleteFile(Path filePath) {
+    private static void deleteFile(Path filePath) {
         try {
-            return Mono.fromCallable(() -> filePath.toFile().delete());
-        } catch (Throwable e) {
-            return Mono.error(e);
+            log.info("Deleting file: {}", filePath);
+            Files.delete(filePath);
+            log.info("File deleted!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
-
-    private String readFileContent(Path filePath) throws IOException {
-        log.info("Read content from file: {}", filePath);
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
-            }
-        }
-        log.info("Complete read content from file: {}", filePath);
-        return sb.toString();
-    }
-
-    private void writeFileContent(Path filePath, String fileContent) throws IOException {
-        log.info("Write content to file: {}", filePath);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath.toString()))) {
-            bw.write(fileContent);
-        }
-        log.info("Complete write content from file: {}", filePath);
-    }
-
 }
-
-
-
-
