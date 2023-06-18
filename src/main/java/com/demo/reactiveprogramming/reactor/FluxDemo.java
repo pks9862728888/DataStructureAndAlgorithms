@@ -1,8 +1,11 @@
 package com.demo.reactiveprogramming.reactor;
 
+import com.utils.DateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.List;
 
 @Slf4j
@@ -39,5 +42,20 @@ public class FluxDemo {
         // from range
         Flux<Integer> rangeFlux = Flux.range(1, 2);
         rangeFlux.subscribe(onNext -> log.info("Received fromRange: {}", onNext));
+
+        // from interval - works in non-blocking way
+        Flux.interval(Duration.ofSeconds(1))
+                .subscribe(onNext -> log.info("Received from interval: {}", onNext));
+        DateTimeUtils.sleepSec(2);
+
+        // From another publisher - mono
+        Mono<Integer> mono = Mono.just(1);
+        Flux.from(mono)
+                .subscribe(onNext -> log.info("Received from flux mono: {}", onNext));
+
+        // Convert flux to mono
+        Flux.range(1, 10)
+                .next()
+                .subscribe(onNext -> log.info("Received only 1 item (): {}", onNext));
     }
 }
