@@ -4,7 +4,7 @@ import com.demo.datastructures.impl.heaps.HeapNode;
 
 import java.util.Arrays;
 
-public class MaxHeap<T> {
+public class MaxHeap<T extends Comparable<T>> {
 
     private HeapNode<T>[] heap;
     private int capacity;
