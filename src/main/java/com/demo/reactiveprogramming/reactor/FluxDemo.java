@@ -57,5 +57,13 @@ public class FluxDemo {
         Flux.range(1, 10)
                 .next()
                 .subscribe(onNext -> log.info("Received only 1 item (): {}", onNext));
+
+        // Emit infinite no of items from flux - use flux sink
+        Flux.create(fluxSink -> {
+            for (int i = 1; i <= 3; i++) {
+                fluxSink.next(i);
+            }
+            fluxSink.complete();
+        }).subscribe(onNext -> log.info("Received: {} from fluxSink", onNext));
     }
 }
