@@ -8,11 +8,9 @@ import java.util.function.Consumer;
 @Slf4j
 public class MissingPersonFinderChannel implements Consumer<FluxSink<String>> {
 
-    private final String name;
     private FluxSink<String> fluxSink;
 
     public MissingPersonFinderChannel(String name) {
-        this.name = name;
     }
 
     @Override
@@ -21,6 +19,8 @@ public class MissingPersonFinderChannel implements Consumer<FluxSink<String>> {
     }
 
     public void next(String item) {
-        this.fluxSink.next(Thread.currentThread().getName() + " : " + item);
+        if (!this.fluxSink.isCancelled()) {
+            this.fluxSink.next(Thread.currentThread().getId() + " : " + item);
+        }
     }
 }

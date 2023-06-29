@@ -11,19 +11,29 @@ import java.util.stream.IntStream;
 public class FluxSinkMultipleThreadSharingDemo {
 
     public static void main(String[] args) {
-        // Create channel where rescue workers will send missing person name
-        MissingPersonFinderChannel channel = new MissingPersonFinderChannel("durable-channel");
-        Flux<String> stringFlux = Flux.create(channel);
+        // Create fluxSink where rescue workers will send missing person name
+        MissingPersonFinderChannel fluxSink = new MissingPersonFinderChannel("durable-fluxSink");
+        Flux<String> stringFlux = Flux.create(fluxSink);
 
         // Multiple subscribers who want to get real time updates on missing person
         // TODO: make multiple subscriber logic work
-        stringFlux.subscribe(a -> log.info("Received: {} Subscriber: {}", a, 1));
+        stringFlux
+                .take(1)
+                .subscribe(a -> log.info("Thread: {} Subscriber: {} Received: {}",
+                        Thread.currentThread().getId(), 1, a),
+                        onError -> {},
+                        () -> log.info("onComplete()"));
 
-        // Create multiple producers which will publish message to the channel
+        // Create multiple producers which will publish message to the fluxSink
         // Scenario multiple rescue workers are searching for missing persons
         for (int i = 1; i <= 10; i++) {
+            int finalI = i;
             new Thread(() -> IntStream.range(0, 3)
-                    .forEach(z -> channel.next(Faker.instance().name().fullName()))).start();
+                    .forEach(z -> {
+                        String item = Faker.instance().name().fullName();
+                        log.info("Thread: {} publisher: {} Emitting: {}", Thread.currentThread().getId(), finalI, item);
+                        fluxSink.next(item);
+                    })).start();
         }
 
         // Wait for few minutes
