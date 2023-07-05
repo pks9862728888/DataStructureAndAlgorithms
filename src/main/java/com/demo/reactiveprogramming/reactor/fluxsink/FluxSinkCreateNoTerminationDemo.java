@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 @Slf4j
-public class DemoFluxSinkNoTermination {
+public class FluxSinkCreateNoTerminationDemo {
 
     // If we remove fluxSink.isCancelled()
     // then create() method will keep on emitting items though subscription is cancelled

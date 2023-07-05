@@ -4,11 +4,13 @@ import com.github.javafaker.Faker;
 import com.utils.DateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxSink;
 
+import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 @Slf4j
-public class FluxSinkMultipleThreadSharingDemo {
+public class FluxSinkCreateMultipleThreadSharingDemo {
 
     public static void main(String[] args) {
         // Create fluxSink where rescue workers will send missing person name
@@ -38,5 +40,26 @@ public class FluxSinkMultipleThreadSharingDemo {
 
         // Wait for few minutes
         DateTimeUtils.sleepSec(2);
+    }
+}
+
+
+@Slf4j
+class MissingPersonFinderChannel implements Consumer<FluxSink<String>> {
+
+    private FluxSink<String> fluxSink;
+
+    public MissingPersonFinderChannel(String name) {
+    }
+
+    @Override
+    public void accept(FluxSink<String> stringFluxSink) {
+        this.fluxSink = stringFluxSink;
+    }
+
+    public void next(String item) {
+        if (!this.fluxSink.isCancelled()) {
+            this.fluxSink.next(Thread.currentThread().getId() + " : " + item);
+        }
     }
 }
