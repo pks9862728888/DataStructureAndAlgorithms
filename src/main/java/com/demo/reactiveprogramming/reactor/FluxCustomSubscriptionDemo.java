@@ -28,7 +28,7 @@ public class FluxCustomSubscriptionDemo {
 
     private static Subscriber<Integer> getCustomSubscription(
             AtomicReference<Subscription> atomicReference) {
-        return new Subscriber<>() {
+        return new Subscriber<Integer>() {
             @Override
             public void onSubscribe(Subscription subscription) {
                 log.info("onSubscribe() called");

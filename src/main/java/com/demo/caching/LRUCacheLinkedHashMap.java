@@ -27,7 +27,7 @@ public class LRUCacheLinkedHashMap {
 
         LRUCache(int capacity) {
             this.MAX_CAPACITY = capacity;
-            this.map = new LinkedHashMap<>(this.MAX_CAPACITY, 0.75f, true) {
+            this.map = new LinkedHashMap<Integer, Integer>(this.MAX_CAPACITY, 0.75f, true) {
                 @Override
                 protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
                     return size() > MAX_CAPACITY;

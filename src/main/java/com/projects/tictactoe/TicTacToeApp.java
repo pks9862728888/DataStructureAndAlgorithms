@@ -14,10 +14,10 @@ class TicTacToeApp {
     }
 
     private static void printWinner(Optional<Player> winner) {
-        if (winner.isEmpty()) {
-            printSpecialLine("Tough Fight! Game Result: DRAW!");
-        } else {
+        if (winner.isPresent()) {
             printSpecialLine(String.format("%s won the game!", winner.get().getName()));
+        } else {
+            printSpecialLine("Tough Fight! Game Result: DRAW!");
         }
     }
 }

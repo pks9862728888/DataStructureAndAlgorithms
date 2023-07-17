@@ -15,27 +15,27 @@ public class BipartitieGraph {
         // Undirected cyclic graph (odd cycle)
         ArrayList<ArrayList<Integer>> g1 = new ArrayList<>();
         int v1 = 8;
-        g1.add(new ArrayList<>(List.of(1)));  // 0
+        g1.add(new ArrayList<>(Arrays.asList(1)));  // 0
         g1.add(new ArrayList<>(Arrays.asList(0, 2, 5))); // 1
         g1.add(new ArrayList<>(Arrays.asList(1, 3)));  // 2
         g1.add(new ArrayList<>(Arrays.asList(2, 4)));  // 3
         g1.add(new ArrayList<>(Arrays.asList(5, 6)));  // 4
         g1.add(new ArrayList<>(Arrays.asList(1, 4)));  // 5
         g1.add(new ArrayList<>(Arrays.asList(4, 7)));  // 6
-        g1.add(new ArrayList<>(List.of(6)));  // 7
+        g1.add(new ArrayList<>(Arrays.asList(6)));  // 7
         System.out.println(isBipartiteBFS(v1, g1));
 
         // Undirected cyclic graph (even cycle)
         ArrayList<ArrayList<Integer>> g2 = new ArrayList<>();
         int v2 = 8;
-        g2.add(new ArrayList<>(List.of(1)));  // 0
+        g2.add(new ArrayList<>(Arrays.asList(1)));  // 0
         g2.add(new ArrayList<>(Arrays.asList(0, 2, 6))); // 1
         g2.add(new ArrayList<>(Arrays.asList(1, 3)));  // 2
         g2.add(new ArrayList<>(Arrays.asList(2, 4)));  // 3
         g2.add(new ArrayList<>(Arrays.asList(5, 7)));  // 4
         g2.add(new ArrayList<>(Arrays.asList(4, 6)));  // 5
         g2.add(new ArrayList<>(Arrays.asList(1, 5)));  // 6
-        g2.add(new ArrayList<>(List.of(4)));  // 7
+        g2.add(new ArrayList<>(Arrays.asList(4)));  // 7
         System.out.println(isBipartiteBFS(v2, g2));
 
     }

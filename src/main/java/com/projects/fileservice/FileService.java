@@ -26,7 +26,7 @@ public class FileService {
     private String readFile(Path filePath) {
         try {
             log.info("Read file contents: {}", filePath);
-            String content = Files.readString(filePath);
+            String content = new String(Files.readAllBytes(filePath));
             log.info("Read file content complete!");
             return content;
         } catch (IOException e) {
@@ -37,7 +37,7 @@ public class FileService {
     private static void writeToFile(Path filePath, String fileContent) {
         try {
             log.info("Write content to file: {}", filePath);
-            Files.writeString(filePath, fileContent);
+            Files.write(filePath, fileContent.getBytes());
             log.info("Complete write content from file: {}", filePath);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -33,15 +33,15 @@ public class PredicateDemo {
     }
 
     private static void demoUsingInnerClass() {
-        class PredicateInner<Integer> implements Predicate<Integer> {
+        class PredicateInner implements Predicate<Integer> {
 
             @Override
             public boolean test(Integer i) {
-                return ((int) i) % 2 == 0;
+                return i % 2 == 0;
             }
         }
 
-        PredicateInner<Integer> cd = new PredicateInner<>();
+        PredicateInner cd = new PredicateInner();
         Stream.of(1, 2, 3).filter(cd).forEach(i -> log.info("{}", i));
     }
 }

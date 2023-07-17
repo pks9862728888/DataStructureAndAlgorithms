@@ -1,6 +1,7 @@
 package com.demo.datastructures.impl.graph.algorithms.topologicalsort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,10 +19,10 @@ class TopologicalSortDemo {
         int noOfVertex = 6;
         graph.add(new ArrayList<>());  // 0
         graph.add(new ArrayList<>());  // 1
-        graph.add(new ArrayList<>(List.of(3)));  // 2
-        graph.add(new ArrayList<>(List.of(1)));  // 3
-        graph.add(new ArrayList<>(List.of(0, 1)));  // 4
-        graph.add(new ArrayList<>(List.of(0, 2)));  // 5
+        graph.add(new ArrayList<>(Arrays.asList(3)));  // 2
+        graph.add(new ArrayList<>(Arrays.asList(1)));  // 3
+        graph.add(new ArrayList<>(Arrays.asList(0, 1)));  // 4
+        graph.add(new ArrayList<>(Arrays.asList(0, 2)));  // 5
 
         // Topological sort using DFS
         System.out.println(topoSortUsingDFS(noOfVertex, graph));

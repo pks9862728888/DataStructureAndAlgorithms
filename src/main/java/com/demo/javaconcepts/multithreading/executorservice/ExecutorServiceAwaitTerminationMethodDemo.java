@@ -1,6 +1,5 @@
 package com.demo.javaconcepts.multithreading.executorservice;
 
-import ch.qos.logback.core.testUtil.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
@@ -45,6 +44,6 @@ public class ExecutorServiceAwaitTerminationMethodDemo {
         } catch (InterruptedException e) {
             log.error("{}", e.toString());
         }
-        return RandomUtil.getPositiveInt();
+        return ThreadLocalRandom.current().nextInt(0, Integer.MAX_VALUE);
     }
 }

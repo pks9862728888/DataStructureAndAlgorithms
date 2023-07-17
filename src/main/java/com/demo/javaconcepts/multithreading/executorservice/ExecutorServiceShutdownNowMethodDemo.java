@@ -1,6 +1,5 @@
 package com.demo.javaconcepts.multithreading.executorservice;
 
-import ch.qos.logback.core.testUtil.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -47,7 +46,7 @@ public class ExecutorServiceShutdownNowMethodDemo {
     private static Optional<Integer> getRandomInteger() {
         try {
             Thread.sleep(1000);
-            return Optional.of(RandomUtil.getPositiveInt());
+            return Optional.of(ThreadLocalRandom.current().nextInt(0, Integer.MAX_VALUE));
         } catch (InterruptedException e) {
             log.error("{}", e.toString());
             Thread.currentThread().interrupt();

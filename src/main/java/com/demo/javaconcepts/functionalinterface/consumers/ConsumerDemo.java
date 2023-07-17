@@ -2,6 +2,7 @@ package com.demo.javaconcepts.functionalinterface.consumers;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -15,7 +16,7 @@ public class ConsumerDemo {
     }
 
     private static void demoUsingLambda() {
-        List.of(1, 2, 3).forEach(i -> log.info("{}", i));
+        Arrays.asList(1, 2, 3).forEach(i -> log.info("{}", i));
     }
 
     private static void demoUsingAnonymousClass() {
@@ -25,7 +26,7 @@ public class ConsumerDemo {
                 log.info("{}", integer);
             }
         };
-        List.of(1, 2, 3).forEach(cd);
+        Arrays.asList(1, 2, 3).forEach(cd);
     }
 
     private static void demoUsingInnerClass() {
@@ -38,6 +39,6 @@ public class ConsumerDemo {
         }
 
         ConsumerInner<Integer> cd = new ConsumerInner<>();
-        List.of(1, 2, 3).forEach(cd);
+        Arrays.asList(1, 2, 3).forEach(cd);
     }
 }

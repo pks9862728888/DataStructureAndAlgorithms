@@ -51,11 +51,8 @@ public class MyHash<T> {
                 .stream()
                 .filter(f -> f.key == key)
                 .findFirst();
-        if (first.isEmpty()) {
-            return null;
-        } else {
-            return first.get().value;
-        }
+        return first.map(tObjectClass -> tObjectClass.value)
+                .orElse(null);
     }
 
     public void print() {

@@ -1,5 +1,6 @@
 package com.demo.datastructures.impl.trie;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class TrieDemo {
@@ -19,11 +20,11 @@ public class TrieDemo {
 
         Trie nt = new Trie();
         System.out.println("Pattern matches: ow? " +
-                nt.patternMatches(List.of("What", "Whome", "How"), "ow"));
+                nt.patternMatches(Arrays.asList("What", "Whome", "How"), "ow"));
 
         Trie ac = new Trie();
         System.out.println("Printing all autocomplete words: no");
-        ac.printAllAutocompleteWords(List.of("do", "dont", "no", "not", "note", "notes", "den"),
+        ac.printAllAutocompleteWords(Arrays.asList("do", "dont", "no", "not", "note", "notes", "den"),
                 "no");
     }
 }

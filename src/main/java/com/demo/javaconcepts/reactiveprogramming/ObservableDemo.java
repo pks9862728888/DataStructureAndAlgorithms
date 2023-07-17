@@ -17,7 +17,7 @@ public class ObservableDemo {
     public static void main(String[] args) {
         Observable<Integer> integerObservable = Observable.fromArray(ObservableDemoUtils.getIntegerArray());
         integerObservable
-                .subscribe(new Observer<>() {
+                .subscribe(new Observer<Integer>() {
                     @Override
                     public void onSubscribe(Disposable disposable) {
                         log.info("onSubscribe");

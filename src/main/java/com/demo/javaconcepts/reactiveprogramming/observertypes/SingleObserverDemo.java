@@ -15,7 +15,7 @@ public class SingleObserverDemo {
     public static void main(String[] args) {
         Single<Integer> first = Observable.fromArray(ObservableDemoUtils.getIntegerArray())
                 .first(999);
-        first.subscribe(new SingleObserver<>() {
+        first.subscribe(new SingleObserver<Integer>() {
             @Override
             public void onSubscribe(Disposable disposable) {
                 log.info("onSubscribe");

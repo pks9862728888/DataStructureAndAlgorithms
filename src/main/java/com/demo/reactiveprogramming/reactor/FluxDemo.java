@@ -6,6 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -26,7 +27,7 @@ public class FluxDemo {
                 () -> log.info("Completed"));
 
         // using fromIterable() - will get called without any subscription
-        Flux<Integer> iterableFlux = Flux.fromIterable(List.of(1, 2));
+        Flux<Integer> iterableFlux = Flux.fromIterable(Arrays.asList(1, 2));
         iterableFlux.subscribe(onNext -> log.info("Received from iterableFlux: {}", onNext));
 
         // using fromArray() - will get called without any subscription
@@ -35,7 +36,7 @@ public class FluxDemo {
 
         // from stream - if we use stream then it can be used only once,
         // so we should use stream supplier instead
-        List<Integer> list = List.of(1, 2);
+        List<Integer> list = Arrays.asList(1, 2);
         Flux<Integer> streamFlux = Flux.fromStream(list::stream);
         streamFlux.subscribe(onNext -> log.info("Received fromStream: {}", onNext));
 
