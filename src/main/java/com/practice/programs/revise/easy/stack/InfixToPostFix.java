@@ -20,20 +20,21 @@ public class InfixToPostFix {
     }
 
     public static String infixToPostfix(String exp) {
-        // Iterate over the array
+        // Create a stack to hold operators in high (top) to low order of precedence
+        // Iterate over the infix expression
         // If number is encountered add to string
         // If opening bracket is encountered
         //    push to stack
         // If closing bracket is encountered
         //    pop elements and add to result till opening bracket is encountered
-        // If operator is encountered,
+        // If operator is found,
         //    check if stack is empty
         //        if stack is empty -> push into stack
         //        if stack is not empty
         //            compare with top of stack for precedence
         //                if top of stack is opening bracket
         //                    push in stack
-        //                else if precedence of top element is higher than current
+        //                else if precedence of top element is >= than current
         //                    pop operator and to result
         //                else
         //                    push operator to stack
