@@ -4,6 +4,7 @@ import java.util.Stack;
 
 /**
  * TC: (n) AS: O(n)
+ * <a href="https://www.codingninjas.com/codestudio/problems/postfix-to-infix_8382386?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
  */
 public class PostfixToInfix {
 

@@ -4,11 +4,12 @@ import java.util.Stack;
 
 /**
  * TC: (n) AS: O(n)
+ * <a href="https://www.codingninjas.com/studio/problems/postfix-to-prefix_1788455?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice link</a>
  */
 public class PostfixToPrefix {
 
     public static void main(String[] args) {
-        System.out.println(postfixToPrefix("abc/d*e*-f+"));  // -a+*/bc*def
+        System.out.println(postfixToPrefix("abc/d*e*-f+"));  // +-a**/bcdef
     }
 
     public static String postfixToPrefix(String exp) {
