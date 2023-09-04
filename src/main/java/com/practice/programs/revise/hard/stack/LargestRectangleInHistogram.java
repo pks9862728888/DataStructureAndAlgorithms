@@ -1,6 +1,5 @@
 package com.practice.programs.revise.hard.stack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
@@ -14,6 +13,7 @@ class LargestRectangleInHistogram {
         List<Integer> l = Arrays.asList(2, 1, 5, 6, 2, 6);  // 10
         System.out.println(largestRectangleBruteforce(l));
         System.out.println(largestRectangleAreaBetter(l.toArray(new Integer[0])));
+        // TODO: Code the most optimal solution (Striver's explanation)
     }
 
     // TC: O(n), AS: O(n)
