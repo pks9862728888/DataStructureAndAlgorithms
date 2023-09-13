@@ -17,12 +17,15 @@ public class RemoveDuplicateInPlaceFromSortedArray {
     }
 
     public static int removeDuplicatesAndGetCountDistinctElements(List<Integer> arr, int n) {
-        int i = 0;
-        for (int j = 1; j < n; j++) {
-            if (!arr.get(i).equals(arr.get(j))) {
-                arr.set(++i, arr.get(j));
+        if (arr.size() <= 1) {
+            return arr.size();
+        }
+        int leftIdx = 0;
+        for (int currIdx = 1; currIdx < n; currIdx++) {
+            if (!arr.get(leftIdx).equals(arr.get(currIdx))) {
+                arr.set(++leftIdx, arr.get(currIdx));
             }
         }
-        return i + 1;
+        return leftIdx + 1;
     }
 }

@@ -11,7 +11,7 @@ public class SeiveOrEratothenesCountNoOrPrimeLessThanN {
 
     public int countPrimes(int n) {
         // Use array to store the prime numbers
-        // For each prime no in array upto sqrt(n), mark all multiples of curr no >= no * no as non primt
+        // For each prime no in array upto sqrt(n), mark all multiples of curr no >= no * no as non prime
         boolean[] res = new boolean[n];
         Arrays.fill(res, true);
         res[0] = false;
