@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * TC: O(n), AS: O(1)
- * Sorts in wave like fashion
+ * Sorts in wave like fashion, i.e. nums[0] <= nums[1] >= nums[2] <= nums[3]
  */
 class WiggleSort {
 
