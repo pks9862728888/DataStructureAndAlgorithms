@@ -1,9 +1,6 @@
 package com.practice.programs.revise.easy.array;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * TC: O(2n), AS: O(n)
