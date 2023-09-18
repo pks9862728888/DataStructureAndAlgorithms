@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * TC: O(2n), AS: O(n)
  */
-public class FindLargestSubarrayWithSumZero {
+class FindLargestSubarrayWithSumZero {
 
     // 2 3 1 -4 0 6 -> 3 1 -4 0
 

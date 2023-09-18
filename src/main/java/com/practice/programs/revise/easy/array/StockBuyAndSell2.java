@@ -1,7 +1,7 @@
 package com.practice.programs.revise.easy.array;
 
 // TC: O(n), AS: O(1)
-public class StockBuyAndSell2 {
+class StockBuyAndSell2 {
 
     private int maxProfitIfYouAreAllowedToHoldOneStockAtATime(int[] arr) {
         // Loop through array

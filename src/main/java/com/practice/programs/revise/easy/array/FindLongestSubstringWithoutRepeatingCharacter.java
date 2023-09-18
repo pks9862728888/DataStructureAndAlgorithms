@@ -7,7 +7,7 @@ import java.util.Map;
  * TC: O(n) AS: O(n)
  * Sliding window of variable size
  */
-public class FindLongestSubstringWithoutRepeatingCharacter {
+class FindLongestSubstringWithoutRepeatingCharacter {
 
     // aabcccbcb -> abc -> 3
     // cdddddd -> cd -> 2

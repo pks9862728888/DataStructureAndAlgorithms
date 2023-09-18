@@ -7,7 +7,7 @@ import java.util.Map;
  * TC: O(n), AS: O(n)
  * Sliding window approach of variable window size
  */
-public class FindLongestSubstringWithAtmostKDistinctCharacter {
+class FindLongestSubstringWithAtmostKDistinctCharacter {
 
     // abacd, 3 -> abac (4)
     // Xyyzya, 3 -> yyzya (5)

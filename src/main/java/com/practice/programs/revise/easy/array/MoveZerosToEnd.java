@@ -5,7 +5,7 @@ package com.practice.programs.revise.easy.array;
  * Concept: Two pointer
  * <a href="https://takeuforward.org/data-structure/move-all-zeros-to-the-end-of-the-array/">Practice link</a>
  */
-public class MoveZerosToEnd {
+class MoveZerosToEnd {
 
     public static int[] moveZeros(int n, int []arr) {
         int i = -1;

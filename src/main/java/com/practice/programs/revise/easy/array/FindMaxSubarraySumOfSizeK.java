@@ -4,7 +4,7 @@ package com.practice.programs.revise.easy.array;
  * TC: O(n), AS: O(1)
  * Approach: Sliding Window
  */
-public class FindMaxSubarraySumOfSizeK {
+class FindMaxSubarraySumOfSizeK {
 
     // 100 200 300 400
     // K = 2

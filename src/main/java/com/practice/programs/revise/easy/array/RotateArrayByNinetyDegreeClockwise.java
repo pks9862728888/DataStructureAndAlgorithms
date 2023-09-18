@@ -3,7 +3,7 @@ package com.practice.programs.revise.easy.array;
 /**
  * TC: O(n^2), AS: O(1)
  */
-public class RotateArrayByNinetyDegreeClockwise {
+class RotateArrayByNinetyDegreeClockwise {
 
     public static void main(String[] args) {
         int matrixSize = 4;

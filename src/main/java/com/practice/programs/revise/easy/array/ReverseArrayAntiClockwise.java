@@ -5,7 +5,7 @@ package com.practice.programs.revise.easy.array;
  * Concept: Array reversal algorithm
  * <a href="https://www.codingninjas.com/studio/problems/rotate-array_1230543?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1">practice link</a>
  */
-public class ReverseArrayAntiClockwise {
+class ReverseArrayAntiClockwise {
 
     public static void main(String args[]) {
         int[] arr = {1, 3, 4, 11, 12, 17};  // 12 17, 1, 3, 4, 11

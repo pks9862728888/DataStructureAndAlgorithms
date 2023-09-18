@@ -10,7 +10,7 @@ import java.util.Set;
  * If currentSum is 0 then that means subArray found
  * If currentSum matches with any other previous prefix sum that means sum of elements in that interval is 0
  */
-public class FindSubarrayExistsWithZeroSum {
+class FindSubarrayExistsWithZeroSum {
 
     public static void main(String[] args) {
         System.out.println(subarraySumZero(new int[]{1, -1}));

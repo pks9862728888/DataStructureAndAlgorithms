@@ -6,7 +6,7 @@ import java.util.*;
  * TC: O(nm log m) AS: O(mn), where n = no of words, m = length of each word
  * For each word, sorting will be done, sorting TC: m log(m)
  */
-public class GroupAnagramTogether {
+class GroupAnagramTogether {
 
     // eat tea tan ate nat bat
     // O/P (can be in any order):

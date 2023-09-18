@@ -8,7 +8,7 @@ import java.util.List;
  * TC: O(3N), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/next-greater-permutation_6929564?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice link</a>
  */
-public class NextGreaterPermutation {
+class NextGreaterPermutation {
 
     public static void main(String[] args) {
         System.out.println(nextGreaterPermutation(convertToIntArr(123)));  // 132

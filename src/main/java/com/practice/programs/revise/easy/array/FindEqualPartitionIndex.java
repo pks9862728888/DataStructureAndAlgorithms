@@ -1,6 +1,6 @@
 package com.practice.programs.revise.easy.array;
 
-public class FindEqualPartitionIndex {
+class FindEqualPartitionIndex {
 
     // 1 4 2 5 -> 2
 

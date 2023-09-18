@@ -3,7 +3,7 @@ package com.practice.programs.easy.arrays;
 /**
  * TC: O(n), AS: O(1)
  */
-public class CountSortInString {
+class CountSortInString {
 
     // abcdeedcbaa -> aaabbccddee
 

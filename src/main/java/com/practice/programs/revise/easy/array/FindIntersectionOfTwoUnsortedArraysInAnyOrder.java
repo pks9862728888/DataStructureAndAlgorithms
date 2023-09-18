@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FindIntersectionOfTwoUnsortedArraysInAnyOrder {
+class FindIntersectionOfTwoUnsortedArraysInAnyOrder {
 
     // 4 1 2 2 5
     // 2 2

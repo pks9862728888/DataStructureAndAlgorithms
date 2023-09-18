@@ -8,7 +8,7 @@ import java.util.Map;
  * Intuition:
  * If prefixSum - k is already present in hash, then sum(elements) after idx from hash = k
  */
-public class LongestSubarrayWithSumK {
+class LongestSubarrayWithSumK {
 
     // 1, 2, 3, 1, 1, 1, 1, k = 3 -> 3 [1, 1, 1]
 
