@@ -7,7 +7,7 @@ import java.util.Arrays;
  * TC: O(n), AS: O(1)
  * <a href="https://leetcode.com/problems/count-primes/description/">Practice link</a>
  */
-public class SeiveOrEratothenesCountNoOrPrimeLessThanN {
+public class SeiveOfEratothenesCountNoOrPrimeLessThanN {
 
     public int countPrimes(int n) {
         // Use array to store the prime numbers
