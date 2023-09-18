@@ -15,9 +15,9 @@ class StockBuyAndSellToMakeMaxProfit1 {
     private static int bruteForceApproach2(int[] prices) {
         int minSoFar = prices[0];
         int maxProfit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            minSoFar = Math.min(minSoFar, prices[i]);
-            maxProfit = Math.max(maxProfit, prices[i] - minSoFar);
+        for (int price : prices) {
+            minSoFar = Math.min(minSoFar, price);
+            maxProfit = Math.max(maxProfit, price - minSoFar);
         }
 
         return maxProfit;
