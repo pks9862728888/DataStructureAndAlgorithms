@@ -3,11 +3,11 @@ package com.practice.programs.revise.algorithms;
 /**
  * TC: O(n), AS: O(1)
  */
-public class KdanesAlgorithmFindSubarrayHavingMaxSum {
+class KdanesAlgorithmFindSubarrayHavingMaxSum {
 
     // -2 -3 4 -1 -2 1 5 -3 -> 7
 
-    public static  long contiguousSequence(int arr[] , int n) {
+    public static  long maxSubArraySumKdanesAlgorithm(int[] arr , int n) {
         // K'Danes algorithm
         long sumSoFar = arr[0];
         long currSum = arr[0];
@@ -18,7 +18,7 @@ public class KdanesAlgorithmFindSubarrayHavingMaxSum {
         return sumSoFar;
     }
 
-    public static  long contiguousSequenceMoreIntuitiveApproach(int arr[] , int n) {
+    public static  long maxSubArraySumKdanesAlgorithmIntuitiveApproach(int[] arr , int n) {
         // K'Danes algorithm
         // If currentSum is -ve, then adding any +ve integer will never increase the sum
         // So we will make it as 0
@@ -37,5 +37,4 @@ public class KdanesAlgorithmFindSubarrayHavingMaxSum {
         }
         return sumSoFar;
     }
-
 }
