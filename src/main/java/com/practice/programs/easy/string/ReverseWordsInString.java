@@ -1,9 +1,12 @@
 package com.practice.programs.easy.string;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * TC: O(n), AS: O(n)
  */
-public class ReverseWordsInString {
+class ReverseWordsInString {
 
     // Multiple spaces should be replaced by only 1 space
     // hello      world -> world hello
@@ -30,5 +33,27 @@ public class ReverseWordsInString {
         }
 
         return sb.toString().trim();
+    }
+
+    /**
+     * TC: O(2n), AS: O(n)
+     */
+    public static String reverseString(String str) {
+        // Use variable to
+        // Iterate over the string
+        // currentchar is '' and word is not empty, add to end of string builder
+        List<String> l = new LinkedList<>();
+        StringBuilder wd = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch != ' ') {
+                wd.append(ch);
+            }
+            if ((ch == ' ' || i + 1 == str.length()) && wd.length() > 0) {
+                l.add(0, wd.toString());
+                wd.setLength(0);
+            }
+        }
+        return String.join(" ", l);
     }
 }
