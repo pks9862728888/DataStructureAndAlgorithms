@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] arr = {8, 4, 7, 9, 3, 10, 5, 5};
+        int[] arr = {6, 1, 4, 7, 2, 8, 9, 5, 0, 3};
 //        int p = lomutoPartition(arr, 0, arr.length - 1, arr.length - 1);
 //        int p = hoarePartition(arr, 0, arr.length - 1);
 //        System.out.println(p);
