@@ -9,7 +9,7 @@ class LongestCommonPrefix {
     // abcd, abc, ab -> ab
     // ab, AB -> -1
 
-    public static String commonPrefix(String []arr,int n){
+    public static String commonPrefix(String[] arr, int n) {
         StringBuilder lcp = new StringBuilder(arr[0]);
         for (int i = 1; i < n; i++) {
             String currWd = arr[i];
