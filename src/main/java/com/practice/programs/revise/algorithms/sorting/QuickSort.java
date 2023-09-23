@@ -2,6 +2,9 @@ package com.practice.programs.revise.algorithms.sorting;
 
 import java.util.Arrays;
 
+/**
+ * TC: O(n^2), AS: O(n)
+ */
 public class QuickSort {
 
     public static void main(String[] args) {
