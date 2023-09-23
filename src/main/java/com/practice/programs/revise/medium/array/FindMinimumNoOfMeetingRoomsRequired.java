@@ -12,6 +12,8 @@ import java.util.PriorityQueue;
  */
 public class FindMinimumNoOfMeetingRoomsRequired {
 
+    // 0 20, 5 10, 10 15 -> 2
+
     public int findNumRooms(int[][] intervals) {
         if (intervals.length <= 1) {
             return intervals.length;
