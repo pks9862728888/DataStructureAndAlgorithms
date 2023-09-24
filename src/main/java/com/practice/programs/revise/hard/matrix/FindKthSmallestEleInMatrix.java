@@ -19,8 +19,8 @@ class FindKthSmallestEleInMatrix {
         //      store mid ele as possible ans and continue searching in left side
         // else
         //      continue searching in right side
-        int st = findMinEle(matrix);
-        int end = findMaxEle(matrix);
+        int st = matrix.get(0).get(0);
+        int end = matrix.get(matrix.size() - 1).get(matrix.size() - 1);
         int kthSmallest = -1;
         while (st <= end) {
             int mid = st + (end - st) / 2;
@@ -53,21 +53,5 @@ class FindKthSmallestEleInMatrix {
             }
         }
         return count;
-    }
-
-    private static int findMinEle(List<List<Integer>> matrix) {
-        int minEle = Integer.MAX_VALUE;
-        for (List<Integer> row: matrix) {
-            minEle = Math.min(minEle, row.get(0));
-        }
-        return minEle;
-    }
-
-    private static int findMaxEle(List<List<Integer>> matrix) {
-        int maxEle = Integer.MIN_VALUE;
-        for (List<Integer> row: matrix) {
-            maxEle = Math.max(maxEle, row.get(row.size() - 1));
-        }
-        return maxEle;
     }
 }
