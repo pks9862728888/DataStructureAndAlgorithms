@@ -1,8 +1,14 @@
 package com.practice.programs.revise.hard.array;
 
+/**
+ * TC: O(n log max[arr[i]]), AS: O(1)
+ * Intuition: Minimize hourly speed of reading so that all books can be read by specified time
+ * He can pick up books from only 1 rack in 1 hour
+ * Input is array containing n racks, where arr[i] = no of books in that rack
+ */
 public class FindMinSpeedWithinWhichAllBooksCanBeReadInGivenTime {
 
-    // 3 6 7 11, h = 8
+    // 3 6 7 11, h = 8, minSpeed = 4
 
     static int bookReading(int n, int h, int a[]) {
         int stK = 1;            // constant 1
