@@ -3,6 +3,7 @@ package com.practice.programs.revise.medium.array.binarysearch;
 /**
  * TC: O((log 10^9) * m log n)  AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/median-of-a-row-wise-sorted-matrix_1115473?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * Intuition: For median idx, count of element in left is always <= element at median idx
  */
 class FindMedianInRowWiseSortedMatrix {
 
