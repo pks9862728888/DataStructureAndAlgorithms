@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * TC: O(n) AS: O(n)
  */
-public class LongestValidParenthesis {
+class LongestValidParenthesis {
 
     // ()(()(()) -> ans = 6
 
