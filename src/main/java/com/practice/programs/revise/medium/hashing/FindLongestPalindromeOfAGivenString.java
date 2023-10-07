@@ -2,8 +2,10 @@ package com.practice.programs.revise.medium.hashing;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
+/**
+ * TC: O(n), AS: O(1)
+ */
 public class FindLongestPalindromeOfAGivenString {
 
     // 95
@@ -25,7 +27,7 @@ public class FindLongestPalindromeOfAGivenString {
         int evenFreqCount = 0;
         int maxOddFreq = 0;
         char maxOddFreqChar = ' ';
-        for (Map.Entry<Character, Integer> entry: freqMap.entrySet()) {
+        for (Map.Entry<Character, Integer> entry : freqMap.entrySet()) {
             if (entry.getValue() % 2 != 0) { // odd freq
                 if (entry.getValue() > maxOddFreq) {
                     maxOddFreq = entry.getValue();
@@ -39,7 +41,7 @@ public class FindLongestPalindromeOfAGivenString {
             return evenFreqCount + 1;
         } else if (maxOddFreq > 1) {
             int evenCountOfOddFreqChars = 0;
-            for (Map.Entry<Character, Integer> entry: freqMap.entrySet()) {
+            for (Map.Entry<Character, Integer> entry : freqMap.entrySet()) {
                 if (!entry.getKey().equals(maxOddFreqChar) && entry.getValue() % 2 != 0) {
                     evenCountOfOddFreqChars += (entry.getValue() == 1 ? 0 : entry.getValue() - 1);
                 }
