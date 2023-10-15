@@ -1,4 +1,4 @@
-package com.practice.programs.revise.algorithms.sorting;
+package com.practice.programs.revise.algorithms.sorting.arrays;
 
 import java.util.Arrays;
 
