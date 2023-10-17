@@ -9,22 +9,22 @@ class DiameterOfTree {
         return findDia(root).dia;
     }
 
-    private DiaHeight findDia(TreeNode root) {
+    private DiaHeightPair findDia(TreeNode root) {
         if (root == null) {
-            return new DiaHeight(0, 0);
+            return new DiaHeightPair(0, 0);
         }
-        DiaHeight leftDia = findDia(root.left);
-        DiaHeight rightDia = findDia(root.right);
-        int currHeight = 1 + Math.max(leftDia.height, rightDia.height);
-        int currDia = leftDia.height + rightDia.height;
-        int dia = Math.max(currDia, Math.max(leftDia.dia, rightDia.dia));
-        return new DiaHeight(dia, currHeight);
+        DiaHeightPair leftPair = findDia(root.left);
+        DiaHeightPair rightPair = findDia(root.right);
+        int currHeight = 1 + Math.max(leftPair.height, rightPair.height);
+        int currDia = leftPair.height + rightPair.height;
+        int overallDia = Math.max(currDia, Math.max(leftPair.dia, rightPair.dia));
+        return new DiaHeightPair(overallDia, currHeight);
     }
 
-    private static class DiaHeight {
+    private static class DiaHeightPair {
         int dia;
         int height;
-        DiaHeight(int dia, int height) {
+        DiaHeightPair(int dia, int height) {
             this.dia = dia;
             this.height = height;
         }
