@@ -37,7 +37,7 @@ class RightViewOfBinaryTree {
         return res;
     }
 
-    private ArrayList<Long> usinghashing(TreeNode root) {
+    private ArrayList<Long> usingHashing(TreeNode root) {
         Map<Long, Long> rightViewMap = new HashMap<>();
         long maxHeight = getHeightAndInitRightViewMap(root, rightViewMap, 0);
         ArrayList<Long> rightView = new ArrayList<>();
