@@ -3,7 +3,7 @@ package com.practice.programs.revise.medium.linkedlist;
 /**
  * TC: O(2n), AS: O(1)
  */
-public class DeleteKthNodeFromEnd {
+class DeleteKthNodeFromEnd {
 
     public static Node removeKthNode(Node head, int k) {
         if (head == null) {
