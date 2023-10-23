@@ -42,7 +42,7 @@ class BalanceBST {
         public TreeNode left;
         public TreeNode right;
 
-        public TreeNode (long x) {
+        public TreeNode(long x) {
             val = x;
             left = null;
             right = null;
