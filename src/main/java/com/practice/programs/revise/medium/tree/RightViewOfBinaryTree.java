@@ -33,6 +33,7 @@ class RightViewOfBinaryTree {
                     res.add(curr.val);
                 }
             }
+
         }
         return res;
     }
