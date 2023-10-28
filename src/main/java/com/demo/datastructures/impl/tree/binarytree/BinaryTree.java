@@ -1,6 +1,7 @@
 package com.demo.datastructures.impl.tree.binarytree;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<T> {
 
@@ -70,27 +71,8 @@ public class BinaryTree<T extends Comparable<T>> implements BinaryTreeInterface<
                 curr = curr.left;
             }
         }
+        stack.stream().collect(Collectors.toList());
         System.out.println();
-    }
-
-    private ArrayList<T> preorderTraversalIterativelyNonOptimized(Node<T> root) {
-        ArrayList<T> al = new ArrayList<>();
-        List<Node<T>> q = new LinkedList<>();
-        if (root != null) {
-            q.add(root);
-        }
-        while (q.size() > 0) {
-            Node<T> curr = q.remove(0);
-            al.add(curr.data);
-            if (curr.right != null) {
-                q.add(0, curr.right);
-            }
-            if (curr.left != null) {
-                q.add(0, curr.left);
-            }
-        }
-
-        return al;
     }
 
     /**

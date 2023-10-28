@@ -54,16 +54,16 @@ class LevelOrderTraversal {
         getLevelOrderOutputRecursivePreOrder(node.left, res, depth + 1);
         getLevelOrderOutputRecursivePreOrder(node.right, res, depth + 1);
     }
-}
 
-class TreeNode {
-    public long val;
-    public TreeNode left;
-    public TreeNode right;
+    private static class TreeNode {
+        public long val;
+        public TreeNode left;
+        public TreeNode right;
 
-    public TreeNode (long x) {
-        val = x;
-        left = null;
-        right = null;
+        public TreeNode (long x) {
+            val = x;
+            left = null;
+            right = null;
+        }
     }
 }
