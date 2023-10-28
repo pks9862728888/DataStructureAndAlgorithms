@@ -5,54 +5,51 @@ import java.util.*;
 /**
  * TC: O(n), AS: O(n)
  */
-public class TopViewOfBinaryTree {
+class BottomViewOfBinaryTree {
 
-    public ArrayList<Long> topViewBinaryTree(TreeNode root) {
+    public static List<Integer> bottomView(TreeNode root) {
+        List<Integer> view = new ArrayList<>();
         if (root == null) {
-            return new ArrayList<>();
+            return view;
         }
-        Map<Integer, Long> topView = new HashMap<>();
+        Map<Integer, Integer> eleMap = new HashMap<>();
         int minIdx = Integer.MAX_VALUE;
         int maxIdx = Integer.MIN_VALUE;
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(root, 0));
         while (!q.isEmpty()) {
             Pair curr = q.poll();
-            topView.putIfAbsent(curr.distance, curr.node.val);
-            minIdx = Math.min(minIdx, curr.distance);
-            maxIdx = Math.max(maxIdx, curr.distance);
+            eleMap.put(curr.idx, curr.node.val);
+            maxIdx = Math.max(maxIdx, curr.idx);
+            minIdx = Math.min(minIdx, curr.idx);
             if (curr.node.left != null) {
-                q.add(new Pair(curr.node.left, curr.distance - 1));
+                q.add(new Pair(curr.node.left, curr.idx - 1));
             }
             if (curr.node.right != null) {
-                q.add(new Pair(curr.node.right, curr.distance + 1));
+                q.add(new Pair(curr.node.right, curr.idx + 1));
             }
         }
-
-        // Return result
-        ArrayList<Long> res = new ArrayList<>();
         for (int i = minIdx; i <= maxIdx; i++) {
-            res.add(topView.get(i));
+            view.add(eleMap.get(i));
         }
-        return res;
+        return view;
     }
 
     private static class Pair {
         TreeNode node;
-        int distance;
-
-        Pair(TreeNode n, int d) {
-            this.node = n;
-            this.distance = d;
+        int idx;
+        Pair(TreeNode node, int idx) {
+            this.node = node;
+            this.idx = idx;
         }
     }
 
     private static class TreeNode {
-        public long val;
+        public int val;
         public TreeNode left;
         public TreeNode right;
 
-        public TreeNode (long x) {
+        public TreeNode (int x) {
             val = x;
             left = null;
             right = null;
