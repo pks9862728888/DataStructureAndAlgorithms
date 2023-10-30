@@ -7,7 +7,7 @@ import java.util.*;
  * TC is n log n, because we are traversing through all the nodes so n, log n because we are using TreeMap
  * <a href="https://www.codingninjas.com/studio/problems/vertical-order-traversal_3622711?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
  */
-public class VerticalOrderTraversalOfBinaryTree {
+class VerticalOrderTraversalOfBinaryTree {
 
     public static List<Integer> verticalOrderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
