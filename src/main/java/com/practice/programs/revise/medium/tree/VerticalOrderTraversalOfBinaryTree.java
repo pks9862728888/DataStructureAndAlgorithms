@@ -35,8 +35,8 @@ class VerticalOrderTraversalOfBinaryTree {
             }
         }
         // Generate list
-        for (Map<Integer, PriorityQueue<Integer>> yValuesMap: map.values()) {
-            for (PriorityQueue<Integer> yNodeValues: yValuesMap.values()) {
+        for (Map<Integer, PriorityQueue<Integer>> yValuesMap : map.values()) {
+            for (PriorityQueue<Integer> yNodeValues : yValuesMap.values()) {
                 while (!yNodeValues.isEmpty()) {
                     res.add(yNodeValues.poll());
                 }
@@ -49,6 +49,7 @@ class VerticalOrderTraversalOfBinaryTree {
         public TreeNode node;
         public int x;
         public int y;
+
         Tuple(TreeNode node, int x, int y) {
             this.node = node;
             this.x = x;
@@ -60,6 +61,7 @@ class VerticalOrderTraversalOfBinaryTree {
         int data;
         TreeNode left;
         TreeNode right;
+
         TreeNode(int data) {
             this.data = data;
             this.left = null;
