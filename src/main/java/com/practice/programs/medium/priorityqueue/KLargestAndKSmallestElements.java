@@ -2,13 +2,13 @@ package com.practice.programs.medium.priorityqueue;
 
 import java.util.Arrays;
 
-public class KLargestAndKSmallestElements {
+class KLargestAndKSmallestElements {
 
     /**
      * Approach 1: TC: O(n log n)
      * - Sort the array: n log n
      * - Find k elements: k
-     *
+     * <p>
      * Approach 2: TC: O(n log k)
      * - Maintain PQ for first k elements: k log k
      * - For next n - k elements re-heap with first k elements: (n - k) log k
@@ -140,6 +140,7 @@ public class KLargestAndKSmallestElements {
     private static int[] createArr(int arr[], int stIdx, int endIdx) {
         return Arrays.copyOfRange(arr, stIdx, endIdx);
     }
+
     private static void swap(int arr[], int i, int j) {
         int t = arr[i];
         arr[i] = arr[j];
@@ -147,6 +148,6 @@ public class KLargestAndKSmallestElements {
     }
 
     private static int[] getArr() {
-        return new int[] {2, 4, 1, 7, 9, 2, 10};
+        return new int[]{2, 4, 1, 7, 9, 2, 10};
     }
 }
