@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 /**
  * If n = total no of elements combined, k = no of arrays
- * TC: O(kn * log k) -> build pq = k, for each n element poll and add -> n * log k
+ * TC: O(k log k + n * log k) -> build pq = k, for each n element poll and add -> n * log k
  * AS: O(n + k) -> heap O(k), for ans array O(n)
  */
 class MergeKSortedArrays {
