@@ -1,4 +1,4 @@
-package com.practice.programs.medium.array;
+package com.practice.programs.revise.medium.greedyalgorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * TC: O(n log n), AS: O(n)
+ * Greedy approach
  */
 class FindMaximumActivitiesAPersonCanPerform {
 
