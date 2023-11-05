@@ -16,7 +16,7 @@ class MergeKSortedArrays {
         buildPQ(pq, arrays);
 
         // Merge k sorted arrays
-        ArrayList<Integer> mergedArray = new ArrayList<Integer>();
+        ArrayList<Integer> mergedArray = new ArrayList<>();
         while (!pq.isEmpty()) {
             Pair minPair = pq.poll();
             mergedArray.add(minPair.element);
