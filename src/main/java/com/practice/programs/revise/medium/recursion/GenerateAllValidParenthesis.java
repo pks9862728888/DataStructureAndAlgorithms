@@ -12,8 +12,8 @@ class GenerateAllValidParenthesis {
     // n = 2, ans = [(()), ()()]
     // Concept, we can't add closed braces count if countClosed > countOpened so far
 
-    ArrayList<String> balancedBraces(int n) {
-        ArrayList<String> res = new ArrayList<>();
+    public List<String> balancedBraces(int n) {
+        List<String> res = new ArrayList<>();
         generateBalancedBraces("", 0, 0, n, res);
         return res;
     }
