@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.recursion;
+package com.practice.programs.revise.medium.recursionbacktracking;
 
 import java.util.ArrayList;
 import java.util.List;
