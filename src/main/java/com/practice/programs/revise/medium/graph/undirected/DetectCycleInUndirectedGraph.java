@@ -39,7 +39,6 @@ public class DetectCycleInUndirectedGraph {
             Map<Integer, List<Integer>> adjList, Integer currNode, Set<Integer> visited, Integer prev) {
         for (Integer adjNode: adjList.getOrDefault(currNode, new ArrayList<>())) {
             if (prev.equals(adjNode)) {
-                continue;
             } else if (visited.contains(adjNode)) {
                 return true;
             } else {
