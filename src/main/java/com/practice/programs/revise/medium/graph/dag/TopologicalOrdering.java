@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.graph.undirected;
+package com.practice.programs.revise.medium.graph.dag;
 
 import java.util.*;
 
