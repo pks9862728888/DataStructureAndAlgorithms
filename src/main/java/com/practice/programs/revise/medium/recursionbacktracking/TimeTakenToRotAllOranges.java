@@ -5,39 +5,52 @@ import java.util.Queue;
 
 /**
  * TC: O(n*m), SC: O(n*m)
+ * <a href="https://www.codingninjas.com/studio/problems/rotting-oranges_701655?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
  */
 public class TimeTakenToRotAllOranges {
 
     private static final int[] dx = {1, 0, -1, 0};
     private static final int[] dy = {0, -1, 0, 1};
 
-    public static int rottingOranges(int[][] grid) {
-        int n = grid.length;
-        int m = grid[0].length;
-        Queue<Item> q = initQueueWithRottenOranges(grid, n, m);
-        int timeTaken = 0;
-        while (!q.isEmpty()) {
-            Item curr = q.poll();
+    public static int minTimeToRot(int[][] grid, int n, int m) {
+        int minTimeToRot = 0;
+        Queue<Pair> rottenOranges = loadRottenOranges(grid, n, m);
+        while (!rottenOranges.isEmpty()) {
+            Pair pair = rottenOranges.poll();
             for (int dir = 0; dir < dx.length; dir++) {
-                int x = curr.x + dx[dir];
-                int y = curr.y + dy[dir];
-                int t = curr.t + 1;
-
-                if (canVisit(x, y, grid, n, m)) {
+                int x = pair.x + dx[dir];
+                int y = pair.y + dy[dir];
+                if (canRot(x, y, n, m, grid)) {
                     grid[x][y] = 2;
-                    timeTaken = Math.max(timeTaken, t);
-                    q.add(new Item(x, y, t));
+                    int timeTakenToRot = pair.timeTaken + 1;
+                    minTimeToRot = Math.max(minTimeToRot, timeTakenToRot);
+                    rottenOranges.add(new Pair(x, y, timeTakenToRot));
                 }
             }
         }
-
-        return anyFreshOrangePending(grid, n, m) ? -1 : timeTaken;
+        return isFreshOrangeFound(grid, n, m) ? -1 : minTimeToRot;
     }
 
-    private static boolean anyFreshOrangePending(int[][] grid, int n, int m) {
-        for (int x = 0; x < n; x++) {
-            for (int y = 0; y < m; y++) {
-                if (grid[x][y] == 1) {
+    private static boolean canRot(int x, int y, int n, int m, int[][] grid) {
+        return x >= 0 && y >= 0 && x < n && y < m && grid[x][y] == 1;
+    }
+
+    private static Queue<Pair> loadRottenOranges(int[][] grid, int n, int m) {
+        Queue<Pair> rottenOranges = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 2) {
+                    rottenOranges.add(new Pair(i, j, 0));
+                }
+            }
+        }
+        return rottenOranges;
+    }
+
+    private static boolean isFreshOrangeFound(int[][] grid, int n, int m) {
+        for (int[] xLine: grid) {
+            for (int orange: xLine) {
+                if (orange == 1) {
                     return true;
                 }
             }
@@ -45,31 +58,14 @@ public class TimeTakenToRotAllOranges {
         return false;
     }
 
-    private static boolean canVisit(int x, int y, int[][] grid, int n, int m) {
-        return x >= 0 && y >= 0 && x < n && y < m && grid[x][y] == 1;
-    }
-
-    public static Queue<Item> initQueueWithRottenOranges(int[][] grid, int n, int m) {
-        Queue<Item> q = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (grid[i][j] == 2) {
-                    q.add(new Item(i, j, 0));
-                }
-            }
-        }
-        return q;
-    }
-
-    private static class Item {
+    private static class Pair {
         int x;
         int y;
-        int t;
-
-        Item(int x, int y, int t) {
+        int timeTaken;
+        Pair(int x, int y, int timeTaken) {
             this.x = x;
             this.y = y;
-            this.t = t;
+            this.timeTaken = timeTaken;
         }
     }
 }

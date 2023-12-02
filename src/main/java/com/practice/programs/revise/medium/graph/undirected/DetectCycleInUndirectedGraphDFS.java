@@ -6,14 +6,7 @@ import java.util.*;
  * TC: O(v + e), where v = no of nodes, e = no of edges
  * AS: O(v + e) -> v + e -> to store adjacency list, O(v) to store visited array and call stack
  */
-public class DetectCycleInUndirectedGraph {
-
-    public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> edges = new ArrayList<>();
-        edges.add(new ArrayList<>(Arrays.asList(1, 2)));
-        edges.add(new ArrayList<>(Arrays.asList(2, 3)));
-        System.out.println(detectCycle(3, edges));
-    }
+public class DetectCycleInUndirectedGraphDFS {
 
     public static String detectCycle(int nodes, ArrayList<ArrayList<Integer>> edges) {
         // Create graph
