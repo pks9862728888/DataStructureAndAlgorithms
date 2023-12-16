@@ -1,7 +1,7 @@
 package com.practice.programs.easy.arrays.binarysearch;
 
 /**
- * TC: O (log (m + n)), AS: O(1)
+ * TC: O (m * log n), AS: O(1)
  */
 class SearchInASorted2DMatrix {
 
@@ -11,37 +11,31 @@ class SearchInASorted2DMatrix {
     // Search: 12
     // Res: true
 
-    public static boolean searchElement(int [][] m, int target) {
-        int rowSt = 0;
-        int rowEnd = m.length - 1;
-        while (rowSt <= rowEnd) {
-            int mid = rowSt + (rowEnd - rowSt) / 2;
-            int[] row = m[mid];
-            if (target < row[0]) {
-                rowEnd = mid - 1;
-            } else if (target > row[row.length - 1]) {
-                rowSt = mid + 1;
-            } else {
-                if (found(row, target)) {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for (int[] arr: matrix) {
+            int endIdx = arr.length - 1;
+            if (arr[0] > target) {
+                break;
+            } else if (target >= arr[0] && target <= arr[endIdx]) {
+                if(isFound(arr, endIdx, target)) {
                     return true;
                 }
-                break;
             }
         }
         return false;
     }
 
-    private static boolean found(int[] row, int target) {
-        int st = 0;
-        int end = row.length - 1;
-        while (st <= end) {
-            int mid = st + (end - st) / 2;
-            if (row[mid] == target) {
+    private boolean isFound(int[] arr, int endIdx, int target) {
+        int lb = 0;
+        int ub = endIdx;
+        while (lb <= ub) {
+            int mid = lb + (ub - lb) / 2;
+            if (arr[mid] == target) {
                 return true;
-            } else if (row[mid] > target) {
-                end = mid - 1;
+            } else if (target > arr[mid]) {
+                lb = mid + 1;
             } else {
-                st = mid + 1;
+                ub = mid - 1;
             }
         }
         return false;

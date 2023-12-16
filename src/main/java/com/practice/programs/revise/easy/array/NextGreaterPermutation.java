@@ -1,78 +1,42 @@
 package com.practice.programs.revise.easy.array;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * If no next permutations are possible, return the least possible permutation
- * TC: O(3N), AS: O(1)
+ * TC: O(n log n), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/next-greater-permutation_6929564?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice link</a>
  */
 class NextGreaterPermutation {
 
-    public static void main(String[] args) {
-        System.out.println(nextGreaterPermutation(convertToIntArr(123)));  // 132
-        System.out.println(nextGreaterPermutation(convertToIntArr(1243))); // 1324
-        System.out.println(nextGreaterPermutation(convertToIntArr(321))); // 123
-    }
 
-    /**
-     * 1243
-     * Find idx of digit which is greater than the previous, and store idx of previous digit -> 1
-     * Replace the previous digit idx with next digit greater than in right halve -> 1342
-     * Reverse the right halve of the idx -> 1324
-     */
-    public static List<Integer> nextGreaterPermutation(List<Integer> digits) {
-        if (digits.size() <= 1) {
-            return digits;
-        }
-        int idxDigitNextGreater = -1;
-        for (int i = digits.size() - 1; i > 0; i--) {
-            if (digits.get(i) > digits.get(i - 1)) {
-                idxDigitNextGreater = i - 1;
-                break;
+    static int[] nextPermutation(int[] nums) {
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int idx = findNextPermutationIdx(nums, i);
+            if (idx != -1) {
+                swap(nums, i, idx);
+                Arrays.sort(nums, i + 1, nums.length);
+                return nums;
             }
         }
-        if (idxDigitNextGreater == -1) {
-            reverse(digits, 0);
-            return digits;
-        } else {
-            swap(digits, idxDigitNextGreater, findNextGreaterDigitIdxRightHalve(digits, idxDigitNextGreater));
-            reverse(digits, idxDigitNextGreater + 1);
-            return digits;
-        }
+        // Next permutation not possible, so return sorted array
+        Arrays.sort(nums);
+        return nums;
     }
 
-    private static int findNextGreaterDigitIdxRightHalve(List<Integer> digits, int currIdx) {
-        for (int i = digits.size() - 1; i > currIdx; i--) {
-            if (digits.get(i) > digits.get(currIdx)) {
-                return i;
+    private static int findNextPermutationIdx(int[] nums, int minEleIdx) {
+        int nextGreaterEleIdx = -1;
+        for (int i = minEleIdx + 1; i < nums.length; i++) {
+            if (nums[i] > nums[minEleIdx] && (nextGreaterEleIdx == -1 || nums[i] < nums[nextGreaterEleIdx])) {
+                nextGreaterEleIdx = i;
             }
         }
-        return currIdx;
+        return nextGreaterEleIdx;
     }
 
-    private static void reverse(List<Integer> digits, int stIdx) {
-        int endIdx = digits.size();
-        for (int i = 0; i < (endIdx - stIdx) / 2; i++) {
-            swap(digits, stIdx + i, endIdx - i - 1);
-        }
-    }
-
-    private static void swap(List<Integer> digits, int idx1, int idx2) {
-        if (idx1 != idx2) {
-            int temp = digits.get(idx1);
-            digits.set(idx1, digits.get(idx2));
-            digits.set(idx2, temp);
-        }
-    }
-
-    private static List<Integer> convertToIntArr(int n) {
-        List<Integer> ints = new ArrayList<>();
-        while (n > 0) {
-            ints.add(0, n % 10);
-            n /= 10;
-        }
-        return ints;
+    private static void swap(int[] nums, int idx1, int idx2) {
+        int t = nums[idx1];
+        nums[idx1] = nums[idx2];
+        nums[idx2] = t;
     }
 }
