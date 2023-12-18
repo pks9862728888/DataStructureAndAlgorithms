@@ -11,7 +11,7 @@ class NextGreaterElement {
      * Expected TC: O(n)
      * Expected AS: O(n)
      * GFG Beginners DSA sheet
-     * NGE means next element which is immeditely greater than current element
+     * NGE means next element which is immediately greater than current element
      */
     public static void main(String[] args) {
         System.out.println(Arrays.toString(nextLargerElement(new long[]{1, 3, 2, 4})));
