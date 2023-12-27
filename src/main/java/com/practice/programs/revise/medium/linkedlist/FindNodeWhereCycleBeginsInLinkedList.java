@@ -1,7 +1,7 @@
 package com.practice.programs.revise.medium.linkedlist;
 
 // TC: O(n), AS: O(1)
-class RemoveCycleFromLinkedList {
+public class FindNodeWhereCycleBeginsInLinkedList {
 
     // Proof why removal cycle works (Floyds algorithm)
     // If x is the distance from start till intersection
@@ -13,30 +13,25 @@ class RemoveCycleFromLinkedList {
     // 2 * (x + d) = x + 2d + p
     // x = p (so thats why after cycle detection, we move fast to start and move by 1 along with slow)
 
-    public boolean detectAndRemoveCycle(ListNode head){
+    public ListNode linkedListCycleII(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
-        boolean isCycleDetected = false;
-        ListNode slowPrev = null;
         while (fast != null && fast.next != null) {
-            slowPrev = slow;
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
-                isCycleDetected = true;
-                removeCycle(slow, head, slowPrev);
+                return getNodeWhichStartsCycle(slow, head);
             }
         }
-        return isCycleDetected;
+        return null;
     }
 
-    private void removeCycle(ListNode slow, ListNode fromHead, ListNode slowPrev) {
+    private ListNode getNodeWhichStartsCycle(ListNode slow, ListNode fromHead) {
         while (slow != fromHead) {
-            slowPrev = slow;
             slow = slow.next;
             fromHead = fromHead.next;
         }
-        slowPrev.next = null;
+        return slow;
     }
 
     private static class ListNode {
