@@ -1,13 +1,12 @@
 package com.practice.programs.easy.tree;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
- * TC: O(h * 2 * 2 ^ h), AS: O(2 * 2^h), where h = height of binary tree, no of nodes at height h = 2 ^ h
+ * TC: O(n), AS: O(n)
  * <a href="https://www.codingninjas.com/studio/problems/symmetric-tree_981177?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * <a href="https://leetcode.com/problems/symmetric-tree/">Leetcode practice link</a>
  */
 class SymmetricBinaryTree {
 
@@ -16,47 +15,28 @@ class SymmetricBinaryTree {
             return true;
         }
         Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
+        q.add(root.left);
+        q.add(root.right);
         while (!q.isEmpty()) {
-            List<Integer> elements = new ArrayList<>();
-            int size = q.size();
-            for (int i = 1; i <= size; i++) {
-                TreeNode curr = q.poll();
-                elements.add(curr.data);
-                if (curr.left != null) {
-                    q.add(curr.left);
-                }
-                if (curr.right != null) {
-                    q.add(curr.right);
-                }
-            }
-            if (!isPalindrome(elements)) {
+            TreeNode left = q.poll();
+            TreeNode right = q.poll();
+            if (left == null && right == null) {
+                continue;
+            } else if (left == null || right == null || left.val != right.val) {
                 return false;
             }
-        }
-        return true;
-    }
-
-    private static boolean isPalindrome(List<Integer> l) {
-        int n = l.size();
-        for (int i = 0; i < n / 2; i++) {
-            if (!l.get(i).equals(l.get(n - i - 1))) {
-                return false;
-            }
+            q.add(left.left);
+            q.add(right.right);
+            q.add(left.right);
+            q.add(right.left);
         }
         return true;
     }
 
 
     private static class TreeNode {
-        int data;
+        int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode(int data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
     }
 }
