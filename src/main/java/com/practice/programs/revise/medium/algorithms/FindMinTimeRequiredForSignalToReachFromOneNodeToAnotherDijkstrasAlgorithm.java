@@ -2,7 +2,7 @@ package com.practice.programs.revise.medium.algorithms;
 
 import java.util.*;
 
-class FindMinTimeRequiredForSignalToReachFromOneNodeToAnother {
+class FindMinTimeRequiredForSignalToReachFromOneNodeToAnotherDijkstrasAlgorithm {
 
     public static int networkDelayTime(int[][] times, int n, int k) {
         // Prepare adjacency list
