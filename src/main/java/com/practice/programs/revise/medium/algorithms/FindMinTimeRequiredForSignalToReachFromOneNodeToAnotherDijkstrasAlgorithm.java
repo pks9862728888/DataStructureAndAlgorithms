@@ -33,14 +33,16 @@ class FindMinTimeRequiredForSignalToReachFromOneNodeToAnotherDijkstrasAlgorithm 
         Arrays.fill(delay, Integer.MAX_VALUE);
         PriorityQueue<DelayPair> pq = new PriorityQueue<>();
         pq.add(new DelayPair(k, 0));
+        delay[k] = 0;
         while (!pq.isEmpty()) {
             DelayPair pair = pq.poll();
             // If delay while visiting via curr node is less than existing then only visit
-            if (pair.delay < delay[pair.vertex]) {
-                delay[pair.vertex] = pair.delay;
-                List<DelayPair> adjNodes = adjList.get(pair.vertex);
-                for (DelayPair adjNode: adjNodes) {
-                    pq.add(new DelayPair(adjNode.vertex, pair.delay + adjNode.delay));
+            List<DelayPair> adjNodes = adjList.get(pair.vertex);
+            for (DelayPair adjNode : adjNodes) {
+                int delayAdjNode = pair.delay + adjNode.delay;
+                if (delayAdjNode < delay[adjNode.vertex]) {
+                    delay[adjNode.vertex] = delayAdjNode;
+                    pq.add(new DelayPair(adjNode.vertex, delayAdjNode));
                 }
             }
         }
@@ -52,13 +54,13 @@ class FindMinTimeRequiredForSignalToReachFromOneNodeToAnotherDijkstrasAlgorithm 
         for (int i = 0; i <= n; i++) {
             adjList.add(new ArrayList<>());
         }
-        for (int [] edge: times) {
+        for (int[] edge : times) {
             int src = edge[0];
             int dest = edge[1];
             int delay = edge[2];
             adjList.get(src).add(new DelayPair(dest, delay));
         }
-        for (List<DelayPair> adjNodes: adjList) {
+        for (List<DelayPair> adjNodes : adjList) {
             Collections.sort(adjNodes);
         }
         return adjList;
@@ -67,15 +69,18 @@ class FindMinTimeRequiredForSignalToReachFromOneNodeToAnotherDijkstrasAlgorithm 
     private static class DelayPair implements Comparable<DelayPair> {
         int vertex;
         int delay;
+
         DelayPair(int v, int d) {
             vertex = v;
             delay = d;
         }
+
         @Override
         public int compareTo(DelayPair o) {
             int res = Integer.compare(delay, o.delay);
             return res == 0 ? Integer.compare(vertex, o.vertex) : res;
         }
+
         @Override
         public String toString() {
             return String.format("(%s, %s)", vertex, delay);
