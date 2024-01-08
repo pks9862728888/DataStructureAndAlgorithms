@@ -2,6 +2,10 @@ package com.practice.programs.revise.medium.algorithms;
 
 import java.util.*;
 
+/**
+ * TC: O(E log n), log n since push and pop operation in PQ takes log n times
+ * AS: O(n + E), n = no of nodes in graph, E = no of edges
+ */
 class FindMinTimeRequiredForSignalToReachFromOneNodeToAnotherDijkstrasAlgorithm {
 
     public static int networkDelayTime(int[][] times, int n, int k) {
