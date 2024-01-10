@@ -22,30 +22,31 @@ public class LRUCacheLinkedHashMap {
 
     private static class LRUCache {
 
-        private final int MAX_CAPACITY;
-        private final LinkedHashMap<Integer, Integer> map;
+        private final int CAPACITY;
+        private Map<Integer, Integer> map;
 
-        LRUCache(int capacity) {
-            this.MAX_CAPACITY = capacity;
-            this.map = new LinkedHashMap<Integer, Integer>(this.MAX_CAPACITY, 0.75f, true) {
+        public LRUCache(int size) {
+            CAPACITY = size;
+            map = new LinkedHashMap<Integer, Integer>() {
                 @Override
-                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-                    return size() > MAX_CAPACITY;
+                protected boolean removeEldestEntry(Map.Entry<Integer, Integer> entry) {
+                    return size() > CAPACITY;
                 }
             };
         }
 
-        public Integer get(Integer key) {
-            return this.map.get(key);
+        int get(int key) {
+            if (map.containsKey(key)) {
+                int value = map.get(key);
+                map.remove(key);
+                map.put(key, value);
+                return value;
+            }
+            return -1;
         }
 
-        public void put(Integer key, Integer value) {
-            this.map.put(key, value);
-        }
-
-        @Override
-        public String toString() {
-            return this.map.toString();
+        void put(int key, int value) {
+            map.put(key, value);
         }
     }
 }
