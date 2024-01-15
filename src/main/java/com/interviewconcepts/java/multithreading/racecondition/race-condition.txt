@@ -1,0 +1,8 @@
+When 2 or more threads tries to access a shared resource in non-synchronized manner,
+then this results in incorrect data modification.
+
+This results in race-condition.
+
+Possible mitigation:
+- Use synchronized block / synchronized method
+- Use atomic variables
