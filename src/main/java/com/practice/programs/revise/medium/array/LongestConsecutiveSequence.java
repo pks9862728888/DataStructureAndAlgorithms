@@ -15,7 +15,7 @@ class LongestConsecutiveSequence {
                 new int[]{15, 6, 2, 1, 16, 4, 2, 29, 9, 12, 8, 5, 14, 21, 8, 12, 17, 16, 6, 26, 3}));  // 6
     }
 
-    public static int longestSuccessiveElements(int []arr) {
+    public static int longestSuccessiveElements(int[] arr) {
 //        return longestSuccessiveEleBetterApproach(arr);
         return longestSuccessiveElementOptimal(arr);
     }
@@ -27,12 +27,12 @@ class LongestConsecutiveSequence {
         //      If ele - 1 is present in set -> do nothing
         //      If ele - 1 is not present in set (head of seq) -> find longest seq
         Set<Integer> distinctElementsSet = new HashSet<>();
-        for (int e: arr) {
+        for (int e : arr) {
             distinctElementsSet.add(e);
         }
 
         int longestSuccSeq = 1;
-        for (int ele: distinctElementsSet) {
+        for (int ele : distinctElementsSet) {
             if (!distinctElementsSet.contains(ele - 1)) {
                 int currSeqLength = 1;
                 while (distinctElementsSet.contains(++ele)) {
@@ -47,7 +47,7 @@ class LongestConsecutiveSequence {
     // TC: O(nlog n + n), AS: O(1)
     private static int longestSuccessiveEleBetterApproach(int[] arr) {
         Arrays.sort(arr);
-        int lse = 1;
+        int lse = arr.length > 0 ? 1 : 0;
         int currSeq = 1;
         int prev = arr[0];
         for (int i = 1; i < arr.length; i++) {
