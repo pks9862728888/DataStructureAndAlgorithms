@@ -32,11 +32,7 @@ class LargestRectangleInHistogram {
             while (!st.isEmpty() && h[st.peek()] >= h[i]) {
                 st.pop();
             }
-            if (st.isEmpty()) {
-                ps[i] = 0;
-            } else {
-                ps[i] = st.peek() + 1;
-            }
+            ps[i] = st.isEmpty() ? 0 : st.peek() + 1;
             st.push(i);
         }
 
@@ -46,11 +42,7 @@ class LargestRectangleInHistogram {
             while (!st.isEmpty() && h[st.peek()] >= h[i]) {
                 st.pop();
             }
-            if (st.isEmpty()) {
-                ns[i] = n - 1;
-            } else {
-                ns[i] = st.peek() - 1;
-            }
+            ns[i] = st.isEmpty() ? n - 1 : st.peek() - 1;
             st.push(i);
         }
 
