@@ -3,6 +3,7 @@ package com.demo.datastructures.impl.graph.algorithms.dijkstrasalgorithm;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 class UndirectedWeightedAdjacencyListGraph {
@@ -24,13 +25,8 @@ class UndirectedWeightedAdjacencyListGraph {
         System.out.println("Min distance of all nodes from source node: 0");
         boolean[] visited = new boolean[vertex];
         int[] distance = new int[vertex];
-        for (int i = 0; i < vertex; i++) {
-            if (i == 0) {
-                distance[0] = 0;
-            } else {
-                distance[i] = Integer.MAX_VALUE;
-            }
-        }
+        Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[0] = 0;
 
         // Find the min distance
         for (int i = 0; i < vertex; i++) {
