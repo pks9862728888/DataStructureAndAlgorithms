@@ -40,5 +40,4 @@ class ConstructBSTFromInorderAndPreOrderTraversal {
             right = null;
         }
     }
-
 }
