@@ -1,6 +1,6 @@
 package com.practice.programs.revise.medium.greedyalgorithms;
 
-public class JumpGame1 {
+public class JumpGame {
 
     // from idx i, user, can take upto i, i + 1, i + 2, .... i + nums[i] jumps
     // Find if user can reach end from start
