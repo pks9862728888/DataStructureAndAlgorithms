@@ -5,17 +5,9 @@ import java.util.*;
 /**
  * TC: O (m * n ^ 2), where m = length of words, n = total no of words
  * AS: O (m * n ^ 2), where m = length of words, n = total no of words ????
+ * Undirected graph, so BFS
  */
 public class WordTransformation {
-
-    private static class WordPath {
-        String word;
-        int pathLength;
-        WordPath(String w, int len) {
-            word = w;
-            pathLength = len;
-        }
-    }
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Map<String, List<String>> graph = initGraph(wordList, beginWord);
@@ -81,5 +73,14 @@ public class WordTransformation {
             map.put(w, false);
         }
         return map;
+    }
+
+    private static class WordPath {
+        String word;
+        int pathLength;
+        WordPath(String w, int len) {
+            word = w;
+            pathLength = len;
+        }
     }
 }
