@@ -14,7 +14,7 @@ class GasStationFindMinimumPositionForStartingForCircularTraversal {
     // fuel - 4 2 3 1 5
     // ans = 4 (consider 1 indexed)
 
-    static int circularRace(int n, ArrayList<Integer> gas, ArrayList<Integer>burn) {
+    static int circularRaceOptimal(int n, ArrayList<Integer> gas, ArrayList<Integer>burn) {
         if (!canTraverse(gas, burn, n)) {
             return -1;
         }
@@ -38,8 +38,45 @@ class GasStationFindMinimumPositionForStartingForCircularTraversal {
         return remainingGas >= 0;
     }
 
-    private static int getRemainingGas(ArrayList<Integer>gas, ArrayList<Integer>burn, int idx) {
+    private static int getRemainingGas(ArrayList<Integer> gas, ArrayList<Integer> burn, int idx) {
         return gas.get(idx) - burn.get(idx);
     }
 
+    static int gasStationBruteForce(int[] gas, int[] burn){
+        // Initialize totalGas and totalCost to 0
+        int totalGas = 0;
+        int totalCost = 0;
+        int n = gas.length;
+
+        // If totalGas is less than totalCost, return -1 (impossible to complete circuit)
+        for (int i = 0; i < n; i++) {
+            totalGas += gas[i];
+            totalCost += burn[i];
+        }
+        if (totalGas < totalCost) {
+            return -1;
+        }
+
+        // Loop through the gas array
+        int startStation = 0;
+        while (startStation < n) {
+            // Initialize remainGas and start to 0
+            int remGas = 0;
+            int nextStation = startStation;
+            while (true) {
+                // Calculate the remainGas
+                remGas += gas[nextStation] - burn[nextStation];
+                if (remGas < 0) {
+                    startStation++;
+                    break;
+                } else {
+                    nextStation = (nextStation + 1) % n;
+                    if (startStation == nextStation) {
+                        return startStation + 1; // 1 indexed
+                    }
+                }
+            }
+        }
+        return -1;
+    }
 }

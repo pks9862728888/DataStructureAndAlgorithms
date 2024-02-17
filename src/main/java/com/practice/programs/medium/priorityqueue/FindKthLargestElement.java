@@ -6,17 +6,13 @@ class FindKthLargestElement {
 
     // Optimal approach, TC: n log k -> for all n elements, adding in heap
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue();  // min heap
-        for (int e : nums) {
-            if (pq.size() >= k) {
-                if (e > pq.peek()) {
-                    pq.poll();
-                    pq.add(e);
-                }
-            } else {
-                pq.add(e);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int ele: nums) {
+            pq.add(ele);
+            if (pq.size() > k) {
+                pq.poll();
             }
         }
-        return pq.peek();
+        return pq.poll();
     }
 }
