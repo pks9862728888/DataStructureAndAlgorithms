@@ -8,13 +8,13 @@ public class JumpGame {
     // 3, 0, 0, 0, 4 -> false
     // Use greedy approach, TC: O(n), AS: O(1)
 
-    public static boolean canReachEndFromStart(int[] nums) {
-        int targetNumIndex = nums.length - 1;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            if (targetNumIndex <= (i + nums[i])) {
-                targetNumIndex = i;
+    public String canJump(int[] nums) {
+        int currIdx = nums.length - 1;
+        for (int prevIdx = currIdx - 1; prevIdx >= 0; prevIdx--) {
+            if (prevIdx + nums[prevIdx] >= currIdx) {
+                currIdx = prevIdx;
             }
         }
-        return targetNumIndex == 0;
+        return String.valueOf(currIdx == 0);
     }
 }
