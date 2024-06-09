@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * TC: O(items * maxWt)
  * AS: O(items * maxWt)
+ * Pattern: BOUNDED_FRACTIONAL_KNAPSACK
  */
 public class FindMaximumPossibleSumOfValuesSoThatProfitCanBeMaximized {
 
@@ -31,7 +32,6 @@ public class FindMaximumPossibleSumOfValuesSoThatProfitCanBeMaximized {
         if (getValueFromCache(cache, currIdx, w) != -1L) {
             return getValueFromCache(cache, currIdx, w);
         }
-
         long maxValTake = w - wt[currIdx] >= 0 ?
                 findMaxVal(w - wt[currIdx], wt, val, n, currIdx + 1, cache) + val[currIdx] : 0;
         long maxValDontTake = findMaxVal(w, wt, val, n, currIdx + 1, cache);
