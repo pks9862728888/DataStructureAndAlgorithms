@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * DP (bruteforce), TC: O(3^n), AS: O(n)
  * DP (memoization), TC: O(n), AS: O(n)
- * Pattern: BOUNDED_FRACTIONAL_KNAPSACK_JUMP_PATTERN
+ * Pattern: BOUNDED_ZERO_ONE_KNAPSACK_JUMP_PATTERN
  */
 public class NoOfDistinctWaysToClimbStairsIfYouCanTake1TwoOr3StepsAtATime {
 

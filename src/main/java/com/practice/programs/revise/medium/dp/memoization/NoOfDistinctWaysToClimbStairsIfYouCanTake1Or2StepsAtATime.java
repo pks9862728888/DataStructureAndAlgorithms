@@ -3,7 +3,7 @@ package com.practice.programs.revise.medium.dp.memoization;
 import java.util.Arrays;
 
 /**
- * Pattern: BOUNDED_FRACTIONAL_KNAPSACK_JUMP_PATTERN
+ * Pattern: BOUNDED_ZERO_ONE_KNAPSACK_JUMP_PATTERN
  */
 public class NoOfDistinctWaysToClimbStairsIfYouCanTake1Or2StepsAtATime {
 

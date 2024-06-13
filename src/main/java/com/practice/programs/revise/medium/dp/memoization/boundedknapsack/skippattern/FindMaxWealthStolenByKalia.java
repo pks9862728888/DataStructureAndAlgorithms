@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 2 5 1 3 6 2 4, ans = 15
  * DP (memoization)
  * TC: O(n), AS: O(n)
- * Pattern: BOUNDED_FRACTIONAL_KNAPSACK_JUMP_PATTERN
+ * Pattern: BOUNDED_ZERO_ONE_KNAPSACK_JUMP_PATTERN
  */
 public class FindMaxWealthStolenByKalia {
 

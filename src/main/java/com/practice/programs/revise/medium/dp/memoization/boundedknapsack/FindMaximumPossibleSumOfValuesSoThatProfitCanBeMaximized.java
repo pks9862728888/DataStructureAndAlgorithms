@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * TC: O(items * maxWt)
  * AS: O(items * maxWt)
- * Pattern: BOUNDED_FRACTIONAL_KNAPSACK
+ * Pattern: BOUNDED_ZERO_ONE_KNAPSACK
  */
 public class FindMaximumPossibleSumOfValuesSoThatProfitCanBeMaximized {
 

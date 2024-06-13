@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 0 -> 0
  * TC: O(n)
  * AS: O(n)
- * Pattern: BOUNDED_FRACTIONAL_KNAPSACK
+ * Pattern: BOUNDED_ZERO_ONE_KNAPSACK
  */
 public class FindNoOfWaysToDecodeEncodedString {
 
