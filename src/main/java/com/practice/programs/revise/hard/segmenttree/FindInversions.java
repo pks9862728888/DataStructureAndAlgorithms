@@ -10,6 +10,7 @@ public class FindInversions {
      * |arr[i]| <= 10^5
      * Input:  3 1 3 1 4
      * Output: 2 0 1 0 0
+     * TC: O (n log 10^5), AS: O(10^5)
      * Concepts:
      * SEGMENT_TREE
      * SEGMENT_TREE_SUM_OVER_RANGE
