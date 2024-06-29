@@ -7,6 +7,14 @@ public class FindShortestPathFromOneNodeToAllOtherNodesInGraph {
      * Adjacency matrix is provided in input
      * TC: O(n^3), AS: O(1)
      * <a href="https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1">Practice Link</a>
+     * Input:
+     *  1  0 43
+     *  1  0 6
+     * -1 -1 0
+     * Output:
+     *  0  1 7
+     *  1  0 6
+     * -1 -1 0
      * Concepts:
      * GRAPH
      * FLOYD_WARSHALLS_ALGORITHM
