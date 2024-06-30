@@ -15,7 +15,7 @@ public class FindMinimalCostOfKJumpByFrog {
      * MEMOIZATION
      * BOUNDED_ITERATE_OVER_ALL_POSSIBLE_OPTION_PATTERN
      */
-    public int minimizeCost(int arr[], int n, int k){
+    public int minimizeCostMemoization(int arr[], int n, int k){
         int[] cache = new int[n];
         Arrays.fill(cache, -1);
         return find(arr, n, k, 0, cache);
@@ -39,5 +39,24 @@ public class FindMinimalCostOfKJumpByFrog {
             cache[idx] = minCost;
         }
         return cache[idx];
+    }
+
+    private int dpTabulation(int[] arr, int n, int k) {
+        int[] dp = new int[n];
+        dp[0] = 0;
+        for (int idx = 1; idx < n; idx++) {
+            int minCost = Integer.MAX_VALUE;
+            for (int j = 1; j <= k; j++) {
+                int jumpIdx = idx - j;
+                if (jumpIdx >= 0) {
+                    int currCost = dp[jumpIdx] + Math.abs(arr[idx] - arr[jumpIdx]);
+                    minCost = Math.min(minCost, currCost);
+                } else {
+                    break;
+                }
+            }
+            dp[idx] = minCost;
+        }
+        return dp[n - 1];
     }
 }
