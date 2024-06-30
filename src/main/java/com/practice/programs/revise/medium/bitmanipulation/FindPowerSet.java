@@ -32,4 +32,27 @@ public class FindPowerSet {
         }
         return subsets;
     }
+
+    /**
+     * Concepts:
+     * DP
+     */
+    public List<List<Integer>> subsetsDp(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        find(nums, nums.length, 0, res, new ArrayList<>());
+        return res;
+    }
+
+    private void find(int[] nums, int n, int idx, List<List<Integer>> res, List<Integer> currSeq) {
+        if (idx == n) {
+            res.add(new ArrayList<>(currSeq));
+            return;
+        }
+        // pick
+        currSeq.add(nums[idx]);
+        find(nums, n, idx + 1, res, currSeq);
+        currSeq.remove(new Integer(nums[idx]));
+        // dont pick
+        find(nums, n, idx + 1, res, currSeq);
+    }
 }
