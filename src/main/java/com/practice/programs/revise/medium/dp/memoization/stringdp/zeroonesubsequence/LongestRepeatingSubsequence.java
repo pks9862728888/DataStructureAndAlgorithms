@@ -29,7 +29,7 @@ public class LongestRepeatingSubsequence {
             return 0;
         }
 
-        // if value does not exists in cache, then compute lcs
+        // if value does not exist in cache, then compute lcs
         if (cache[idx1][idx2] == -1) {
             // init lcs variable
             int lcs = 0;
@@ -38,7 +38,7 @@ public class LongestRepeatingSubsequence {
             if (str.charAt(idx1) == str.charAt(idx2) && idx1 != idx2) {
                 lcs = 1 + findLongest(str, n, idx1 + 1, idx2 + 1, cache);
             } else {
-                // if chars dont match, then call two possiblies
+                // if chars don't match, then call two possibilities
                 // f(str, idx1 + 1, idx2)
                 lcs = Math.max(lcs, findLongest(str, n, idx1 + 1, idx2, cache));
                 // f(str, idx1, idx2 + 1)
