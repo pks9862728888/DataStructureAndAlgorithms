@@ -15,6 +15,7 @@ public class LongestRepeatingSubsequence {
      * Input:
      * crivcrioo
      * lcs = crio, ans = 4
+     * Input: aabb, lcs = ab, ans = 2
      */
     static int longestRepeatedSubsequence(String str) {
         int n = str.length();
