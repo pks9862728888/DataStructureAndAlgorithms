@@ -37,15 +37,23 @@ public class FindShortestPathInGraphHavingNegativeCycle {
             }
         }
         // Detect if graph contains -ve cycle
+        if (isGraphContainsNegativeCycle(edges, dist)) {
+            dist = new int[] {-1};
+        }
+        return dist;
+    }
+
+    private static boolean isGraphContainsNegativeCycle(ArrayList<ArrayList<Integer>> edges, int[] dist) {
+        boolean isNegCycle = false;
         for (ArrayList<Integer> edge: edges) {
             int u = edge.get(0);
             int v = edge.get(1);
             int wt = edge.get(2);
             if (dist[u] != MAX_DIST && dist[u] + wt < dist[v]) { // -ve cycle
-                dist = new int[] {-1};
+                isNegCycle = true;
                 break;
             }
         }
-        return dist;
+        return isNegCycle;
     }
 }
