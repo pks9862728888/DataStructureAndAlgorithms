@@ -21,7 +21,7 @@ public class FindShortestPathInGraphHavingNegativeCycle {
      * GRAPH
      * BELLMAN_FORDS_ALGORITHM
      */
-    static int[] bellman_ford(int n, ArrayList<ArrayList<Integer>> edges, int s) {
+    static int[] bellmanFord(int n, ArrayList<ArrayList<Integer>> edges, int s) {
         int[] dist = new int[n];
         Arrays.fill(dist, MAX_DIST);
         dist[s] = 0;
