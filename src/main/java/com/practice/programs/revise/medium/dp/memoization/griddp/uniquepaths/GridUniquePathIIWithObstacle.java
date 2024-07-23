@@ -11,6 +11,9 @@ import java.util.Arrays;
  * DP
  * MEMOIZATION
  * FIND_UNIQUE_PATHS_DP
+ * Edge cases:
+ * When m, n has value 1 then can't move
+ * When 0, 0 itself has value 1, then cant move
  */
 public class GridUniquePathIIWithObstacle {
 
