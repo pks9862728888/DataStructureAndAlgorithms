@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.dp.memoization.griddp;
+package com.practice.programs.revise.medium.dp.memoization.griddp.uniquepaths;
 
 import java.util.Arrays;
 
