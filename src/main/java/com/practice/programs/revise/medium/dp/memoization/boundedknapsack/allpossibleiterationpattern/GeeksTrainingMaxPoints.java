@@ -11,7 +11,7 @@ import java.util.Arrays;
  * Concept:
  * DP
  * TABULATION
- * TRAVERSE_ALL_POSSIBLE_OPTIONS_PATTERN
+ * MAXIMIZE_OUTCOME_FROM_ALL_OPERATIONS
  */
 public class GeeksTrainingMaxPoints {
 
