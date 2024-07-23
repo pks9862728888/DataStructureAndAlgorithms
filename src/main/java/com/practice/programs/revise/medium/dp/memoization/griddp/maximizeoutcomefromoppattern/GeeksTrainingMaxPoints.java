@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.dp.memoization.boundedknapsack.maximizeoutcomefromoppattern;
+package com.practice.programs.revise.medium.dp.memoization.griddp.maximizeoutcomefromoppattern;
 
 import java.util.Arrays;
 
