@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.dp.memoization.boundedknapsack.allpossibleiterationpattern;
+package com.practice.programs.revise.medium.dp.memoization.boundedknapsack.maximizeoutcomefromoppattern;
 
 import java.util.Arrays;
 
