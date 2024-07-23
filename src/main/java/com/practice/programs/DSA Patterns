@@ -61,3 +61,8 @@ SEGMENT_TREE_POINT_UPDATE
 SEGMENT_TREE_MIN_OVER_RANGE
 SEGMENT_TREE_SUM_OVER_RANGE
 BINARY_TREE
+
+Important:
+Play with enough test case before jumping to code
+Write pseudo-code
+Then write out the code

@@ -1,2 +1,12 @@
 FROM maven:3.8.6-openjdk-11
+
+# Create a temp working dir
+RUN mkdir /app
+RUN chmod 777 /app
+WORKDIR /app
+
+# Create a non-superuser and switch to it
+# RUN groupadd -r testgroup && useradd -r -g testgroup testuser
+# USER testuser
+
 CMD ["/bin/bash"]
