@@ -7,7 +7,12 @@ import java.util.Map;
 public class FindIfArrayCanBePartitionedIntoTwoSubsetWithEqualSum {
 
     /**
+     * https://leetcode.com/problems/partition-equal-subset-sum/
      * TC: O(n * halfSum), AS: O(n * halfSum)
+     * Concepts:
+     * DP
+     * MEMOIZATION
+     * BOUNDED_ZERO_ONE_KNAPSACK
      */
     static int equalSumPartitionOptimal(int n, int[] arr) {
         int sum = Arrays.stream(arr).reduce(0, Integer::sum);
