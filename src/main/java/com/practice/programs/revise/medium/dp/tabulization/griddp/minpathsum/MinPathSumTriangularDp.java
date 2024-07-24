@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * https://leetcode.com/problems/triangle/
+ * You can move either vertically down or diagonally down
  * Concepts:
  * DP
  * TABULATION
