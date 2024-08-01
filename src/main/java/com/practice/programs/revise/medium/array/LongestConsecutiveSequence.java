@@ -6,6 +6,10 @@ import java.util.Set;
 
 /**
  * <a href="https://www.codingninjas.com/codestudio/problems/longest-successive-elements_6811740?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * https://leetcode.com/problems/longest-consecutive-sequence/
+ * Concepts:
+ * HASHING
+ * LCS
  */
 class LongestConsecutiveSequence {
 
@@ -26,22 +30,19 @@ class LongestConsecutiveSequence {
         // Iterate through each element in the set
         //      If ele - 1 is present in set -> do nothing
         //      If ele - 1 is not present in set (head of seq) -> find longest seq
-        Set<Integer> distinctElementsSet = new HashSet<>();
-        for (int e : arr) {
-            distinctElementsSet.add(e);
-        }
-
-        int longestSuccSeq = 1;
-        for (int ele : distinctElementsSet) {
-            if (!distinctElementsSet.contains(ele - 1)) {
-                int currSeqLength = 1;
-                while (distinctElementsSet.contains(++ele)) {
-                    currSeqLength++;
-                }
-                longestSuccSeq = Math.max(longestSuccSeq, currSeqLength);
+        // Idea is after seen set is created, then only for the root of a sequence find the length of sequence
+        if (arr.length == 0) return 0;
+        Set<Integer> seen = new HashSet<>();
+        for (int n: arr) seen.add(n);
+        int longestConsecutive = 1;
+        for (int n: arr) {
+            if (!seen.contains(n - 1)) { // means this is the start of sequence
+                int consecutives = 1;
+                while (seen.contains(++n)) consecutives++;
+                longestConsecutive = Math.max(longestConsecutive, consecutives);
             }
         }
-        return longestSuccSeq;
+        return longestConsecutive;
     }
 
     // TC: O(nlog n + n), AS: O(1)
