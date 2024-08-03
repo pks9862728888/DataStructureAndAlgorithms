@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/submissions/1342638401/
  * TC: O(v + e), AS: O(v + 2e)
+ * Concepts:
+ * GRAPH
+ * CONNECTED_COMPONENTS
  */
 public class FindTotalNoOfConnectedComponents {
 
