@@ -11,6 +11,7 @@ import java.util.List;
  * AS: O(n)
  * Concept:
  * INTERVAL
+ * INTERVAL_SORT_ON_STARTING_TIME
  */
 public class MergeIntervals {
 
