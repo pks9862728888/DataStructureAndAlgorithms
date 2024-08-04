@@ -7,12 +7,12 @@ import java.util.Arrays;
  * TC: O(n log n), AS: O(1)
  * Concepts:
  * INTERVAL
- * INTERVAL_SORT_ON_ENDING_TIME
+ * INTERVAL_SORT_ON_STARTING_TIME
  */
 public class MeetingRooms1 {
 
     public boolean canAttendMeetings(int[][] intervals) {
-        sortByEndingTime(intervals);
+        sortByStartingTime(intervals);
         int n = intervals.length;
         boolean canAttend = true;
         for (int i = 1; i < n; i++) {
@@ -26,7 +26,7 @@ public class MeetingRooms1 {
         return canAttend;
     }
 
-    private static void sortByEndingTime(int[][] intervals) {
+    private static void sortByStartingTime(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> {
             int res = a[1] - b[1];
             if (res == 0) {
