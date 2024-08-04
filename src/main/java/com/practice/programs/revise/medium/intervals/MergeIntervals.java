@@ -2,6 +2,7 @@ package com.practice.programs.revise.medium.intervals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -14,11 +15,10 @@ import java.util.List;
 public class MergeIntervals {
 
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
-        int n = intervals.length;
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         List<int[]> mergedIntervals = new ArrayList<>();
         for (int[] currInterval: intervals) {
-            if (mergedIntervals.size() == 0) {
+            if (mergedIntervals.isEmpty()) {
                 mergedIntervals.add(currInterval);
             } else {
                 int[] prev = mergedIntervals.get(mergedIntervals.size() - 1);
