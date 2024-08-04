@@ -1,5 +1,7 @@
 package com.practice.programs.revise.medium.linkedlist;
 
+import com.practice.programs.revise.medium.utils.ListNode;
+
 /**
  * https://leetcode.com/problems/reverse-linked-list/
  * TC: O(n), AS: O(1)
@@ -18,9 +20,5 @@ public class ReverseLinkedList {
             curr = temp;
         }
         return prev;
-    }
-
-    private static class ListNode {
-        ListNode next;
     }
 }
