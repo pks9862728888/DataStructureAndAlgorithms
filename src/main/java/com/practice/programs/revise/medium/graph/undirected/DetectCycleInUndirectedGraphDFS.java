@@ -3,44 +3,40 @@ package com.practice.programs.revise.medium.graph.undirected;
 import java.util.*;
 
 /**
+ * https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
  * TC: O(v + e), where v = no of nodes, e = no of edges
  * AS: O(v + e) -> v + e -> to store adjacency list, O(v) to store visited array and call stack
  */
 public class DetectCycleInUndirectedGraphDFS {
 
-    public static String detectCycle(int nodes, ArrayList<ArrayList<Integer>> edges) {
-        // Create graph
-        Map<Integer, List<Integer>> adjList = new HashMap<>();
-        for (ArrayList<Integer> edge: edges) {
-            adjList.putIfAbsent(edge.get(0), new ArrayList<>());
-            adjList.get(edge.get(0)).add(edge.get(1));
-        }
-        // Detect cycle
-        for (int i = 1; i <= nodes; i++) {
-            Set<Integer> visited = new HashSet<>();
-            if (!visited.contains(i)) {
-                visited.add(i);
-                if (isCycleFound(adjList, i, visited, -1)) {
-                    return "Yes";
+    public boolean isCycle(int v, ArrayList<ArrayList<Integer>> adj) {
+        boolean isCycle = false;
+        boolean[] visited = new boolean[v];
+        for (int i = 0; i < v; i++) {
+            if (!visited[i]) {
+                isCycle = dfs(adj, i, -1, visited);
+                if (isCycle) {
+                    break;
                 }
             }
         }
-        return "No";
+        return isCycle;
     }
 
-    private static boolean isCycleFound(
-            Map<Integer, List<Integer>> adjList, Integer currNode, Set<Integer> visited, Integer prev) {
-        for (Integer adjNode: adjList.getOrDefault(currNode, new ArrayList<>())) {
-            if (prev.equals(adjNode)) {
-            } else if (visited.contains(adjNode)) {
-                return true;
-            } else {
-                visited.add(adjNode);
-                if (isCycleFound(adjList, adjNode, visited, currNode)) {
-                    return true;
-                }
+    private boolean dfs(
+            ArrayList<ArrayList<Integer>> adj, int idx, int pIdx, boolean[] visited) {
+        visited[idx] = true;
+        boolean loopExists = false;
+        for (Integer adjIdx: adj.get(idx)) {
+            if (!visited[adjIdx]) {
+                loopExists = dfs(adj, adjIdx, idx, visited);
+            } else if (pIdx != adjIdx) {
+                loopExists = true;
+            }
+            if (loopExists) {
+                break;
             }
         }
-        return false;
+        return loopExists;
     }
 }
