@@ -17,7 +17,7 @@ import java.util.List;
 public class InsertIntervals {
 
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        List<Integer[]> resList = new ArrayList<>();
+        List<int[]> resList = new ArrayList<>();
         boolean newIntervalProcessed = false;
         for (int[] currInterval: intervals) {
             //   if newIntervalProcessed = true,
@@ -27,58 +27,38 @@ public class InsertIntervals {
                 //            else, insert interval
                 int n = resList.size();
                 if (n > 0 && canMerge(resList.get(n - 1), currInterval)) {
-                    Integer[] mergedInterval = mergeInterval(resList.get(n - 1), currInterval);
+                    int[] mergedInterval = mergeInterval(resList.get(n - 1), currInterval);
                     resList.set(n - 1, mergedInterval);
                 } else {
-                    resList.add(new Integer[]{currInterval[0], currInterval[1]});
+                    resList.add(currInterval);
                 }
             } else if (canMerge(currInterval, newInterval)) {
                 //   else check if newInterval is part of currInterval
                 //      if yes, set newIntervalProcessed = true && merge current interval with previous interval (if any)
                 newIntervalProcessed = true;
-                Integer[] mergedInterval = mergeInterval(currInterval, newInterval);
-                resList.add(mergedInterval);
+                resList.add( mergeInterval(currInterval, newInterval));
             } else if (canInsertBefore(currInterval, newInterval)) {
                 // If new interval can be inserted before currInterval
                 newIntervalProcessed = true;
-                resList.add(new Integer[]{newInterval[0], newInterval[1]});
-                resList.add(new Integer[]{currInterval[0], currInterval[1]});
+                resList.add(newInterval);
+                resList.add(currInterval);
             } else {
                 // no merging is possible, so append
-                resList.add(new Integer[]{currInterval[0], currInterval[1]});
+                resList.add(currInterval);
             }
         }
         if (!newIntervalProcessed) {
-            resList.add(new Integer[]{newInterval[0], newInterval[1]});
+            resList.add(newInterval);
         }
         // convert array list to result array and return
-        return convertToArray(resList);
+        return resList.toArray(new int[0][0]);
     }
 
-    private int[][] convertToArray(List<Integer[]> resList) {
-        int n = resList.size();
-        int[][] res = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            Integer[] arr = resList.get(i);
-            res[i][0] = arr[0];
-            res[i][1] = arr[1];
-        }
-        return res;
-    }
-
-    private Integer[] mergeInterval(int[] currInterval, int[] newInterval) {
-        return new Integer[]{Math.min(currInterval[0], newInterval[0]), Math.max(currInterval[1], newInterval[1])};
-    }
-
-    private Integer[] mergeInterval(Integer[] currInterval, int[] newInterval) {
-        return new Integer[]{Math.min(currInterval[0], newInterval[0]), Math.max(currInterval[1], newInterval[1])};
+    private int[] mergeInterval(int[] currInterval, int[] newInterval) {
+        return new int[]{Math.min(currInterval[0], newInterval[0]), Math.max(currInterval[1], newInterval[1])};
     }
 
     private boolean canMerge(int[] currInterval, int[] newInterval) {
-        return newInterval[0] <= currInterval[1] && newInterval[1] >= currInterval[0];
-    }
-
-    private boolean canMerge(Integer[] currInterval, int[] newInterval) {
         return newInterval[0] <= currInterval[1] && newInterval[1] >= currInterval[0];
     }
 
