@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/merge-intervals/
+ * TC: O(n log n)
+ * AS: O(n)
+ * Concept:
+ * INTERVAL
+ */
 public class MergeIntervals {
 
     public int[][] merge(int[][] intervals) {
