@@ -1,46 +1,41 @@
 package com.practice.programs.revise.medium.linkedlist;
 
+import com.practice.programs.revise.medium.utils.ListNode;
+
 /**
+ * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
  * TC: O(2n), AS: O(1)
+ * Concept:
+ * LINKED_LIST
  */
 class DeleteKthNodeFromEnd {
 
-    public static Node removeKthNode(Node head, int k) {
-        if (head == null) {
-            return null;
-        } else if (head.next == null && k == 1) {
-            return null;
-        }
-        int len = length(head);
-        int posAfterWhichEleShouldBeDeleted = len - k;
-        Node prev = head;
-        while (prev != null && --posAfterWhichEleShouldBeDeleted != 0) {
-            prev = prev.next;
-        }
-        if (k == len) {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int len = findLen(head);
+        int idxToRemove = len - n + 1;
+        if (idxToRemove == 1) { // if its the first idx
             return head.next;
         } else {
-            prev.next = prev.next.next;
+            ListNode prev = null;
+            ListNode curr = head;
+            while (curr != null && --idxToRemove > 0) {
+                prev = curr;
+                curr = curr.next;
+            }
+            if (curr != null && prev != null) {
+                prev.next = curr.next;
+                curr.next = null;
+            }
             return head;
         }
     }
 
-    private static int length(Node head) {
-        int len = 0;
+    private static int findLen(ListNode head) {
+        int c = 0;
         while (head != null) {
-            len++;
             head = head.next;
+            c++;
         }
-        return len;
-    }
-
-    private static class Node {
-        public int data;
-        public Node next;
-
-        Node(int data) {
-            this.data = data;
-            this.next = null;
-        }
+        return c;
     }
 }
