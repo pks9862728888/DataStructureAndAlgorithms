@@ -18,6 +18,7 @@ MULTI_SOURCE_OUTCOME_MAXIMIZATION
 Concept: GRAPH
 BFS_GRAPH
 DFS_GRAPH
+UNDIRECTED_GRAPH
 DIJKSTRAS_ALGORITHM (directed +ve wt graph)
 BELLMAN_FORDS_ALGORITHM (directed -ve wt graph)
 FLOYD_WARSHALLS_ALGORITHM (directed -ve wt graph, find cost form all nodes to all other nodes)
