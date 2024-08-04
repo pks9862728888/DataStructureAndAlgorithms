@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 /**
  * https://www.naukri.com/code360/problems/merge-k-sorted-arrays_975379?leftPanelTabValue=PROBLEM
  * TC: O(n log k), where k = no of sorted arrays, n = total no of elements
- * AS: O(k)
+ * AS: O(n + k), because result will be O(n), PQ = O(k)
  * Concepts:
  * MIN_HEAP
  */
