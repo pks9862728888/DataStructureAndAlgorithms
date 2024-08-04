@@ -34,7 +34,7 @@ public class DetectCycleInUndirectedGraphDFS {
         for (Integer adjIdx: adj.get(idx)) {
             if (!visited[adjIdx]) {
                 loopExists = dfs(adj, adjIdx, idx, visited);
-            } else if (pIdx != adjIdx) {
+            } else if (pIdx != adjIdx) { // Since undirected, so we will also have link to parent, so ignore that
                 loopExists = true;
             }
             if (loopExists) {
