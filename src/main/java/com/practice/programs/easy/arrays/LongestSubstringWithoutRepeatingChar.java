@@ -6,6 +6,9 @@ import java.util.Map;
 /**
  * TC: O(n), AS: O(n)
  * <a href="https://www.codingninjas.com/studio/problems/longest-substring-without-repeating-characters_630418?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * Concepts:
+ * TWO_POINTER
+ * STRING
  */
 public class LongestSubstringWithoutRepeatingChar {
 
@@ -25,6 +28,7 @@ public class LongestSubstringWithoutRepeatingChar {
             charFreqMap.put(rightCh, charFreqMap.getOrDefault(rightCh, 0) + 1);
 
             // Decrement window size till freq of right char is 1
+            // Remove duplicate of right char
             while (charFreqMap.get(rightCh) > 1) {
                 char leftCh = input.charAt(left++);
                 int newFreqLeftCh = charFreqMap.get(leftCh) - 1;
