@@ -1,7 +1,11 @@
 package com.practice.programs.revise.algorithms;
 
 /**
+ * https://leetcode.com/problems/maximum-subarray/submissions/1352237256/
  * TC: O(n), AS: O(1)
+ * Concepts:
+ * ARRAY
+ * KDANES_ALGORITHM
  */
 class KdanesAlgorithmFindSubarrayHavingMaxSum {
 
@@ -28,9 +32,7 @@ class KdanesAlgorithmFindSubarrayHavingMaxSum {
         long currSum = 0;
         for (int i = 0; i < n; i++) {
             currSum += arr[i];
-            if (currSum > sumSoFar) {
-                sumSoFar = currSum;
-            }
+            sumSoFar = Math.max(sumSoFar, currSum);
             if (currSum < 0) {
                 currSum = 0;
             }
