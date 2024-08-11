@@ -10,6 +10,9 @@ import java.util.Arrays;
  * MEMOIZATION
  * BOUNDED_ZERO_ONE_KNAPSACK
  * BUY_OR_SELL_STOCK
+ * Same variant:
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/1351847165/
+ * You can make at most K transactions
  */
 public class StockBuyAndSell3 {
 
