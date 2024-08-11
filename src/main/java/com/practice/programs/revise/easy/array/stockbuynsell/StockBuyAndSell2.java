@@ -1,6 +1,11 @@
-package com.practice.programs.revise.easy.array;
+package com.practice.programs.revise.easy.array.stockbuynsell;
 
-// TC: O(n), AS: O(1)
+/**
+ * TC: O(n), AS: O(1)
+ * Concept:
+ * ARRAY
+ * BUY_OR_SELL_STOCK
+ */
 class StockBuyAndSell2 {
 
     private int maxProfitIfYouAreAllowedToHoldOneStockAtATime(int[] arr) {
