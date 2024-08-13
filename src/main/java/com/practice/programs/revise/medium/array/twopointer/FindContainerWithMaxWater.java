@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.array;
+package com.practice.programs.revise.medium.array.twopointer;
 
 /**
  * https://leetcode.com/problems/container-with-most-water/
