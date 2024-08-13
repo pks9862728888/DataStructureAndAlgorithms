@@ -1,4 +1,4 @@
-package com.practice.programs.medium.arrays;
+package com.practice.programs.revise.medium.array.twopointer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
