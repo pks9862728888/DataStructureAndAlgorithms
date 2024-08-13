@@ -1,6 +1,9 @@
-package com.practice.programs.revise.hard.array;
+package com.practice.programs.revise.hard.array.binarysearch;
 
-public class SearchInSortedRotatedArray {
+/**
+ * Assume no duplicates are present
+ */
+public class SearchInSortedRotatedArrayI {
 
     // 4 5 6 9 10 2 3, target = 5 -> 1
 
