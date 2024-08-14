@@ -11,6 +11,9 @@ import java.util.List;
  */
 class PrintMatrixInSpiralOrder {
 
+    /**
+     * Works for matrix of any order, n * n as well as m * n
+     */
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> res = new ArrayList<>();
         int rowLen = matrix.length;
@@ -49,6 +52,10 @@ class PrintMatrixInSpiralOrder {
         return res.size() < itemsSize;
     }
 
+    /**
+     * Below logic works for n * n matrix, but for m * n matrix below logic will not work
+     * We will have to check in each iteration if iteration is complete or not
+     */
     static int[][] spiralMatrixII(int n) {
         int[][] mat = new int[n][n];
         int count = 1;
@@ -62,19 +69,16 @@ class PrintMatrixInSpiralOrder {
                 mat[t][i] = count++;
             }
             t++;
-
             // Traverse down
             for (int i = t; i <= b; i++) {
                 mat[i][r] = count++;
             }
             r--;
-
             // Traverse left
             for (int i = r; i >= l; i--) {
                 mat[b][i] = count++;
             }
             b--;
-
             // Traverse up
             for (int i = b; i >= t; i--) {
                 mat[i][l] = count++;
