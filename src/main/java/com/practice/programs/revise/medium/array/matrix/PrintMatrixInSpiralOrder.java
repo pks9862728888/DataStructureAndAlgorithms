@@ -12,6 +12,7 @@ import java.util.List;
 class PrintMatrixInSpiralOrder {
 
     /**
+     * SM I: Given m * n matrix, print in spiral order
      * Works for matrix of any order, n * n as well as m * n
      */
     public List<Integer> spiralOrder(int[][] matrix) {
@@ -53,6 +54,7 @@ class PrintMatrixInSpiralOrder {
     }
 
     /**
+     * SM II: Given n, generate a spiral matrix of size n * n
      * Below logic works for n * n matrix, but for m * n matrix below logic will not work
      * We will have to check in each iteration if iteration is complete or not
      */
