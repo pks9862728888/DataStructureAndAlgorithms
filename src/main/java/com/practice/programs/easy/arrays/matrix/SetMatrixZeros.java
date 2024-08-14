@@ -1,14 +1,18 @@
-package com.practice.programs.easy.arrays;
+package com.practice.programs.easy.arrays.matrix;
 
 import java.util.*;
 
 /**
- * TC: O(1) - lookup in hashset + O(m*n) - for finding 0 row and col + O(m*n) - for updating = O(m * n)
- * AS: O(m + n) - for storing unique 0 rows and column for update
- * <a href="https://leetcode.com/problems/set-matrix-zeroes/description/">Practice Link</a>
+ * Concept:
+ * MATRIX
  */
 public class SetMatrixZeros {
 
+    /**
+     * TC: O(1) - lookup in hashset + O(m*n) - for finding 0 row and col + O(m*n) - for updating = O(m * n)
+     * AS: O(m + n) - for storing unique 0 rows and column for update
+     * <a href="https://leetcode.com/problems/set-matrix-zeroes/description/">Practice Link</a>
+     */
     public void setZeroes(int[][] m) {
         Set<Integer> r = new HashSet<>();
         Set<Integer> c = new HashSet<>();
@@ -88,5 +92,4 @@ public class SetMatrixZeros {
             }
         }
     }
-
 }
