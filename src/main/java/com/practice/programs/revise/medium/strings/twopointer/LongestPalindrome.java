@@ -8,7 +8,7 @@ package com.practice.programs.revise.medium.strings.twopointer;
  * TWO_POINTER
  * FIX_MID_POINTER_N_INCREMENT_OR_DECREMENT_RIGHT_OR_LEFT_POINTER_APPROACH
  */
-public class LongestPalindrome {
+public class LongestPalindromicSubstring {
 
     public String longestPalindrome(String s) {
         int n = s.length();
