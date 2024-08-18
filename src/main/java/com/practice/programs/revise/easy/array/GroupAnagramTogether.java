@@ -3,8 +3,12 @@ package com.practice.programs.revise.easy.array;
 import java.util.*;
 
 /**
- * TC: O(nm log m) AS: O(mn), where n = no of words, m = length of each word
- * For each word, sorting will be done, sorting TC: m log(m)
+ * https://leetcode.com/problems/group-anagrams/
+ * TC: O(mn) AS: O(mn), where n = no of words, m = length of each word
+ * For each word, hash will be generated which is O(m)
+ * Concepts:
+ * STRING
+ * HASHING
  */
 class GroupAnagramTogether {
 
@@ -14,29 +18,28 @@ class GroupAnagramTogether {
     // nat tan
     // bat
 
-    public List<List<String>> groupAnagram(String[] strs) {
-        Map<String, List<String>> freqMap = new HashMap<>();
-        for (String word: strs) {
-            addToHash(word, freqMap);
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<Map<Character, Integer>, List<String>> anagramMap = new HashMap<>();
+        List<List<String>> res = new ArrayList<>();
+        for (String s: strs) {
+            Map<Character, Integer> freqMap = getFreqMap(s);
+            if (!anagramMap.containsKey(freqMap)) {
+                List<String> anagramList = new ArrayList<>();
+                res.add(anagramList);
+                anagramMap.put(freqMap, anagramList);
+            }
+            anagramMap.get(freqMap).add(s);
         }
-        return new ArrayList<>(freqMap.values());
+        return res;
     }
 
-    private void addToHash(String word, Map<String, List<String>> freqMap) {
-        String key = generateHash(word);
-        if (!freqMap.containsKey(key)) {
-            freqMap.put(key, new ArrayList<>());
+    private Map<Character, Integer> getFreqMap(String s) {
+        Map<Character, Integer> fm = new HashMap<>();
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            char ch = s.charAt(i);
+            fm.put(ch, fm.getOrDefault(ch, 0) + 1);
         }
-        freqMap.get(key).add(word);
-    }
-
-    // TC: m log m -> where m = no of chars in word
-    private String generateHash(String word) {
-        Map<Character, Integer> m = new TreeMap<>();
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            m.put(ch, m.getOrDefault(ch, 0) + 1);
-        }
-        return m.toString();
+        return fm;
     }
 }
