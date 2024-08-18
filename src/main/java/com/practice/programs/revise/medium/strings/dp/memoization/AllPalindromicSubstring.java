@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.strings.twopointer;
+package com.practice.programs.revise.medium.strings.dp.memoization;
 
 /**
  * https://leetcode.com/problems/palindromic-substrings/
