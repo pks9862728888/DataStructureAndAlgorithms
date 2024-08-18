@@ -1,4 +1,4 @@
-package com.practice.programs.revise.easy.array;
+package com.practice.programs.revise.easy.array.hashing;
 
 import java.util.*;
 
