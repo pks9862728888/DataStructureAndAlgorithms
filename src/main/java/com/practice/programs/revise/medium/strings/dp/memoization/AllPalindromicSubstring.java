@@ -4,7 +4,7 @@ package com.practice.programs.revise.medium.strings.dp.memoization;
  * https://leetcode.com/problems/palindromic-substrings/
  * Concepts:
  * DP
- * MEMOIZATION
+ * TABULATION
  * STRING_DP
  * TWO_POINTER
  */
