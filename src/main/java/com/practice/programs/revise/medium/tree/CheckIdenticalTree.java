@@ -4,6 +4,7 @@ import com.practice.programs.revise.medium.utils.TreeNode;
 
 /**
  * https://leetcode.com/problems/same-tree/
+ * TC: O(n), AS: O(h) -> recursion stack, where h = height of tree
  * Concepts:
  * TREE
  */
