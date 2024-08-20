@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * TREE_MAX_PATH_SUM
  * Max path sum can be Max of [curr node val, curr node + left sum, curr node + right sum]
  */
-public class MaximumPathSum {
+public class BinaryTreeMaximumPathSum {
 
     public int maxPathSum(TreeNode root) {
         AtomicReference<Integer> maxPathSumRef = new AtomicReference<>(null);
