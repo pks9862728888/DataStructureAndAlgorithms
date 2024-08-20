@@ -40,21 +40,6 @@ class LevelOrderTraversal {
         }
     }
 
-    /**
-     * TC: O(n), AS: O(h) or O (log n)
-     */
-    private void getLevelOrderOutputRecursivePreOrder(TreeNode node, List<List<Integer>> res, int depth) {
-        if (node == null) {
-            return;
-        }
-        if (res.size() < depth + 1) {
-            res.add(new ArrayList<>());
-        }
-        res.get(depth).add((int) node.val);
-        getLevelOrderOutputRecursivePreOrder(node.left, res, depth + 1);
-        getLevelOrderOutputRecursivePreOrder(node.right, res, depth + 1);
-    }
-
     private static class TreeNode {
         public long val;
         public TreeNode left;
