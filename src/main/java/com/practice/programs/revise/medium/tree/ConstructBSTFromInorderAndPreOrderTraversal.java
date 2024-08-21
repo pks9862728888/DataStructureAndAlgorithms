@@ -6,6 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * TC: O(2n), AS: O(3n), hash, call stack, result tree
+ * Concept:
+ * TREE
+ * BST
+ * CONSTRUCT_BST_FROM_TRAVERSAL
  */
 class ConstructBSTFromInorderAndPreOrderTraversal {
 

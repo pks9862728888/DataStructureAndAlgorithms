@@ -32,6 +32,7 @@ CONNECTED_COMPONENTS
 Concept: TREE
 BST
 LCA
+CONSTRUCT_BST_FROM_TRAVERSAL
 
 Concept: GREEDY_ALGORITHM (think if sorting can simplify the problem)
 TWO_POINTER
