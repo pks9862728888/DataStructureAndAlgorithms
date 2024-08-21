@@ -84,11 +84,12 @@ public class ImplementTrie {
     }
 
     private static class TrieNode {
-        Map<Character, TrieNode> charMap = new HashMap<>();
-        boolean end;
-        int freq;
+        private Map<Character, TrieNode> charMap = new HashMap<>();
+        private boolean end;
+        private int freq;
 
-        public TrieNode() {}
+        public TrieNode() {
+        }
 
         public TrieNode getChild(Character ch) {
             return charMap.get(ch);
