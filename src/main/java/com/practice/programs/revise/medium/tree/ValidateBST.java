@@ -1,7 +1,13 @@
 package com.practice.programs.revise.medium.tree;
 
+import com.practice.programs.revise.medium.utils.TreeNode;
+
 /**
+ * https://leetcode.com/problems/validate-binary-search-tree/
  * TC: O (n), AS: O(height) -> O(n)
+ * Concepts
+ * TREE
+ * BST
  */
 class ValidateBST {
 
@@ -12,24 +18,10 @@ class ValidateBST {
     boolean isValidBst(TreeNode root, long minValue, long maxValue) {
         if (root == null) {
             return true;
-        }
-        if (!(root.val > minValue && root.val < maxValue)) {
+        } else if (!(root.val > minValue && root.val < maxValue)) {
             return false;
         }
-        boolean isValid = isValidBst(root.left, minValue, root.val);
-        isValid = isValid && isValidBst(root.right, root.val, maxValue);
-        return isValid;
-    }
-
-    private static class TreeNode {
-        public long val;
-        public TreeNode left;
-        public TreeNode right;
-
-        public TreeNode (long x) {
-            val = x;
-            left = null;
-            right = null;
-        }
+        return isValidBst(root.left, minValue, root.val) &&
+                isValidBst(root.right, root.val, maxValue);
     }
 }
