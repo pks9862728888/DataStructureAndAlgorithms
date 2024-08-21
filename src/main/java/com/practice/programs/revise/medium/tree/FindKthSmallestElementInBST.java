@@ -10,6 +10,9 @@ import java.util.concurrent.atomic.AtomicReference;
  * TC: O(n), AS: O(n)
  * <a href="https://www.codingninjas.com/studio/problems/kth-smallest-node-in-bst_920441?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
  * https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+ * Concepts:
+ * TREE
+ * BST
  */
 class FindKthSmallestElementInBST {
 

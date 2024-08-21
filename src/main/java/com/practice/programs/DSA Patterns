@@ -30,6 +30,7 @@ KHANS_ALGORITHM_TOPOLOGICAL_SORT
 CONNECTED_COMPONENTS
 
 Concept: TREE
+BST
 
 Concept: GREEDY_ALGORITHM (think if sorting can simplify the problem)
 TWO_POINTER
