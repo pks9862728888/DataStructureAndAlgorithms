@@ -1,5 +1,7 @@
 package com.practice.programs.revise.medium.tree;
 
+import com.practice.programs.revise.medium.utils.TreeNode;
+
 /**
  * TC: O(n), AS: O(n)
  */
@@ -20,18 +22,6 @@ public class LowestCommonAncestor {
             return left;
         } else {
             return right;
-        }
-    }
-
-    private static class TreeNode {
-        public long val;
-        public TreeNode left;
-        public TreeNode right;
-
-        public TreeNode (long x) {
-            val = x;
-            left = null;
-            right = null;
         }
     }
 }
