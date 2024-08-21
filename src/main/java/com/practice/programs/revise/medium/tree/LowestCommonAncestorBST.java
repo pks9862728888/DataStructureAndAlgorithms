@@ -1,7 +1,14 @@
 package com.practice.programs.revise.medium.tree;
 
+import com.practice.programs.revise.medium.utils.TreeNode;
+
 /**
+ * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
  * TC: O(h), AS: O(h) - call stack
+ * Concepts:
+ * TREE
+ * BST
+ * LCA
  */
 class LowestCommonAncestorBST {
 
@@ -20,18 +27,6 @@ class LowestCommonAncestorBST {
             return left;
         } else {
             return right;
-        }
-    }
-
-    private static class TreeNode {
-        public long val;
-        public TreeNode left;
-        public TreeNode right;
-
-        public TreeNode (long x) {
-            val = x;
-            left = null;
-            right = null;
         }
     }
 }
