@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.dp.memoization.zeroonesubsequence;
+package com.practice.programs.revise.medium.dp.memoization.stringdp.zeroonesubsequence;
 
 import java.util.Arrays;
 
