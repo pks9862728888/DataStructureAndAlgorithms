@@ -3,16 +3,17 @@ package com.practice.programs.revise.medium.dp.memoization.zeroonesubsequence;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/longest-increasing-subsequence/description/
+ * TC: O(n * n), AS: O(n * n) + O(n)
+ * Input: 5 4 1 6 2 2 5
+ * Output: 3 {1,2,5}
+ * Concept:
+ * MEMOIZATION
+ * BOUNDED_ZERO_ONE_SUBSEQ_PATTERN_TRACKING_PREV
+ */
 public class LongestIncreasingSubsequence {
 
-    /**
-     * TC: O(n * n), AS: O(n * n) + O(n)
-     * Input: 5 4 1 6 2 2 5
-     * Output: 3 {1,2,5}
-     * Concept:
-     * MEMOIZATION
-     * BOUNDED_ZERO_ONE_SUBSEQ_PATTERN_TRACKING_PREV
-     */
     private static int longestIncreasingSubsequence(List<Integer> nums){
         int n = nums.size();
         int[][] cache = new int[n + 1][n];
