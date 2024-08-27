@@ -1,4 +1,4 @@
-package com.practice.programs.revise.medium.dp.memoization.boundedknapsack;
+package com.practice.programs.revise.medium.dp.memoization.stringdp.greedydp;
 
 import java.util.Arrays;
 
