@@ -9,6 +9,7 @@ import java.util.*;
  * m = min no in array
  * Concepts:
  * BACKTRACKING
+ * BACKTRACKING_INFINITE_PICKING
  */
 public class CombinationSumI {
 
