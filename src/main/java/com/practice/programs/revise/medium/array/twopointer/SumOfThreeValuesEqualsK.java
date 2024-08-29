@@ -7,7 +7,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * https://leetcode.com/problems/3sum/description/
  * TC: O (n * 2 + n log n) = O(n*2), AS: O(1)
+ * Concept:
+ * ARRAY
+ * THREE_SUM_PROBLEM
+ * TWO_POINTER
+ * FIRST_LEFT_POINTER_N_PLACE_MID_TO_NEXT_N_RIGHT_TO_EXTREME_RIGHT_APPROACH
  */
 public class SumOfThreeValuesEqualsK {
 
