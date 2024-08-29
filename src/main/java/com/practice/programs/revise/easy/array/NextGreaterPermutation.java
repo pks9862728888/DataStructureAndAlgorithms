@@ -3,9 +3,13 @@ package com.practice.programs.revise.easy.array;
 import java.util.Arrays;
 
 /**
+ * https://leetcode.com/problems/next-permutation/description/
  * If no next permutations are possible, return the least possible permutation
- * TC: O(n log n), AS: O(1)
+ * TC: O(n ^ 2), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/next-greater-permutation_6929564?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice link</a>
+ * Concepts:
+ * ARRAY
+ * NEXT_GREATER_PERMUTATION
  */
 class NextGreaterPermutation {
 
