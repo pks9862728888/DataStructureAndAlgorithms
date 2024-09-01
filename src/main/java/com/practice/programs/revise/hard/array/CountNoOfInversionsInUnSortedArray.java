@@ -3,13 +3,17 @@ package com.practice.programs.revise.hard.array;
 import java.util.Arrays;
 
 /**
+ * https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=inversion-of-array
  * TC: O(nlog n), AS: O(n)
+ * Concepts:
+ * ARRAY
+ * MERGE_SORT
  */
 public class CountNoOfInversionsInUnSortedArray {
 
     public static void main(String[] args) {
-//        int arr[] = {1, 20, 6, 4, 5}; // 5
-        int arr[] = {15, 28, 11, 20, 14, 7, 14, 2, 15, 4, 22, 19, 17, 1, 26, 6, 20, 2, 6};  // 96
+        int arr[] = {1, 20, 6, 4, 5}; // 5
+//        int arr[] = {15, 28, 11, 20, 14, 7, 14, 2, 15, 4, 22, 19, 17, 1, 26, 6, 20, 2, 6};  // 96
         System.out.println(numberOfInversions(arr));
         System.out.println(Arrays.toString(arr));
     }
