@@ -46,6 +46,9 @@ public class CountNoOfInversionsInUnSortedArray {
                 if (arr[ptr1] <= arr[ptr2]) {
                     temp[ptrT++] = arr[ptr1++];
                 } else {
+                    // Since we are using merge sort, we are assuming left half is already sorted
+                    // So if at a certain point we find inversion,
+                    // we can assume that whole pending left half will result in inversion
                     invCount += end1 - ptr1 + 1;
                     System.out.printf("(%s, %s)%n", arr[ptr1], arr[ptr2]);
                     temp[ptrT++] = arr[ptr2++];
