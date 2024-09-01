@@ -1,16 +1,17 @@
 package com.practice.programs.easy.arrays;
 
 /**
+ * https://leetcode.com/problems/median-of-two-sorted-arrays/
  * <a href="https://www.codingninjas.com/codestudio/problems/median-of-two-sorted-arrays_985294?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
  */
 public class FindMedianOfTwoSortedArrays {
 
     public static void main(String[] args) {
-        System.out.println(findMedianSortedArrays(new int[] {1, 3, 5, 7, 9},
-                new int[] {2, 4, 6, 8}, 1, 1));
+        System.out.println(findMedianSortedArrays(new int[]{1, 3, 5, 7, 9},
+                new int[]{2, 4, 6, 8}, 1, 1));
     }
 
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2 , int m, int n) {
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2, int m, int n) {
         // return nonOptimalMedian(nums1, nums2, m, n); // TC: O(n) AS: O (n)
         // return betterMedian(nums1, nums2, m, n); // TC: O (n), AS: O(1)
         return optimalMedian(nums1, nums2, m, n); // TC: O(min(log m), min(log n))
@@ -47,62 +48,43 @@ public class FindMedianOfTwoSortedArrays {
     }
 
     private static double betterMedian(int[] nums1, int[] nums2, int m, int n) {
-        int k = m + n;
-        if (k % 2 == 0) { // median = (a[(n - 1) / 2] + a[n / 2]) / 2
-            return findEvenMedian(nums1, nums2, m, n, (k - 1) / 2, k / 2);
-        } else { // median = a[n / 2]
-            return findOddMedian(nums1, nums2, m, n, k / 2);
-        }
-    }
-
-    private static double findEvenMedian(int[] nums1, int[] nums2, int m, int n, int k1, int k2) {
-        int p1 = 0;
-        int p2 = 0;
-        int p = 0;
-        int n1 = -1;
-        int n2 = -1;
-        while (p1 < m || p2 < n) {
-            int curr;
-            if (p1 < m && p2 < n) {
-                curr = nums1[p1] <= nums2[p2] ? nums1[p1++] : nums2[p2++];
-            } else if (p1 < m) {
-                curr = nums1[p1++];
+        int count = nums1.length + nums2.length;
+        int ele1 = -1;
+        int ele2 = -1;
+        int ptr1 = 0;
+        int ptr2 = 0;
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+        int currIdx = 0;
+        while (ptr1 < n1 || ptr2 < n2) {
+            int currEle;
+            if (ptr1 < n1 && ptr2 < n2) {
+                if (nums1[ptr1] <= nums2[ptr2]) {
+                    currEle = nums1[ptr1];
+                    ptr1++;
+                } else {
+                    currEle = nums2[ptr2];
+                    ptr2++;
+                }
+            } else if (ptr1 < n1) {
+                currEle = nums1[ptr1];
+                ptr1++;
             } else {
-                curr = nums2[p2++];
+                currEle = nums2[ptr2];
+                ptr2++;
             }
-            if (p == k1) {
-                n1 = curr;
-            } else if (p == k2) {
-                n2 = curr;
-                break;
+            if (currIdx == count / 2) {
+                ele1 = currEle;
             }
-            p++;
+            if (currIdx == count / 2 - 1) {
+                ele2 = currEle;
+            }
+            currIdx++;
         }
-        return (n1 + n2) * 1.0 / 2;
+        return count % 2 == 0 ? (ele1 + ele2) * 1.0 / 2 : ele1;
     }
 
-    private static double findOddMedian(int[] nums1, int[] nums2, int m, int n, int k) {
-        int p1 = 0;
-        int p2 = 0;
-        int p = 0;
-        int curr = -1;
-        while (p1 < m || p2 < n) {
-            if (p1 < m && p2 < n) {
-                curr = nums1[p1] <= nums2[p2] ? nums1[p1++] : nums2[p2++];
-            } else if (p1 < m) {
-                curr = nums1[p1++];
-            } else {
-                curr = nums2[p2++];
-            }
-            if (p == k) {
-                return curr;
-            }
-            p++;
-        }
-        return curr;
-    }
-
-    private static double nonOptimalMedian(int[] nums1, int[] nums2 , int m, int n) {
+    private static double nonOptimalMedian(int[] nums1, int[] nums2, int m, int n) {
         int[] res = new int[m + n];
         int p1 = 0;
         int p2 = 0;
