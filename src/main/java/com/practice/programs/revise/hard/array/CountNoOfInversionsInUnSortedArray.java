@@ -7,6 +7,7 @@ import java.util.Arrays;
  * TC: O(nlog n), AS: O(n)
  * Concepts:
  * ARRAY
+ * SORTING
  * MERGE_SORT
  */
 public class CountNoOfInversionsInUnSortedArray {
