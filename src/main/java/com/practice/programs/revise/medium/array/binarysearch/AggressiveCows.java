@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * TC: O(nlog n + n * log 10^9), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/aggressive-cows_1082559?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * https://www.geeksforgeeks.org/problems/aggressive-cows/1
  * Find maximum possible minimum distance
  * Concepts:
  * BINARY_SEARCH
