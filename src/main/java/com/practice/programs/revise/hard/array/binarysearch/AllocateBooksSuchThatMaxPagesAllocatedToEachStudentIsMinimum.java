@@ -24,18 +24,20 @@ class AllocateBooksSuchThatMaxPagesAllocatedToEachStudentIsMinimum {
         if (m > n) {
             return -1;
         }
+        // starting will be max pages in array, else students will not be able to hold book having max page
         int st = max(arr);
-        int end = sum(arr);
+        int end = sum(arr); // end will be sum of all pages, when no of student = 1
         int pagesAllocated = -1;
         while (st <= end) {
             int mid = st + (end - st) / 2;
             int studentAllocated = findStudentAllocated(arr, mid);
             if (studentAllocated <= m) {
-                // Decrease no of pages, so that more can be allocated
+                // Decrease no of pages, so that no of pages allocated is minimum
                 pagesAllocated = mid;
                 end = mid - 1;
             } else {
-                // Allocation is not possible, so increase pages so that less allocated
+                // Allocation is not possible to all students (no of students required > our student count),
+                // so increase pages so that we can allocate books to the students we have
                 st = mid + 1;
             }
         }
@@ -43,20 +45,15 @@ class AllocateBooksSuchThatMaxPagesAllocatedToEachStudentIsMinimum {
     }
 
     private static int findStudentAllocated(ArrayList<Integer> arr, int maxPages) {
-        int remPages = maxPages;
-        int allocatedStudent = 0;
-        for (int page : arr) {
-            remPages -= page;
-            if (remPages == 0) {
+        int studentPages = 0;
+        int allocatedStudent = 1;
+        for (int page: arr) {
+            if (studentPages + page <= maxPages) { // allocate to curr student
+                studentPages += page;
+            } else { // can't allocate, allocate to next student
                 allocatedStudent++;
-                remPages = maxPages;
-            } else if (remPages < 0) {
-                allocatedStudent++;
-                remPages = maxPages - page;
+                studentPages = page;
             }
-        }
-        if (remPages != maxPages) {
-            allocatedStudent++;
         }
         return allocatedStudent;
     }
