@@ -6,6 +6,8 @@ import java.util.Arrays;
 /**
  * TC: O(2n + log (sum(arr) - max(arr) + 1) * n), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/allocate-books_1090540?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * Concepts:
+ * BINARY_SEARCH
  */
 class AllocateBooksSuchThatMaxPagesAllocatedToEachStudentIsMinimum {
 
