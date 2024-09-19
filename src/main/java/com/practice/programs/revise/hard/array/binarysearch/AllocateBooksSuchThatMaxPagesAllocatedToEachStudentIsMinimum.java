@@ -6,6 +6,10 @@ import java.util.Arrays;
 /**
  * TC: O(2n + log (sum(arr) - max(arr) + 1) * n), AS: O(1)
  * <a href="https://www.codingninjas.com/codestudio/problems/allocate-books_1090540?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf">Practice Link</a>
+ * Allocate books in such a way that:
+ * 1. Each student gets at least one book.
+ * 2. Each book should be allocated to only one student.
+ * 3. Book allocation should be in a contiguous manner.
  * Concepts:
  * BINARY_SEARCH
  */
