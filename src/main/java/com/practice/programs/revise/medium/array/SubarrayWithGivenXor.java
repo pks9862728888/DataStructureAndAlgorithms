@@ -1,7 +1,5 @@
 package com.practice.programs.revise.medium.array;
 
-import org.w3c.dom.stylesheets.LinkStyle;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
