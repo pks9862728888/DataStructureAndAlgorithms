@@ -12,27 +12,41 @@ class ReverseWordsInString {
     // hello      world -> world hello
     // one -> one
 
-    static String reverseWordsInAString(String s) {
-        StringBuilder sb = new StringBuilder();
-        StringBuilder wd = new StringBuilder();
+    // TC: O(n), AS: O(n)
+    public static String reverseWords(String sentence) {
+        // Convert string to mutable string and replace multiple blank spaces with single blank space
+        StringBuilder rev = new StringBuilder(sentence.replaceAll("\\s+", " ").trim());
 
-        for (int i = s.length() - 1; i >= 0; i--) {
-            char ch = s.charAt(i);
-            if (ch == ' ') {
-                if (wd.length() > 0) {
-                    sb.append(wd);
-                    sb.append(" ");
-                    wd.setLength(0);
-                }
+        // Reverse the entire string
+        int strLen = rev.length();
+        reverse(rev, 0, strLen - 1);
+
+        // Iterate over the entire string and use two pointer approach to reverse the string
+        int st = 0;
+        int curr = 0;
+        while (curr < strLen) {
+            if (curr + 1 == strLen || rev.charAt(curr + 1) == ' ') {
+                reverse(rev, st, curr);
+                st = curr + 2;
+                curr = st;
             } else {
-                wd.insert(0, ch);
+                curr++;
             }
         }
-        if (wd.length() > 0) {
-            sb.append(wd);
-        }
 
-        return sb.toString().trim();
+        // Convert mutable string to string and return
+        return new String(rev);
+    }
+
+    private static void reverse(StringBuilder sb, int st, int end) {
+        int stop = (end - st) / 2;
+        for (int counter = 0; counter <= stop; counter++) {
+            int stIdx = st + counter;
+            int endIdx = end - counter;
+            char temp = sb.charAt(stIdx);
+            sb.setCharAt(stIdx, sb.charAt(endIdx));
+            sb.setCharAt(endIdx, temp);
+        }
     }
 
     /**
