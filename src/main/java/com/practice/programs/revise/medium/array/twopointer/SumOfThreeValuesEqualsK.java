@@ -39,34 +39,34 @@ public class SumOfThreeValuesEqualsK {
     /**
      * https://leetcode.com/problems/3sum/
      * TC: O(n log n + n ^ 2) = O(n^2)
-     * AS: O(noOfDistinctCombinations)
+     * AS: O(1) not considering ans
      * Concepts:
      * TWO_POINTER
      * TWO_POINTER_START_N_END_OF_ARRAY
      */
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        Set<String> cache = new HashSet<>();
-        List<List<Integer>> res = new ArrayList<>();
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> triplets = new ArrayList<>();
         int n = nums.length;
+        Arrays.sort(nums);
         for (int i = 0; i < n - 2; i++) {
-            int low = i + 1;
-            int high = n - 1;
-            while (low < high) {
-                int sum = nums[i] + nums[low] + nums[high];
+            if (i > 0 && nums[i] == nums[i - 1]) continue; // skip duplicates for i
+            int left = i + 1;
+            int right = n - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
                 if (sum == 0) {
-                    String key = nums[i] + "#" + nums[low] + "#" + nums[high];
-                    if (cache.add(key)) {
-                        res.add(Arrays.asList(nums[i], nums[low], nums[high]));
-                    }
-                    low++;
+                    triplets.add(List.of(nums[i], nums[left], nums[right]));
+                    while(left < right && nums[left] == nums[left + 1]) left++; // remove left duplicate
+                    while(left < right && nums[right] == nums[right - 1]) right--; // remove right duplicate
+                    left++;
+                    right--;
                 } else if (sum < 0) {
-                    low++;
+                    left++;
                 } else {
-                    high--;
+                    right--;
                 }
             }
         }
-        return res;
+        return triplets;
     }
 }
