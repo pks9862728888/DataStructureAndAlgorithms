@@ -1,7 +1,5 @@
 package com.practice.programs.revise.easy.array;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/next-permutation/description/
  * If no next permutations are possible, return the least possible permutation
@@ -10,37 +8,40 @@ import java.util.Arrays;
  * Concepts:
  * ARRAY
  * NEXT_GREATER_PERMUTATION
+ * 4152 = 4215
  */
 class NextGreaterPermutation {
 
 
-    static int[] nextPermutation(int[] nums) {
-        for (int i = nums.length - 1; i >= 0; i--) {
-            int idx = findNextPermutationIdx(nums, i);
-            if (idx != -1) {
-                swap(nums, i, idx);
-                Arrays.sort(nums, i + 1, nums.length);
-                return nums;
-            }
-        }
-        // Next permutation not possible, so return sorted array
-        Arrays.sort(nums);
-        return nums;
-    }
+  public void nextPermutation(int[] nums) {
+    // find pivot idx where curr element is less than next element
+    int pivotIdx = nums.length - 2;
+    while (pivotIdx >= 0 && nums[pivotIdx] >= nums[pivotIdx + 1]) pivotIdx--;
 
-    private static int findNextPermutationIdx(int[] nums, int minEleIdx) {
-        int nextGreaterEleIdx = -1;
-        for (int i = minEleIdx + 1; i < nums.length; i++) {
-            if (nums[i] > nums[minEleIdx] && (nextGreaterEleIdx == -1 || nums[i] < nums[nextGreaterEleIdx])) {
-                nextGreaterEleIdx = i;
-            }
-        }
-        return nextGreaterEleIdx;
+    // if no such idx exists sort in ascending order
+    if (pivotIdx == -1) {
+      reverse(nums, 0, nums.length - 1);
+    } else {
+      // if such idx exists, swap the element with next smallest element towards right which is > curr
+      int nextSmallerIdx = nums.length - 1;
+      while (nums[nextSmallerIdx] <= nums[pivotIdx]) nextSmallerIdx--;
+      swap(nums, pivotIdx, nextSmallerIdx);
+      // reverse right most portion (ascending order - it gives next higher permutation)
+      reverse(nums, pivotIdx + 1, nums.length - 1);
     }
+  }
 
-    private static void swap(int[] nums, int idx1, int idx2) {
-        int t = nums[idx1];
-        nums[idx1] = nums[idx2];
-        nums[idx2] = t;
+  private void reverse(int[] n, int li, int ri) {
+    while (li < ri) {
+      swap(n, li, ri);
+      li++;
+      ri--;
     }
+  }
+
+  private void swap(int[] n, int i1, int i2) {
+    int t = n[i1];
+    n[i1] = n[i2];
+    n[i2] = t;
+  }
 }
