@@ -6,7 +6,7 @@ package com.practice.programs.revise.medium.array.twopointer;
  * [1,3,-2,-4,1] - true
  * [2,1,-1,-2] - false
  */
-public class DetectCycleInCircularArray {
+class DetectCycleInCircularArray {
 
   /**
    * starting from any idx, cycle should not exist
