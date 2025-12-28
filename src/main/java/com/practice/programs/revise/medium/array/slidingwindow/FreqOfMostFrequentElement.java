@@ -11,7 +11,7 @@ public class FreqOfMostFrequentElement {
 
   public static int maxFrequency(int[] nums, int k) {
     if (nums.length == 0) return 0;
-    // create a var to store max freq, and a var to track incements made (inc)
+    // create a var to store max freq, and a var to track increments made (inc)
     int maxFreq = 1;
     long inc = 0;
     // sort the array in ascending order
@@ -20,7 +20,7 @@ public class FreqOfMostFrequentElement {
     int n = nums.length;
     int lp = 0;
     for (int rp = 1; rp < n; rp++) {
-      // figure out the increments required by baselining with previous element
+      // figure out the increments required by base lining with previous element
       inc += (long) (nums[rp] - nums[rp - 1]) * (rp - lp);
       while (inc > k) {
         inc -= (nums[rp] - nums[lp]);
