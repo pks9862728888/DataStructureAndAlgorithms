@@ -7,7 +7,6 @@ package com.practice.programs.revise.medium.array.twopointer;
  */
 public class FindDuplicateNo {
 
-
   /**
    * Floyd's Tortoise and Hare (Cycle Detection) approach
    * TC: O(n), AS: O(1)
