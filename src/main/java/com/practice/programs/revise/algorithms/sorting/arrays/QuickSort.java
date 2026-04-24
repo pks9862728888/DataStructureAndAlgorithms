@@ -35,20 +35,20 @@ public class QuickSort {
      * It ensures ele left of partition are less than the elements right of partition.
      * More fast and efficient than Lomuto partition since replacements are less
      */
-    private static int findPivotHaorePartition(int[] arr, int st, int end) {
-        int pivotEle = arr[st];
-        int l = st;
-        int r = end;
-        while (l < r) {
-            while (arr[l] < pivotEle) {
-                l++;
-            }
-            while (arr[r] > pivotEle) {
-                r--;
-            }
-            swap(arr, l, r);
-        }
-        return r;
+    private static int findPivotHaorePartition(int[] arr, int l, int h) {
+      int pivot = arr[l];
+      int lp = l - 1;
+      int rp = h + 1;
+      while (true) {
+        do {
+          lp++;
+        } while (arr[lp] < pivot);
+        do {
+          rp--;
+        } while (arr[rp] > pivot);
+        if (lp >= rp) return rp;
+        swap(arr, lp, rp);
+      }
     }
 
     private static void swap(int[] arr, int idx1, int idx2) {
