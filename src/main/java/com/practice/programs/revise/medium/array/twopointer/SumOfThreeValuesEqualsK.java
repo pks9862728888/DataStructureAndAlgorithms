@@ -17,25 +17,6 @@ import java.util.Set;
  */
 public class SumOfThreeValuesEqualsK {
 
-    public static boolean findSumOfThree(int[] nums, int target) {
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 2; i++) {
-            int low = i + 1;
-            int high = nums.length - 1;
-            while (low < high) {
-                int sum = nums[i] + nums[low] + nums[high];
-                if (sum == target) {
-                    return true;
-                } else if (sum < target) {
-                    low++;
-                } else {
-                    high--;
-                }
-            }
-        }
-        return false;
-    }
-
     /**
      * https://leetcode.com/problems/3sum/
      * TC: O(n log n + n ^ 2) = O(n^2)
@@ -44,29 +25,36 @@ public class SumOfThreeValuesEqualsK {
      * TWO_POINTER
      * TWO_POINTER_START_N_END_OF_ARRAY
      */
-    public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> triplets = new ArrayList<>();
-        int n = nums.length;
+    public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        for (int i = 0; i < n - 2; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue; // skip duplicates for i
-            int left = i + 1;
-            int right = n - 1;
-            while (left < right) {
-                int sum = nums[i] + nums[left] + nums[right];
+        List<List<Integer>> result = new ArrayList<>();
+        int i = 0;
+        int n = nums.length;
+        while (i < n) {
+            // if current element is > 0 we cant have triplet = 0
+            if (nums[i] > 0) break;
+            int st = i + 1;
+            int end = n - 1;
+            while (st < end) {
+                int sum = nums[i] + nums[st] + nums[end];
                 if (sum == 0) {
-                    triplets.add(List.of(nums[i], nums[left], nums[right]));
-                    while(left < right && nums[left] == nums[left + 1]) left++; // remove left duplicate
-                    while(left < right && nums[right] == nums[right - 1]) right--; // remove right duplicate
-                    left++;
-                    right--;
-                } else if (sum < 0) {
-                    left++;
+                    List<Integer> triplet = new ArrayList<>();
+                    triplet.add(nums[i]);
+                    triplet.add(nums[st]);
+                    triplet.add(nums[end]);
+                    // skip duplicate value of b
+                    do st++;
+                    while (st < n && nums[st] == nums[st - 1]);
+                } else if (sum > 0) {
+                    end--;
                 } else {
-                    right--;
+                    st++;
                 }
             }
+            // skip duplicate a
+            do i++;
+            while (i < n && nums[i] == nums[i - 1]);
         }
-        return triplets;
+        return result;
     }
 }
