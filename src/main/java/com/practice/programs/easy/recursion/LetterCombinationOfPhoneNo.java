@@ -12,66 +12,35 @@ import java.util.Map;
  */
 class LetterCombinationOfPhoneNo {
 
-    private static final Map<Character, String> digitMap = new HashMap<>();
+    private static final Map<Character, List<Character>> charMap = new HashMap<>();
 
     static {
-        digitMap.put('2', "abc");
-        digitMap.put('3', "def");
-        digitMap.put('4', "ghi");
-        digitMap.put('5', "jkl");
-        digitMap.put('6', "mno");
-        digitMap.put('7', "pqrs");
-        digitMap.put('8', "tuv");
-        digitMap.put('9', "wxyz");
+        charMap.put('2', List.of('a', 'b', 'c'));
+        charMap.put('3', List.of('d', 'e', 'f'));
+        charMap.put('4', List.of('g', 'h', 'i'));
+        charMap.put('5', List.of('j', 'k', 'l'));
+        charMap.put('6', List.of('m', 'n', 'o'));
+        charMap.put('7', List.of('p', 'q', 'r', 's'));
+        charMap.put('8', List.of('t', 'u', 'v'));
+        charMap.put('9', List.of('w', 'x', 'y', 'z'));
     }
 
-    public List<String> letterCombinationsOfPhoneNumber(String digits) {
-        // return notBestApproachInTermsOfSpaceComplexity(digits);
-        return betterApproach(digits);
-    }
-
-    private List<String> betterApproach(String digits) {
+    public static List<String> phoneKeypadCombination(String digits) {
         List<String> res = new ArrayList<>();
-        if (digits.isEmpty()) {
-            return res;
-        }
-        generate(digits, 0, "", res);
+        evaluate(digits, 0, new StringBuilder(), res);
         return res;
     }
 
-    private void generate(String digits, int idx, String wordSoFar, List<String> res) {
-        if (idx >= digits.length()) {
-            res.add(wordSoFar);
+    private static void evaluate(String digits, int idx, StringBuilder curr, List<String> res) {
+        if (idx == digits.length()) {
+            res.add(curr.toString());
             return;
         }
-        char digit = digits.charAt(idx);
-        String lettersOfDigit = digitMap.get(digit);
-        for (int i = 0; i < lettersOfDigit.length(); i++) {
-            String newCombination = wordSoFar + lettersOfDigit.charAt(i);
-            generate(digits, idx + 1, newCombination, res);
+        List<Character> letters = charMap.get(digits.charAt(idx));
+        for (Character letter: letters) {
+            curr.append(letter);
+            evaluate(digits, idx + 1, curr, res);
+            curr.deleteCharAt(curr.length() - 1);
         }
-    }
-
-    private List<String> notBestApproachInTermsOfSpaceComplexity(String digits) {
-        List<String> resSoFar = new ArrayList<>();
-        if (digits.length() == 0) {
-            return resSoFar;
-        }
-        resSoFar.add("");
-        return findCombination(digits, 0, resSoFar);
-    }
-
-    private List<String> findCombination(String digits, int idx, List<String> resSoFar) {
-        if (idx >= digits.length()) {
-            return resSoFar;
-        }
-        String lettersInDigit = digitMap.get(digits.charAt(idx));
-        List<String> newResult = new ArrayList<>(resSoFar.size() * lettersInDigit.length());
-        for (String word : resSoFar) {
-            for (int i = 0; i < lettersInDigit.length(); i++) {
-                newResult.add(word + lettersInDigit.charAt(i));
-            }
-        }
-        return findCombination(digits, idx + 1, newResult);
     }
 }
